@@ -1,4 +1,4 @@
 public class Storage {
 
-    public void Collect(Virologist v);
+    public void Collect(Virologist v) {}
 }

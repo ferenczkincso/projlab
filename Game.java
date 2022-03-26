@@ -1,6 +1,6 @@
 public class Game {
 
-    private Virologist[] virologists;
+    private List<Virologist> virologists;
 
     public void EndGame();
 
