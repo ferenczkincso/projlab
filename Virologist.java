@@ -11,6 +11,9 @@ public class Virologist implements Ticker {
     private List<GeneticCode> genetic_codes;
     private List<Agent> agent;
 
+    public void Tick(){
+
+    }
     public void Move(Field f){
 
     }

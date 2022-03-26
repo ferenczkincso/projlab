@@ -4,11 +4,11 @@ public class Game {
 
     private List<Virologist> virologists;
 
-    public void EndGame();
+    public void EndGame(){}
 
-    public void CreateCity();
+    public void CreateCity(){}
 
-    public void AddVirologist();
+    public void AddVirologist(){}
 
-    public void NewGame();
+    public void NewGame(){}
 }
