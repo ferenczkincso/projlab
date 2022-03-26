@@ -1,4 +1,4 @@
-public class GeneticCode {
+abstract class GeneticCode {
     public void CreateAgent(){
 
     }

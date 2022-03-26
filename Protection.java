@@ -1,4 +1,4 @@
-public class Protection {
+abstract class Protection {
 
     public void Effect(Virologist v) {}
 
