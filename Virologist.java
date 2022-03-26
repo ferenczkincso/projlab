@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class Virologist {
+public class Virologist implements Ticker {
     private int capacity;
     private List<Nukleotid> nukleotid;
     private List<Aminoacid> aminoacid;
