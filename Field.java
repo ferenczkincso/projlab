@@ -1,5 +1,6 @@
 public class Field {
     protected int fieldID;
+    private List<Field> neighbours;
 
     public Field[] GetNeighbours();
     public Virologist GetVirologistNearby();
