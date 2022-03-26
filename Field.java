@@ -6,17 +6,17 @@ public class Field {
     private Virologist virologist;
 
     public List<Field> GetNeighbours(){
-        System.out.println("GetNeighbours");
+        System.out.println("f.GetNeighbours()");
         return neighbours;
     }
     public Virologist GetVirologistNearby(){
         return virologist;
     }
     public void Accept(Virologist v){
-        System.out.println("Accept");
+        System.out.println("Accept(v)");
     }
     public void Remove(Virologist v){
-        System.out.println("Remove");
+        System.out.println("Remove(v)");
     }
     public void Collect(Virologist v){}
 

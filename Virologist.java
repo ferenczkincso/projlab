@@ -13,7 +13,7 @@ public class Virologist implements Ticker {
     private Field current_field;
 
     public void Tick(){
-        System.out.println("Tick");
+        System.out.println("Tick()");
         while (immuneTime != 0)
             ReduceImmuneTime();
         while (paralyzedTime != 0)
@@ -22,7 +22,7 @@ public class Virologist implements Ticker {
             ReduceUncontrollableTime();
     }
     public void Move(Field f){
-        System.out.println("Move");
+        System.out.println("Move()");
         List<Field> fields = current_field.GetNeighbours();
         for (Field field : fields){
             if (f.fieldID==field.fieldID){

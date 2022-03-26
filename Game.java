@@ -10,5 +10,7 @@ public class Game {
 
     public void AddVirologist(){}
 
-    public void NewGame(){}
+    public void NewGame(){
+        System.out.println("NewGame()");
+    }
 }
