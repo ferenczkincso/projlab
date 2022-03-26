@@ -1,3 +1,3 @@
-public class Ticker {
+public interface Ticker {
     public void Tick();
 }
