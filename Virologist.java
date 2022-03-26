@@ -10,9 +10,10 @@ public class Virologist implements Ticker {
     private List<Protection> protections;
     private List<GeneticCode> genetic_codes;
     private List<Agent> agent;
+    private Field current_field;
 
     public void Tick(){
-        System.out.println("Tick\n");
+        System.out.println("Tick");
         while (immuneTime != 0)
             ReduceImmuneTime();
         while (paralyzedTime != 0)
@@ -21,7 +22,14 @@ public class Virologist implements Ticker {
             ReduceUncontrollableTime();
     }
     public void Move(Field f){
-
+        System.out.println("Move");
+        List<Field> fields = current_field.GetNeighbours();
+        for (Field field : fields){
+            if (f.fieldID==field.fieldID){
+                current_field.Remove(this);
+                f.Accept(this);
+            }
+        }
     }
     public void Forgetting_codes(){
 
@@ -71,13 +79,13 @@ public class Virologist implements Ticker {
         a.Effect(v2);
     }
     public void ReduceImmuneTime(){
-        System.out.println("ReduceImmuneTime\n");
+        System.out.println("ReduceImmuneTime");
     }
     public void ReduceParalyzedTime(){
-        System.out.println("ReduceParalyzedTime\n");
+        System.out.println("ReduceParalyzedTime");
     }
     public void ReduceUncontrollableTime(){
-        System.out.println("ReduceUncontrollableTime\n");
+        System.out.println("ReduceUncontrollableTime");
     }
     public void StealNukleotid(){
 
