@@ -1,4 +1,4 @@
-public class Bag {
+public class Bag extends Protection{
 
     public void Effect(Virologist v) {}
 

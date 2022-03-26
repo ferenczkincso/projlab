@@ -1,4 +1,4 @@
-public class Shelter {
+public class Shelter extends Field{
 
     public void Collect(Virologist v) {}
 }

@@ -1,4 +1,4 @@
-public class Cloak {
+public class Cloak extends Protection{
 
     public void Effect(Virologist v) {}
 
