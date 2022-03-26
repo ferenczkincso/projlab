@@ -26,10 +26,26 @@ public class Virologist implements Ticker {
     public void Forgetting_codes(){
 
     }
-    public void GetItem(){
+    public void GetItem() {
 
+        Shelter s = new Shelter();
+        Protection p = new Bag();
+
+        System.out.println("v.GetItem()");
+
+        System.out.print("\t");
+        s.Collect(this);
+
+        System.out.print("\t");
+        p.Effect(this);
     }
     public void CollectMaterial(){
+        Nukleotid_storage n = new Nukleotid_storage();
+
+        System.out.println("v.CollectMaterial()");
+
+        System.out.print("\t");
+        n.Collect(this);
 
     }
     public void LoseItem(Protection p){
@@ -53,8 +69,6 @@ public class Virologist implements Ticker {
 
         System.out.print("\t");
         a.Effect(v2);
-
-
     }
     public void ReduceImmuneTime(){
         System.out.println("ReduceImmuneTime\n");
