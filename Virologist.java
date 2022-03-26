@@ -47,8 +47,8 @@ public class Virologist implements Ticker {
         Agent a = new Immunity();
 
         System.out.println("v1.LookAround()");
-        System.out.print("\t");
 
+        System.out.print("\t");
         Virologist v2 = f.GetVirologistNearby();
 
         System.out.print("\t");
