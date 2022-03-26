@@ -77,6 +77,16 @@ public class Virologist implements Ticker {
 
         System.out.print("\t");
         a.Effect(v2);
+        if (v2.paralyzedTime!=0){
+            while (!v2.nukleotid.isEmpty()) {
+                Nukleotid n = new Nukleotid();
+                Aminoacid am = new Aminoacid();
+                v2.StealNukleotid();
+                this.AddNukleotid(n);
+                v2.StealAminoacid();
+                this.AddAminoacid(am);
+            }
+        }
     }
     public void ReduceImmuneTime(){
         System.out.println("ReduceImmuneTime");
@@ -88,22 +98,23 @@ public class Virologist implements Ticker {
         System.out.println("ReduceUncontrollableTime");
     }
     public void StealNukleotid(){
+        System.out.println("StealNukleotid()");
 
     }
     public void StealAminoacid(){
-
+        System.out.println("StealAminoacid()");
     }
     public void UseGeneticCode(GeneticCode gc){
 
     }
     public void AddAgent(Agent a){
-
+        System.out.println("AddAgent(a)");
     }
     public void AddAminoacid(Aminoacid a){
-
+        System.out.println("AddAminoacid(a)");
     }
     public void AddNukleotid(Nukleotid n){
-
+        System.out.println("AddNukleotid(n)");
     }
 }
 
