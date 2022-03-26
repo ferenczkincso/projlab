@@ -43,6 +43,18 @@ public class Virologist implements Ticker {
     }
     public void LookAround(){
 
+        Field f = new Field();
+        Agent a = new Immunity();
+
+        System.out.println("v1.LookAround()");
+        System.out.print("\t");
+
+        Virologist v2 = f.GetVirologistNearby();
+
+        System.out.print("\t");
+        a.Effect(v2);
+
+
     }
     public void ReduceImmuneTime(){
         System.out.println("ReduceImmuneTime\n");
