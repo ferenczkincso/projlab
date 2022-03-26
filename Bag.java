@@ -1,6 +1,6 @@
 public class Bag {
 
-    public Effect(Virologist v);
+    public void Effect(Virologist v);
 
-    public ReverseEffect(Virologist v);
+    public void ReverseEffect(Virologist v);
 }
