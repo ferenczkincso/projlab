@@ -12,7 +12,13 @@ public class Virologist implements Ticker {
     private List<Agent> agent;
 
     public void Tick(){
-
+        System.out.println("Tick\n");
+        while (immuneTime != 0)
+            ReduceImmuneTime();
+        while (paralyzedTime != 0)
+            ReduceParalyzedTime();
+        while (uncontrollabeTime != 0)
+            ReduceUncontrollableTime();
     }
     public void Move(Field f){
 
@@ -39,13 +45,13 @@ public class Virologist implements Ticker {
 
     }
     public void ReduceImmuneTime(){
-
+        System.out.println("ReduceImmuneTime\n");
     }
     public void ReduceParalyzedTime(){
-
+        System.out.println("ReduceParalyzedTime\n");
     }
     public void ReduceUncontrollableTime(){
-
+        System.out.println("ReduceUncontrollableTime\n");
     }
     public void StealNukleotid(){
 
