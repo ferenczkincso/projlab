@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Game {
 
     private List<Virologist> virologists;
