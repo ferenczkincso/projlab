@@ -83,12 +83,12 @@ public class Virologist implements Ticker {
             Uncontrollable u = new Uncontrollable();
             Forgetting fo = new Forgetting();
 
-            System.out.println("v1.LookAround()");
+            System.out.println("v.LookAround()");
 
-            System.out.print("\t");
+            //System.out.print("\t");
             Virologist v2 = f.GetVirologistNearby();
 
-            System.out.print("\t");
+            //System.out.print("\t");
             i.Effect(v2);
             p.Effect(v2);
             u.Effect(v2);

@@ -10,6 +10,7 @@ public class Field {
         return neighbours;
     }
     public Virologist GetVirologistNearby(){
+        virologist = new Virologist();
         return virologist;
     }
     public void Accept(Virologist v){
