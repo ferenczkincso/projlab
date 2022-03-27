@@ -39,61 +39,61 @@ public class Main {
         do {
             choice = scan.nextLine();
             switch (choice) {
-                case "1" -> {
+                case "1":
                     System.out.println("1: Move");
                     v.Move(f);
-                }
-                case "2" -> {
+                    break;
+                case "2":
                     System.out.println("2: Use Agent");
                     v.LookAround();
-                }
-                case "3" -> {
+                    break;
+                case "3":
                     System.out.println("3: Pick up protection");
                     v.GetItem();
-                }
-                case "4" -> {
+                    break;
+                case "4":
                     System.out.println("4: Collect Nukleotid");
                     v.CollectMaterial(ns);
-                }
-                case "5" -> {
+                    break;
+                case "5":
                     System.out.println("5: Collect Aminoacid");
                     v.CollectMaterial(as);
-                }
-                case "6" -> {
+                    break;
+                case "6":
                     System.out.println("6: Steal Protection");
                     v2.StealItem();
-                }
-                case "7" -> {
+                    break;
+                case "7":
                     System.out.println("7: Tick");
                     v.Tick();
-                }
-                case "8" -> {
+                    break;
+                case "8":
                     System.out.println("8: Steal Aminoacid");
                     v2.StealAminoacid();
-                }
-                case "9" -> {
+                    break;
+                case "9":
                     System.out.println("9: Learn Genetic Code");
                     l.Learn_code(v);
-                }
-                case "10" -> {
+                    break;
+                case "10":
                     System.out.println("10: Self Use Agent");
                     i.Effect(v);
-                }
-                case "11" -> {
+                    break;
+                case "11":
                     System.out.println("11: Create Agent");
                     v.UseGeneticCode(gc_immunity);
                     v.UseGeneticCode(gc_paralyze);
                     v.UseGeneticCode(gc_forgetting);
                     v.UseGeneticCode(gc_uncontrollable);
-                }
-                case "12" -> {
+                    break;
+                case "12":
                     System.out.println("13: Init");
                     game.NewGame();
-                }
-                case "13" -> {
+                    break;
+                case "13":
                     System.out.println("14: Steal Nukleotid");
                     v2.StealNukleotid();
-                }
+                    break;
             }
         } while (!choice.equals("14"));
 
