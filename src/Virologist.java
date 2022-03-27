@@ -105,6 +105,7 @@ public class Virologist implements Ticker {
                 this.AddAminoacid(am);
             }
         }
+
     }
     public void ReduceImmuneTime(){
         System.out.println("ReduceImmuneTime");
@@ -123,7 +124,10 @@ public class Virologist implements Ticker {
         System.out.println("v2.StealAminoacid()");
     }
     public void UseGeneticCode(GeneticCode gc){
-
+        System.out.println("UseGeneticCode(GeneticCode gc)");
+        gc.CreateAgent();
+        Immunity i = new Immunity();
+        this.AddAgent(i);
     }
     public void AddAgent(Agent a){
         System.out.println("AddAgent(a)");
