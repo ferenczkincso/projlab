@@ -1,4 +1,5 @@
 import java.util.List;
+package src;
 
 public class Virologist implements Ticker {
     private int capacity;

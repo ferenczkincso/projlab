@@ -1,5 +1,5 @@
 import java.util.List;
-
+package src;
 public class Game {
 
     private List<Virologist> virologists;
