@@ -5,11 +5,11 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        Virologist v = new Virologist();
         Virologist v2 = new Virologist();
+        Virologist v = new Virologist();
         Field f = new Field();
-        Nukleotid_storage ns = new Nukleotid_storage();
         Aminoacid_storage as = new Aminoacid_storage();
+        Nukleotid_storage ns = new Nukleotid_storage();
         Lab l = new Lab();
         Immunity i = new Immunity();
         GC_Forgetting gc_forgetting = new GC_Forgetting();
@@ -87,11 +87,11 @@ public class Main {
                     v.UseGeneticCode(gc_uncontrollable);
                     break;
                 case "12":
-                    System.out.println("13: Init");
+                    System.out.println("12: Init");
                     game.NewGame();
                     break;
                 case "13":
-                    System.out.println("14: Steal Nukleotid");
+                    System.out.println("13: Steal Nukleotid");
                     v2.StealNukleotid();
                     break;
             }
