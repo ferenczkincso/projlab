@@ -1,5 +1,5 @@
-import java.util.List;
 package src;
+import java.util.List;
 
 public class Virologist implements Ticker {
     private int capacity;
@@ -33,8 +33,8 @@ public class Virologist implements Ticker {
         }
         public void Move (Field f){
             System.out.println("Move(f)");
-            //List<Field> fields = current_field.GetNeighbours();
-            //for (Field field : fields) {
+            //List<src.Field> fields = current_field.GetNeighbours();
+            //for (src.Field field : fields) {
                // if (f.fieldID == field.fieldID) {
                     current_field.Remove(this);
                     f.Accept(this);

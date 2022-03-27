@@ -1,5 +1,6 @@
-import java.util.List;
 package src;
+import java.util.List;
+
 public class Field {
     protected int fieldID;
     private List<Field> neighbours;
