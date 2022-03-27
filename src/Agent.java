@@ -1,5 +1,3 @@
-package src;
-
 abstract class Agent {
 
     public void Effect(Virologist v)

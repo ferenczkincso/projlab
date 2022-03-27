@@ -1,5 +1,3 @@
-package src;
-
 abstract class Protection {
 
     public void Effect(Virologist v) {

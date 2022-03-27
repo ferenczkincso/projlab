@@ -1,5 +1,3 @@
-package src;
-
 import java.util.List;
 
 public class Nukleotid_storage extends Storage{

@@ -1,5 +1,3 @@
-package src;
-
 public class Timer implements Ticker{
 
     public void Signal(){
