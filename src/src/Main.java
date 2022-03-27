@@ -8,7 +8,6 @@ public class Main {
         Virologist v = new Virologist();
         Virologist v2 = new Virologist();
         Field f = new Field();
-        Field f1 = new Field();
         Nukleotid_storage ns = new Nukleotid_storage();
         Aminoacid_storage as = new Aminoacid_storage();
         Lab l = new Lab();
@@ -40,61 +39,61 @@ public class Main {
         do {
             choice = scan.nextLine();
             switch (choice) {
-                case "1":
+                case "1" -> {
                     System.out.println("1: Move");
                     v.Move(f);
-                    break;
-                case "2":
+                }
+                case "2" -> {
                     System.out.println("2: Use Agent");
                     v.LookAround();
-                    break;
-                case "3":
+                }
+                case "3" -> {
                     System.out.println("3: Pick up protection");
                     v.GetItem();
-                    break;
-                case "4":
+                }
+                case "4" -> {
                     System.out.println("4: Collect Nukleotid");
                     v.CollectMaterial(ns);
-                    break;
-                case "5":
+                }
+                case "5" -> {
                     System.out.println("5: Collect Aminoacid");
                     v.CollectMaterial(as);
-                    break;
-                case "6":
+                }
+                case "6" -> {
                     System.out.println("6: Steal Protection");
                     v2.StealItem();
-                    break;
-                case "7":
+                }
+                case "7" -> {
                     System.out.println("7: Tick");
                     v.Tick();
-                    break;
-                case "8":
+                }
+                case "8" -> {
                     System.out.println("8: Steal Aminoacid");
                     v2.StealAminoacid();
-                    break;
-                case "9":
+                }
+                case "9" -> {
                     System.out.println("9: Learn Genetic Code");
                     l.Learn_code(v);
-                    break;
-                case "10":
+                }
+                case "10" -> {
                     System.out.println("10: Self Use Agent");
                     i.Effect(v);
-                    break;
-                case "11":
+                }
+                case "11" -> {
                     System.out.println("11: Create Agent");
                     v.UseGeneticCode(gc_immunity);
                     v.UseGeneticCode(gc_paralyze);
                     v.UseGeneticCode(gc_forgetting);
                     v.UseGeneticCode(gc_uncontrollable);
-                    break;
-                case "12":
+                }
+                case "12" -> {
                     System.out.println("13: Init");
                     game.NewGame();
-                    break;
-                case "13":
+                }
+                case "13" -> {
                     System.out.println("14: Steal Nukleotid");
                     v2.StealNukleotid();
-                    break;
+                }
             }
         } while (!choice.equals("14"));
 
