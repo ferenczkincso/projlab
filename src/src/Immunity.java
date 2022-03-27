@@ -4,6 +4,6 @@ public class Immunity extends Agent{
         System.out.println("Immunity: Effect(v2)");
     }
     public void ReverseEffect(Virologist v){
-        System.out.println("ReverseEffect(v)");
+        System.out.println("ReverseImmunity: ReverseEffect(v)");
     }
 }

@@ -4,6 +4,6 @@ public class Paralyze extends Agent{
         System.out.println("Paralyze: Effect(v2)");
     }
     public void ReverseEffect(Virologist v){
-        System.out.println("ReverseEffect(v)");
+        System.out.println("ReverseParalyze: ReverseEffect(v)");
     }
 }

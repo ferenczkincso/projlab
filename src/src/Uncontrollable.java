@@ -4,6 +4,6 @@ public class Uncontrollable extends Agent{
         System.out.println("Uncontrollable: Effect(v2)");
     }
     public void ReverseEffect(Virologist v){
-        System.out.println("ReverseEffect(v)");
+        System.out.println("ReverseUncontrollable: ReverseEffect(v)");
     }
 }

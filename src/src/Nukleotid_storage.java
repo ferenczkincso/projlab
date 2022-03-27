@@ -3,9 +3,9 @@ import java.util.List;
 
 
 public class Nukleotid_storage extends Storage{
-    private List<Aminoacid> aminoacid;
+    private List<Nukleotid> nukleotid;
 
     public void Collect(Virologist v){
-        System.out.println("n.Collect(v)");
+        System.out.println("nukleotid_storage.Collect(v)");
     }
 }

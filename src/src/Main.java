@@ -6,8 +6,11 @@ public class Main {
     public static void main(String[] args) {
 
         Virologist v = new Virologist();
+        Virologist v2 = new Virologist();
         Field f = new Field();
         Field f1 = new Field();
+        Nukleotid_storage ns = new Nukleotid_storage();
+        Aminoacid_storage as = new Aminoacid_storage();
 
         System.out.println("1: Move");
         System.out.println("2: Use Agent");
@@ -45,24 +48,27 @@ public class Main {
                     break;
                 case "4":
                     System.out.println("4: Collect Nukleotid");
-                    v.CollectMaterial();
+                    v.CollectMaterial(ns);
                     break;
                 case "5":
                     System.out.println("5: Collect Aminoacid");
-                    v.CollectMaterial();
+                    v.CollectMaterial(as);
                     break;
                 case "6":
                     System.out.println("6: Steal Protection");
-
+                    v2.StealItem();
                     break;
                 case "7":
                     System.out.println("7: Tick");
+                    v.Tick();
                     break;
                 case "8":
                     System.out.println("8: Steal Aminoacid");
+                    v2.StealAminoacid();
                     break;
                 case "9":
                     System.out.println("9: Learn Genetic Code");
+
                     break;
                 case "10":
                     System.out.println("10: Self Use Agent");
@@ -78,6 +84,7 @@ public class Main {
                     break;
                 case "14":
                     System.out.println("14: Steal Nukleotid");
+                    v2.StealNukleotid();
                     break;
             }
         } while (!choice.equals("15"));
