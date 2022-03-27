@@ -1,4 +1,4 @@
-package src;
+package projlab;
 public class Timer implements Ticker{
     public void Signal(){
         System.out.println("Signal()");

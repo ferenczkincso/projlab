@@ -1,4 +1,4 @@
-package src;
+package projlab;
 public class Forgetting extends Agent{
     public void Effect(Virologist v){
         System.out.println("Forgetting: Effect(v2)");

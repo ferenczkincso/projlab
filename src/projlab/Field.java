@@ -1,4 +1,4 @@
-package src;
+package projlab;
 import java.util.List;
 
 public class Field {

@@ -1,4 +1,4 @@
-package src;
+package projlab;
 abstract class Protection {
     public void Effect(Virologist v) {
         System.out.println("p.Effect(v)");

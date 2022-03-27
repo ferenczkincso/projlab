@@ -1,4 +1,4 @@
-package src;
+package projlab;
 public class GC_Paralyze extends GeneticCode{
     public void CreateAgent(Virologist v){
         System.out.println("Create Paralyze: CreateAgent(Virologist v)");

@@ -1,4 +1,4 @@
-package src;
+package projlab;
 public class GC_Forgetting extends GeneticCode{
     public void CreateAgent(Virologist v){
         System.out.println("Create Forgetting: CreateAgent(Virologist v)");

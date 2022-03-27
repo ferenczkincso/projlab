@@ -1,4 +1,4 @@
-package src;
+package projlab;
 abstract class Agent {
     public void Effect(Virologist v)
     {
