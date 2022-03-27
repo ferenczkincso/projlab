@@ -5,7 +5,9 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        Virologist v1 = new Virologist();
+        Virologist v = new Virologist();
+        Field f = new Field();
+        Field f1 = new Field();
 
         System.out.println("1: Move");
         System.out.println("2: Use Agent");
@@ -31,22 +33,27 @@ public class Main {
             switch (choice) {
                 case "1":
                     System.out.println("1: Move");
-
+                    v.Move(f);
                     break;
                 case "2":
                     System.out.println("2: Use Agent");
+                    v.LookAround();
                     break;
                 case "3":
                     System.out.println("3: Pick up protection");
+                    v.GetItem();
                     break;
                 case "4":
                     System.out.println("4: Collect Nukleotid");
+                    v.CollectMaterial();
                     break;
                 case "5":
                     System.out.println("5: Collect Aminoacid");
+                    v.CollectMaterial();
                     break;
                 case "6":
                     System.out.println("6: Steal Protection");
+
                     break;
                 case "7":
                     System.out.println("7: Tick");
