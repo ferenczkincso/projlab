@@ -4,5 +4,5 @@ abstract class Protection {
         System.out.println("p.Effect(v)");
     }
 
-    public void ReverseEffect(Virologist v) {}
+    public void ReverseEffect(Virologist v) {System.out.println("ReverseEffect(v)");}
 }

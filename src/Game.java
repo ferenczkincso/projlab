@@ -5,7 +5,7 @@ public class Game {
     private List<Virologist> virologists;
     private List<Field> fields;
 
-    public void EndGame(){}
+    public void EndGame(){System.out.println("EndGame()");}
 
     public void CreateCity(){
         System.out.println("CreateCity()");

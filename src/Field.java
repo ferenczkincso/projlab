@@ -18,6 +18,6 @@ public class Field {
     public void Remove(Virologist v){
         System.out.println("Remove(v)");
     }
-    public void Collect(Virologist v){}
+    public void Collect(Virologist v){System.out.println("Collect(v)");}
 
 }
