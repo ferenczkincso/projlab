@@ -82,10 +82,10 @@ public class Main {
                     break;
                 case "11":
                     System.out.println("11: Create Agent");
-                    gc_forgetting.CreateAgent(v);
-                    gc_immunity.CreateAgent(v);
-                    gc_paralyze.CreateAgent(v);
-                    gc_uncontrollable.CreateAgent(v);
+                    v.UseGeneticCode(gc_immunity);
+                    v.UseGeneticCode(gc_paralyze);
+                    v.UseGeneticCode(gc_forgetting);
+                    v.UseGeneticCode(gc_uncontrollable);
                     break;
                 case "12":
                     System.out.println("13: Init");

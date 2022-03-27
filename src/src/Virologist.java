@@ -117,10 +117,6 @@ public class Virologist implements Ticker {
         public void UseGeneticCode (GeneticCode gc){
             System.out.println("UseGeneticCode(GeneticCode gc)");
             gc.CreateAgent(this);
-            this.AddAgent(i);
-            this.AddAgent(p);
-            this.AddAgent(u);
-            this.AddAgent(fo);
         }
         public void AddAgent (Agent a){
             System.out.println("AddAgent(a)");
