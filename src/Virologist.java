@@ -57,12 +57,13 @@ public class Virologist implements Ticker {
 
     }
     public void LoseItem(Protection p){
-
+        System.out.println("v2.LoseItem()");
     }
     public void ApplyItem(Protection p){
 
     }
     public void StealItem(){
+        System.out.println("v2.StealItem()");
 
     }
     public void LookAround(){
