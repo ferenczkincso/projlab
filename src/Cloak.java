@@ -1,3 +1,5 @@
+package src;
+
 public class Cloak extends Protection{
 
     public void Effect(Virologist v) {System.out.println("Effect(v)");}

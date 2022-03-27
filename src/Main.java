@@ -1,7 +1,11 @@
+package src;
+
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
+        Virologist v1 = new Virologist();
 
         System.out.println("1: Move");
         System.out.println("2: Use Agent");
@@ -27,6 +31,7 @@ public class Main {
             switch (choice) {
                 case "1":
                     System.out.println("1: Move");
+
                     break;
                 case "2":
                     System.out.println("2: Use Agent");

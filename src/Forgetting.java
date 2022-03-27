@@ -1,3 +1,5 @@
+package src;
+
 public class Forgetting extends Agent{
     public void Effect(Virologist v){
         System.out.println("Effect(v)");
