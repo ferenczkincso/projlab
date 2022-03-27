@@ -16,6 +16,10 @@ public class Virologist implements Ticker {
     Bag b = new Bag();
     Cloak c = new Cloak();
     Glove g = new Glove();
+    Immunity i = new Immunity();
+    Paralyze p = new Paralyze();
+    Uncontrollable u = new Uncontrollable();
+    Forgetting fo = new Forgetting();
 
     public void Tick() {
         System.out.println("Tick()");
@@ -79,50 +83,25 @@ public class Virologist implements Ticker {
             this.ApplyItem(g);
         }
         public void LookAround () {
-
-            Field f = new Field();
-            Immunity i = new Immunity();
-            Paralyze p = new Paralyze();
-            Uncontrollable u = new Uncontrollable();
-            Forgetting fo = new Forgetting();
-
             System.out.println("v.LookAround()");
 
-            //System.out.print("\t");
+            Field f = new Field();
             Virologist v2 = f.GetVirologistNearby();
-
-            //System.out.print("\t");
-            i.Effect(v2);
             p.Effect(v2);
             u.Effect(v2);
             fo.Effect(v2);
 
-            /*if (v2.paralyzedTime == 0) {
-                while (!v2.nukleotid.isEmpty() || !v2.aminoacid.isEmpty()) {
-                    Nukleotid n = new Nukleotid();
-                    Aminoacid am = new Aminoacid();
-                    v2.StealNukleotid();
-                    this.AddNukleotid(n);
-                    v2.StealAminoacid();
-                    this.AddAminoacid(am);
-                }
-            }
-             */
-
         }
         public void ReduceImmuneTime () {
             System.out.println("ReduceImmuneTime");
-            Immunity i = new Immunity();
             if (immuneTime == 0) i.ReverseEffect(this);
         }
         public void ReduceParalyzedTime () {
             System.out.println("ReduceParalyzedTime");
-            Paralyze p = new Paralyze();
             if (paralyzedTime == 0) p.ReverseEffect(this);
         }
         public void ReduceUncontrollableTime () {
             System.out.println("ReduceUncontrollableTime");
-            Uncontrollable u = new Uncontrollable();
             if (uncontrollabeTime == 0) u.ReverseEffect(this);
         }
         public void StealNukleotid () {
@@ -137,9 +116,11 @@ public class Virologist implements Ticker {
         }
         public void UseGeneticCode (GeneticCode gc){
             System.out.println("UseGeneticCode(GeneticCode gc)");
-            gc.CreateAgent();
-            Immunity i = new Immunity();
+            gc.CreateAgent(this);
             this.AddAgent(i);
+            this.AddAgent(p);
+            this.AddAgent(u);
+            this.AddAgent(fo);
         }
         public void AddAgent (Agent a){
             System.out.println("AddAgent(a)");

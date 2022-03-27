@@ -11,6 +11,13 @@ public class Main {
         Field f1 = new Field();
         Nukleotid_storage ns = new Nukleotid_storage();
         Aminoacid_storage as = new Aminoacid_storage();
+        Lab l = new Lab();
+        Immunity i = new Immunity();
+        GC_Forgetting gc_forgetting = new GC_Forgetting();
+        GC_Immunity gc_immunity = new GC_Immunity();
+        GC_Paralyze gc_paralyze = new GC_Paralyze();
+        GC_Uncontrollable gc_uncontrollable = new GC_Uncontrollable();
+        Game game = new Game();
 
         System.out.println("1: Move");
         System.out.println("2: Use Agent");
@@ -23,10 +30,9 @@ public class Main {
         System.out.println("9: Learn Genetic Code");
         System.out.println("10: Self Use Agent");
         System.out.println("11: Create Agent");
-        System.out.println("12: Glove");
-        System.out.println("13: Init");
-        System.out.println("14: Steal Nukleotid");
-        System.out.println("15: Quit");
+        System.out.println("12: Init");
+        System.out.println("13: Steal Nukleotid");
+        System.out.println("14: Quit");
 
         Scanner scan = new Scanner(System.in);
         String choice;
@@ -68,26 +74,29 @@ public class Main {
                     break;
                 case "9":
                     System.out.println("9: Learn Genetic Code");
-
+                    l.Learn_code(v);
                     break;
                 case "10":
                     System.out.println("10: Self Use Agent");
+                    i.Effect(v);
                     break;
                 case "11":
                     System.out.println("11: Create Agent");
+                    gc_forgetting.CreateAgent(v);
+                    gc_immunity.CreateAgent(v);
+                    gc_paralyze.CreateAgent(v);
+                    gc_uncontrollable.CreateAgent(v);
                     break;
                 case "12":
-                    System.out.println("12: Glove");
+                    System.out.println("13: Init");
+                    game.NewGame();
                     break;
                 case "13":
-                    System.out.println("13: Init");
-                    break;
-                case "14":
                     System.out.println("14: Steal Nukleotid");
                     v2.StealNukleotid();
                     break;
             }
-        } while (!choice.equals("15"));
+        } while (!choice.equals("14"));
 
     }
 }

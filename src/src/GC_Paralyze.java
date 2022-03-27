@@ -1,6 +1,9 @@
 package src;
 public class GC_Paralyze extends GeneticCode{
-    public void CreateAgent(){
-        System.out.println("CreateAgent()");
+    public void CreateAgent(Virologist v){
+        System.out.println("Create Paralyze: CreateAgent(Virologist v)");
+        Paralyze p = new Paralyze();
+        System.out.println("Add Paralyze: ");
+        v.AddAgent(p);
     }
 }
