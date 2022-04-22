@@ -17,6 +17,9 @@ public class Field {
         return neighbours;
     }
 
+    public ArrayList<Virologist> GetVirologistNearBy(){}
+
+
     /**
      * Ha a virológus egy másik mezőre szeretne lépni, akkor
      * hívódik meg ez a függvény, amely megengedi, hogy ő

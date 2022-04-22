@@ -13,6 +13,7 @@ public class Virologist implements Ticker {
     private ArrayList<GeneticCode> genetic_codes;
     private ArrayList<Agent> agent;
     private Field current_field;
+    private int gloveusage;
 
     Virologist(Field f){
         current_field = f;
@@ -210,6 +211,17 @@ public class Virologist implements Ticker {
     public void AddNukleotid (Nukleotid n){
         if(nukleotid.size() < capacity) nukleotid.add(n);
     }
+
+    public void UseAx(){
+
+    }
+
+    public void GameOver(){
+
+    }
+
+
+
 
     public int GetParalyzedTime() {return paralyzedTime;}
     public ArrayList<Nukleotid> GetNukleotid(){return nukleotid;}
