@@ -1,10 +1,11 @@
 package projlab;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Field {
     protected int fieldID;
-    private List<Field> neighbours;
-    private Virologist virologist;
+    private ArrayList<Field> neighbours;
+    private ArrayList<Virologist> virologist;
 
     /**
      * A GetNeighbours visszatér a szomszéd mezők listájával.
@@ -14,18 +15,6 @@ public class Field {
     public List<Field> GetNeighbours(){
         System.out.println("f.GetNeighbours()");
         return neighbours;
-    }
-
-    /**
-     * a GetVirologistNearby függvény feladata, hogy visszaadja
-     * az adott mezőn lévő másik virológust
-     * @return a mezőn lévő másik virológust, vagy ha nincs
-     * ezen a mezőn, akkor null-t térít vissza
-     */
-
-    public Virologist GetVirologistNearby(){
-        virologist = new Virologist();
-        return virologist;
     }
 
     /**
@@ -59,5 +48,7 @@ public class Field {
     public void Collect(Virologist v){
         System.out.println("Collect(v)");
     }
+
+    public ArrayList<Virologist> GetVirologist() {return virologist;}
 
 }

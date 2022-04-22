@@ -1,35 +1,36 @@
 package projlab;
-import java.util.List;
+import java.util.ArrayList;
+
 
 public class Virologist implements Ticker {
-    private int capacity;
-    private List<Nukleotid> nukleotid;
-    private List<Aminoacid> aminoacid;
-    private int immuneTime=0;
-    private int paralyzedTime=0;
-    private int uncontrollabeTime=0;
-    private List<Protection> protections;
-    private List<GeneticCode> genetic_codes;
-    private List<Agent> agent;
-    private Field current_field = new Field();
-    Virologist v2;
-    Bag b = new Bag();
-    Cloak c = new Cloak();
-    Glove g = new Glove();
-    Immunity i = new Immunity();
-    Paralyze p = new Paralyze();
-    Uncontrollable u = new Uncontrollable();
-    Forgetting fo = new Forgetting();
+    private int capacity = 15;
+    private ArrayList<Nukleotid> nukleotid;
+    private ArrayList<Aminoacid> aminoacid;
+    private int immuneTime = 0;
+    private int paralyzedTime = 0;
+    private int uncontrollabeTime = 0;
+    private ArrayList<Protection> protections;
+    private ArrayList<GeneticCode> genetic_codes;
+    private ArrayList<Agent> agent;
+    private Field current_field;
+
+    Virologist(Field f){
+        current_field = f;
+        nukleotid = new ArrayList<Nukleotid>();
+        aminoacid = new ArrayList<Aminoacid>();
+        protections = new ArrayList<Protection>();
+        genetic_codes = new ArrayList<GeneticCode>();
+        agent = new ArrayList<Agent>();
+    }
 
     /**
      * Az idő számlálásáért felelős
      */
 
     public void Tick() {
-        System.out.println("Tick()");
-            ReduceImmuneTime();
-            ReduceParalyzedTime();
-            ReduceUncontrollableTime();
+        ReduceImmuneTime();
+        ReduceParalyzedTime();
+        ReduceUncontrollableTime();
     }
 
     /**
@@ -37,14 +38,10 @@ public class Virologist implements Ticker {
       * @param f - a mező, amelyre a virológus lépni szeretne
      */
     public void Move (Field f){
-        System.out.println("Move(f)");
-        //List<src.Field> fields = current_field.GetNeighbours();
-        //for (src.Field field : fields) {
-           // if (f.fieldID == field.fieldID) {
-                current_field.Remove(this);
-                f.Accept(this);
-           // }
-        //}
+        if(current_field.GetNeighbours().contains(f)) {
+            current_field.Remove(this);
+            f.Accept(this);
+        }
     }
 
     /**
@@ -53,36 +50,21 @@ public class Virologist implements Ticker {
      * a Forgetting ágenst használta rajta.
      */
     public void Forgetting_codes () {
-
+        genetic_codes.clear();
     }
 
     /**
      * A virológus felvesz egy védőfelszerelést
      */
     public void GetItem () {
-
-        Shelter s = new Shelter();
-        System.out.println("v.GetItem()");
-
-        System.out.println("Collect bag: ");
-        s.Collect(this);
-        b.Effect(this);
-        System.out.println("Collect cloak: ");
-        s.Collect(this);
-        c.Effect(this);
-        System.out.println("Collect glove: ");
-        s.Collect(this);
-        g.Effect(this);
-
+        current_field.Collect(this);
     }
 
     /**
      * A virológus felveszi az adott mezőn lévő anyagot.
-     * @param storage - a raktár, ahonnan felszedi az anyagot
      */
-    public void CollectMaterial (Storage storage) {
-        System.out.println("v.CollectMaterial(Storage s)");
-        storage.Collect(this);
+    public void CollectMaterial () {
+        current_field.Collect(this);
     }
 
     /**
@@ -93,7 +75,7 @@ public class Virologist implements Ticker {
      * @param p - a védőfelszerelés, amelyet elveszít
      */
     public void LoseItem (Protection p){
-        System.out.println("v2.LoseItem(Protection p)");
+        if(protections.contains(p)) protections.remove(p);
     }
 
     /**
@@ -102,43 +84,45 @@ public class Virologist implements Ticker {
      * @param p - a védeőfelszerelés, amelyet felrak magára
      */
     public void ApplyItem (Protection p){
-        System.out.println("v.ApplyItem(Protection p)");
+        for(Protection c : protections){
+            if(p.getClass() == c.getClass()){
+                return;
+            }
+        }
+        protections.add(p);
     }
 
     /**
      * Ha egy másik virológus lebénult állapotban van, el lehet
      * tőle lopni mindenét, ez a függvény akkor hívódik meg.
      */
-    public void StealItem () {
-        v2 = new Virologist();
-        System.out.println("v2.StealItem()");
-        System.out.println("Lose Bag: ");
-        v2.LoseItem(b);
-        System.out.println("Apply Bag: ");
-        this.ApplyItem(b);
-        System.out.println("Lose Cloak: ");
-        v2.LoseItem(c);
-        System.out.println("Apply Cloak: ");
-        this.ApplyItem(c);
-        System.out.println("Lose Glove: ");
-        v2.LoseItem(g);
-        System.out.println("Apply Glove: ");
-        this.ApplyItem(g);
+    public void StealItem(Virologist v) {
+        if(v.GetParalyzedTime() > 0 && LookAround().contains(v)){
+            boolean vanmar;
+            for(Protection p : v.GetProtections()){
+                vanmar = false;
+                for(Protection g : protections){
+                    if(p.getClass() == g.getClass()) vanmar = true;
+                }
+                if(!vanmar){
+                    ApplyItem(p);
+                    v.LoseItem(p);
+                }
+            }
+        }
     }
 
     /**
-     * A virológus megnézi, hogy az adott mezőn van-e másik
+     * A virológus megnézi, hogy az adott és a szomszédos mezőnkön van-e másik
      * virológus
      */
-    public void LookAround () {
-        System.out.println("v.LookAround()");
+    public ArrayList<Virologist> LookAround () {
+        ArrayList<Virologist> list = new ArrayList<Virologist>();
 
-        Field f = new Field();
-        Virologist v2 = f.GetVirologistNearby();
-        p.Effect(v2);
-        u.Effect(v2);
-        fo.Effect(v2);
-
+        for(Field f : current_field.GetNeighbours()){
+                for(Virologist v : f.GetVirologist()) list.add(v);
+        }
+        return list;
     }
 
     /**
@@ -147,8 +131,7 @@ public class Virologist implements Ticker {
      * elmúlik. Ez a függvény felelős az idő visszaszámlálásért
      */
     public void ReduceImmuneTime () {
-        System.out.println("ReduceImmuneTime");
-        if (immuneTime == 0) i.ReverseEffect(this);
+        if (immuneTime > 0) immuneTime--;
     }
     /**
      * Ha a virológust egy másik virológus lebénította, akkor
@@ -156,8 +139,7 @@ public class Virologist implements Ticker {
      * a lebénult időből.
      */
     public void ReduceParalyzedTime () {
-        System.out.println("ReduceParalyzedTime");
-        if (paralyzedTime == 0) p.ReverseEffect(this);
+        if (paralyzedTime > 0) paralyzedTime--;
     }
     /**
      * Ha a virológust egy másik virológus kontrollálhatatlanná
@@ -165,8 +147,7 @@ public class Virologist implements Ticker {
      * hogy visszaszámoljon a kontrollálhatatlan időből.
      */
     public void ReduceUncontrollableTime () {
-        System.out.println("ReduceUncontrollableTime");
-        if (uncontrollabeTime == 0) u.ReverseEffect(this);
+        if (uncontrollabeTime > 0) uncontrollabeTime--;
     }
 
     /**
@@ -174,10 +155,13 @@ public class Virologist implements Ticker {
      * és a másik virológushoz kerül annyi, amennyi még
      * elfér nála.
      */
-    public void StealNukleotid () {
-        System.out.println("v2.StealNukleotid()");
-        Nukleotid n = new Nukleotid();
-        this.AddNukleotid(n);
+    public void StealNukleotid (Virologist v) {
+        if(v.GetParalyzedTime() > 0 && LookAround().contains(v)){
+            while (nukleotid.size() < capacity && v.GetNukleotid().size() > 0){
+                AddNukleotid(v.GetNukleotid().get(0));
+                v.GetNukleotid().remove(0);
+            }
+        }
     }
 
     /**
@@ -185,10 +169,13 @@ public class Virologist implements Ticker {
      * és a másik virológushoz kerül annyi, amennyi még
      * elfér nála.
      */
-    public void StealAminoacid () {
-        System.out.println("v2.StealAminoacid()");
-        Aminoacid am = new Aminoacid();
-        this.AddAminoacid(am);
+    public void StealAminoacid (Virologist v) {
+        if(v.GetParalyzedTime() > 0 && LookAround().contains(v)){
+            while(aminoacid.size() < capacity && v.GetAminoacid().size() > 0){
+                AddAminoacid(v.GetAminoacid().get(0));
+                v.GetAminoacid().remove(0);
+            }
+        }
     }
 
     /**
@@ -197,7 +184,6 @@ public class Virologist implements Ticker {
      * @param gc - a genetikus kód, amelyiket fel akarja használni
      */
     public void UseGeneticCode (GeneticCode gc){
-        System.out.println("UseGeneticCode(GeneticCode gc)");
         gc.CreateAgent(this);
     }
 
@@ -206,7 +192,7 @@ public class Virologist implements Ticker {
      * @param a - az ágens, amelyet hozzá szeretnénk adni a virológushoz
      */
     public void AddAgent (Agent a){
-        System.out.println("AddAgent(a)");
+        agent.add(a);
     }
 
     /**
@@ -214,7 +200,7 @@ public class Virologist implements Ticker {
      * @param am - az aminoacid, amit szerenténk hozzáadni a virológushoz
      */
     public void AddAminoacid (Aminoacid am){
-        System.out.println("v.AddAminoacid(am)");
+       if(aminoacid.size() < capacity) aminoacid.add(am);
     }
 
     /**
@@ -222,8 +208,13 @@ public class Virologist implements Ticker {
      * @param n - a nukleotid, amelyet szeretnénk hozzáadni a virológushoz
      */
     public void AddNukleotid (Nukleotid n){
-        System.out.println("v.AddNukleotid(n)");
+        if(nukleotid.size() < capacity) nukleotid.add(n);
     }
+
+    public int GetParalyzedTime() {return paralyzedTime;}
+    public ArrayList<Nukleotid> GetNukleotid(){return nukleotid;}
+    public ArrayList<Aminoacid> GetAminoacid(){return aminoacid;}
+    public ArrayList<Protection> GetProtections(){return protections;}
 }
 
 
