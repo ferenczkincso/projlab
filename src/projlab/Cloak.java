@@ -6,8 +6,10 @@ public class Cloak extends Protection{
      * nyújtson az ágensek ellen.
      * @param v - A virológus, akire kifejti a hatást
      */
-    public void Effect(Virologist v) {
+    public void Effect(Virologist v)
+    {
         System.out.println("Cloak: Effect(v)");
+
     }
 
     /**

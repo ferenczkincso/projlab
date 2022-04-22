@@ -212,6 +212,9 @@ public class Virologist implements Ticker {
         if(nukleotid.size() < capacity) nukleotid.add(n);
     }
 
+    public int GetCapacity() { return capacity; }
+    public void SetCapacity(int n) { capacity = n; }
+
     public void UseAx(){
 
     }
@@ -227,6 +230,8 @@ public class Virologist implements Ticker {
     public ArrayList<Nukleotid> GetNukleotid(){return nukleotid;}
     public ArrayList<Aminoacid> GetAminoacid(){return aminoacid;}
     public ArrayList<Protection> GetProtections(){return protections;}
+
+    public void HasGloveSet(boolean value) {}
 }
 
 
