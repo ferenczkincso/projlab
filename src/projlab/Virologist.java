@@ -30,7 +30,7 @@ public class Virologist implements Ticker {
 
     private boolean isBear;
 
-    Virologist(Field f){
+    public Virologist(Field f){
         current_field = f;
         nukleotid = new ArrayList<Nukleotid>();
         aminoacid = new ArrayList<Aminoacid>();
