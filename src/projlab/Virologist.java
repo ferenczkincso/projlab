@@ -37,6 +37,8 @@ public class Virologist implements Ticker {
         protections = new ArrayList<Protection>();
         genetic_codes = new ArrayList<GeneticCode>();
         agent = new ArrayList<Agent>();
+        hasGlove = false;
+        dodged = false;
     }
 
     public void setParalyzedTime(int paralyzedTime) {
@@ -174,11 +176,7 @@ public class Virologist implements Ticker {
      * virológus
      */
     public ArrayList<Virologist> LookAround () {
-        ArrayList<Virologist> list = new ArrayList<Virologist>();
-        for(Field f : current_field.GetNeighbours()){
-                for(Virologist v : f.GetVirologist()) list.add(v);
-        }
-        return list;
+        return current_field.GetVirologist();
     }
 
     /**
@@ -274,9 +272,6 @@ public class Virologist implements Ticker {
 
     }
 
-    public void GameOver(){
-
-    }
 
     public void setCurrent_field(Field f){
         current_field = f;
