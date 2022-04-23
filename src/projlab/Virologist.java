@@ -16,6 +16,7 @@ public class Virologist implements Ticker {
     private int gloveusage;
     private boolean hasGlove;
     private boolean isparalyzed = false;
+    private boolean dodged;
 
     Virologist(Field f){
         current_field = f;
@@ -120,12 +121,15 @@ public class Virologist implements Ticker {
      * @param p - a védeőfelszerelés, amelyet felrak magára
      */
     public void ApplyItem (Protection p){
-        for(Protection c : protections){
-            if(p.GetType().equals(c.GetType())){
-                return;
+        if (protections.size() < 3)
+        {
+            for (Protection c : protections) {
+                if (p.GetType().equals(c.GetType())) {
+                    return;
+                }
             }
+            protections.add(p);
         }
-        protections.add(p);
     }
 
     /**
@@ -294,6 +298,11 @@ public class Virologist implements Ticker {
     public void setGenetic_codes(ArrayList<GeneticCode> g){
         genetic_codes = g;
     }
+
+    public boolean HasDodged() {return dodged;}
+    public void  SetDodged(boolean value) {dodged = value;}
+
+
 }
 
 

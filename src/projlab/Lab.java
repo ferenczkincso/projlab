@@ -3,7 +3,7 @@ package projlab;
 import java.util.ArrayList;
 
 public class Lab extends Field{
-    private GeneticCode genetec_code;
+    private GeneticCode genetic_code;
 
     /**
      * Felelőssége, hogy az adott virológus megtanulja
@@ -15,12 +15,12 @@ public class Lab extends Field{
         g = v.GetGenetic_codes();
         boolean alreadyKnowsCode = false;
         for(GeneticCode gc : g){
-            if(gc == genetec_code){
+            if(gc == genetic_code){
                 alreadyKnowsCode = true;
             }
         }
         if(!alreadyKnowsCode){
-            g.add(genetec_code);
+            g.add(genetic_code);
             v.setGenetic_codes(g);
         }
     }
