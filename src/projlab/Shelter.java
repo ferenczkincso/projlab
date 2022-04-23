@@ -6,7 +6,8 @@ import java.util.Random;
 public class Shelter extends Field{
     Protection protection;
 
-    public Shelter(){
+    public Shelter(int i){
+        super(i);
         Random rand = new Random();
         int id = rand.nextInt(4);
         switch (id){
@@ -36,4 +37,6 @@ public class Shelter extends Field{
             v.SetProtections(p);
         }
     }
+
+    public void SetProtection(Protection p){protection = p;}
 }

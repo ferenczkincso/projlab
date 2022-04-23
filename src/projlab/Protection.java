@@ -1,5 +1,5 @@
 package projlab;
-abstract class Protection {
+public abstract class Protection {
     /**
      * Az adott védőfelszerelés kifejti a hatását az adott
      * virológuson

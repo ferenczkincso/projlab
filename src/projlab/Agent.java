@@ -1,5 +1,5 @@
 package projlab;
-abstract class Agent {
+public abstract class Agent {
     /**
      * Az Effect függvény feladata, hogy az adott virológuson,
      * az adott ágens kifejtse hatását.

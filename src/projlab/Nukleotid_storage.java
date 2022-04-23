@@ -1,10 +1,12 @@
 package projlab;
-import java.util.List;
+import java.util.ArrayList;
 
 
 public class Nukleotid_storage extends Storage{
-    private List<Nukleotid> nukleotid;
-    public Nukleotid_storage(){
+    private ArrayList<Nukleotid> nukleotid;
+    public Nukleotid_storage(int id){
+        super(id);
+        nukleotid = new ArrayList<Nukleotid>();
         for (int i = 0; i<5; i++){
             Nukleotid n = new Nukleotid();
             nukleotid.add(n);

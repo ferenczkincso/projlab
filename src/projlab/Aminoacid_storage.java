@@ -1,10 +1,13 @@
 package projlab;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Aminoacid_storage extends Storage{
-    private List<Aminoacid> aminoacid;
+    private ArrayList<Aminoacid> aminoacid;
 
-    public Aminoacid_storage(){
+    public Aminoacid_storage(int id){
+        super(id);
+        aminoacid = new ArrayList<Aminoacid>();
         for (int i = 0; i<5; i++){
             Aminoacid a = new Aminoacid();
             aminoacid.add(a);

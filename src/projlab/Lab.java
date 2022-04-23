@@ -6,7 +6,8 @@ import java.util.Random;
 public class Lab extends Field{
     private GeneticCode genetic_code;
 
-    public Lab(){
+    public Lab(int i){
+        super(i);
         Random rand = new Random();
         int id = rand.nextInt(4);
         int temp = rand.nextInt(100)+1;
@@ -40,5 +41,7 @@ public class Lab extends Field{
             v.setGenetic_codes(g);
         }
     }
+
+    public void SetGenetic_code(GeneticCode g){genetic_code = g;}
 
 }

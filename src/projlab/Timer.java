@@ -5,8 +5,9 @@ import java.util.ArrayList;
 public class Timer extends Thread{
     private ArrayList<Ticker> tickables;
 
-    Timer(ArrayList<Ticker> t){tickables = t;}
+    public Timer(ArrayList<Ticker> t){tickables = t;}
 
+    @Override
     public void run(){
         while(true){
             for(Ticker t : tickables) t.Tick();

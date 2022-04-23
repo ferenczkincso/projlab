@@ -3,9 +3,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Field implements Ticker{
-    protected int fieldID;
+    protected int fieldId;
     private ArrayList<Field> neighbours;
     private ArrayList<Virologist> virologist;
+
+    public Field(int id){
+        fieldId = id;
+        neighbours = new ArrayList<Field>();
+        virologist = new ArrayList<Virologist>();
+    }
 
     /**
      * Visszatér a mezőn lévő virológusokkal.
@@ -85,4 +91,6 @@ public class Field implements Ticker{
     public void Tick() {
         //üres
     }
+
+    public int GetFieldId(){return fieldId;}
 }

@@ -10,7 +10,7 @@ public class Virologist implements Ticker {
     private ArrayList<Aminoacid> aminoacid;
     private int immuneTime = 0;
     private int paralyzedTime = 0;
-    private int uncontrollabeTime = 0;
+    private int uncontrollableTime = 0;
     private ArrayList<Protection> protections;
     private ArrayList<GeneticCode> genetic_codes;
     private ArrayList<Agent> agent;
@@ -30,8 +30,7 @@ public class Virologist implements Ticker {
 
     private boolean isBear;
 
-    public Virologist(Field f){
-        current_field = f;
+    public Virologist(){
         nukleotid = new ArrayList<Nukleotid>();
         aminoacid = new ArrayList<Aminoacid>();
         protections = new ArrayList<Protection>();
@@ -50,11 +49,11 @@ public class Virologist implements Ticker {
     }
 
     public void setUncontrollabeTime(int uncontrollabeTime) {
-        this.uncontrollabeTime = uncontrollabeTime;
+        this.uncontrollableTime = uncontrollabeTime;
     }
 
     public int getUncontrollabeTime() {
-        return uncontrollabeTime;
+        return uncontrollableTime;
     }
 
     /**
@@ -66,7 +65,7 @@ public class Virologist implements Ticker {
         ReduceUncontrollableTime();
         if (!isBear) ReduceImmuneTime();
 
-        if (isBear || (uncontrollabeTime > 0 && paralyzedTime == 0))
+        if (isBear || (uncontrollableTime > 0 && paralyzedTime == 0))
         {
             if (randomGenerator.nextInt()%15==0) MoveToRandomNeighbour();
         }
@@ -201,7 +200,7 @@ public class Virologist implements Ticker {
      * hogy visszaszámoljon a kontrollálhatatlan időből.
      */
     public void ReduceUncontrollableTime () {
-        if (uncontrollabeTime > 0) uncontrollabeTime--;
+        if (uncontrollableTime > 0) uncontrollableTime--;
     }
 
     /**
@@ -282,6 +281,7 @@ public class Virologist implements Ticker {
     }
 
     public int GetParalyzedTime() {return paralyzedTime;}
+    public int GetUncontrollableTime(){return uncontrollableTime;}
     public ArrayList<Nukleotid> GetNukleotid(){return nukleotid;}
     public void RemoveNukleotid(int nr){
         for (int i = nukleotid.size()-1; i>=nukleotid.size()-nr; i--){
@@ -313,6 +313,10 @@ public class Virologist implements Ticker {
 
     public boolean HasDodged() {return dodged;}
     public void  SetDodged(boolean value) {dodged = value;}
+    public ArrayList<Agent> GetAgent() {
+        return agent;
+    }
+
 
 
 }
