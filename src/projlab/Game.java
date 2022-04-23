@@ -46,7 +46,9 @@ public class Game {
      * pályára rakja
      */
     public void AddVirologist(){
-        System.out.println("AddVirologist()");
+        //System.out.println("AddVirologist()");
+
+
     }
 
     /**
