@@ -22,9 +22,9 @@ public class Cloak extends Protection{
     }
 
     /**
-     * A ReverseEffect feladata, hogy a Bag hatása lekerüljön
-     * a vriológusról, amikor az már nincs a birtokában, és
-     * ezáltal megfelezi a virológus anyaggyűjtő képességét.
+     * A ReverseEffect feladata, hogy a Cloak hatása lekerüljön
+     * a virológusról, amikor az már nincs a birtokában, és
+     * ezáltal már nem immunis 82.3%-ban.
      * @param v - A virológus, akire kifejti a hatást
      */
     public void ReverseEffect(Virologist v) {
