@@ -1,4 +1,7 @@
 package projlab;
+
+import java.util.Random;
+
 public class Cloak extends Protection{
     /**
      * Az Effect feladata, hogy az adott virológusra
@@ -8,7 +11,13 @@ public class Cloak extends Protection{
      */
     public void Effect(Virologist v)
     {
-        System.out.println("Cloak: Effect(v)");
+        Random randomGenerator = new Random(System.currentTimeMillis());
+        int randomInt = randomGenerator.nextInt(0,1000);
+        if (randomInt <= 823) //823 ezrelék = 82.3 százalék. Ha ezt az értéket nem lépi túl, akkor az adont ágens felkenési próbájánál immunitás lesz.
+        {
+            v.SetImmuneTime(v.GetImmuneTime()+5); //lehet, hogy ide csak ennyi kell
+        }
+        return;
 
     }
 
@@ -19,6 +28,6 @@ public class Cloak extends Protection{
      * @param v - A virológus, akire kifejti a hatást
      */
     public void ReverseEffect(Virologist v) {
-        System.out.println("ReverseEffect(v)");
+        return; //esetleg immuneTime-5 sec 82.3% eséllyel
     }
 }

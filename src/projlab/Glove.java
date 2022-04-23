@@ -8,7 +8,7 @@ public class Glove extends Protection{
      */
     public void Effect(Virologist v)
     {
-        //v.HasGloveSet(true) ;
+        v.SetGlove(true) ;
     }
 
     /**
@@ -19,6 +19,6 @@ public class Glove extends Protection{
 
     public void ReverseEffect(Virologist v)
     {
-        //v.HasGloveSet(true);
+        v.SetGlove(false);
     }
 }
