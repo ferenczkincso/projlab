@@ -11,7 +11,6 @@ public class Paralyze extends Agent{
         v.setisParalyzed(true);
         v.setParalyzedTime(1000);
         v.ReduceParalyzedTime();
-
     }
 
     /**

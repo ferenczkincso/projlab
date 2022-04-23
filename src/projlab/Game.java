@@ -47,8 +47,6 @@ public class Game {
      */
     public void AddVirologist(){
         //System.out.println("AddVirologist()");
-
-
     }
 
     /**
