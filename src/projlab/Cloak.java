@@ -12,7 +12,7 @@ public class Cloak extends Protection{
     public void Effect(Virologist v)
     {
         Random randomGenerator = new Random(System.currentTimeMillis());
-        int randomInt = randomGenerator.nextInt(0,1000);
+        int randomInt = randomGenerator.nextInt() % 1000 + 1;
         if (randomInt <= 823) //823 ezrelék = 82.3 százalék. Ha ezt az értéket nem lépi túl, akkor az adont ágens felkenési próbájánál immunitás lesz.
         {
             v.SetImmuneTime(v.GetImmuneTime()+5); //lehet, hogy ide csak ennyi kell
@@ -29,5 +29,10 @@ public class Cloak extends Protection{
      */
     public void ReverseEffect(Virologist v) {
         return; //esetleg immuneTime-5 sec 82.3% eséllyel
+    }
+
+    @Override
+    public String GetType() {
+        return "Cloak";
     }
 }

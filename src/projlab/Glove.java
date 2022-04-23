@@ -21,4 +21,9 @@ public class Glove extends Protection{
     {
         v.SetGlove(false);
     }
+
+    @Override
+    public String GetType() {
+        return "Glove";
+    }
 }

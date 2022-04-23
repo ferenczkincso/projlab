@@ -1,11 +1,12 @@
 package projlab;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
 
-    private List<Virologist> virologists;
-    private List<Field> fields;
+    private ArrayList<Virologist> virologists;
+    private ArrayList<Field> fields;
 
     /**
      * Az EndGame feladata a játék befejezése
@@ -38,4 +39,7 @@ public class Game {
         AddVirologist();
         CreateCity();
     }
+
+    public ArrayList<Virologist> GetVirologists(){return virologists;}
+    public ArrayList <Field> GetFields(){return fields;}
 }

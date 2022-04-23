@@ -25,6 +25,7 @@ public class Virologist implements Ticker {
         agent = new ArrayList<Agent>();
     }
 
+
     /**
      * Az idő számlálásáért felelős
      */
@@ -92,7 +93,7 @@ public class Virologist implements Ticker {
      */
     public void ApplyItem (Protection p){
         for(Protection c : protections){
-            if(p.getClass() == c.getClass()){
+            if(p.GetType().equals(c.GetType())){
                 return;
             }
         }
@@ -109,7 +110,7 @@ public class Virologist implements Ticker {
             for(Protection p : v.GetProtections()){
                 vanmar = false;
                 for(Protection g : protections){
-                    if(p.getClass() == g.getClass()) vanmar = true;
+                    if(p.GetType().equals(g.GetType())) vanmar = true;
                 }
                 if(!vanmar){
                     ApplyItem(p);
@@ -125,7 +126,6 @@ public class Virologist implements Ticker {
      */
     public ArrayList<Virologist> LookAround () {
         ArrayList<Virologist> list = new ArrayList<Virologist>();
-
         for(Field f : current_field.GetNeighbours()){
                 for(Virologist v : f.GetVirologist()) list.add(v);
         }

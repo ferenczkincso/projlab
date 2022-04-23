@@ -16,4 +16,9 @@ public class Bag extends Protection{
     public void ReverseEffect(Virologist v) {
         v.SetCapacity(v.GetCapacity()/2);
     }
+
+    @Override
+    public String GetType() {
+        return "Bag";
+    }
 }

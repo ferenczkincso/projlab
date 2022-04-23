@@ -17,4 +17,6 @@ abstract class Protection {
     public void ReverseEffect(Virologist v) {
         System.out.println("ReverseEffect(v)");
     }
+
+    public abstract String GetType();
 }

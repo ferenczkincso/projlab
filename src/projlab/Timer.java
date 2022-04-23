@@ -1,17 +1,18 @@
 package projlab;
-public class Timer implements Ticker{
-    /**
-     * A Signal jelet küld, hogy a Ticker számlálsa elinduljon,
-     * vagy leálljon
-     */
-    public void Signal(){
-        System.out.println("Signal()");
-    }
 
-    /**
-     * A Tick az egységnyi időt reprezentálja
-     */
-    public void Tick(){
+import java.util.ArrayList;
 
+public class Timer extends Thread{
+    private ArrayList<Ticker> tickables;
+
+    Timer(ArrayList<Ticker> t){tickables = t;}
+
+    public void run(){
+        while(true){
+            for(Ticker t : tickables) t.Tick();
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {}
+        }
     }
 }

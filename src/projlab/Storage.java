@@ -14,5 +14,8 @@ public class Storage extends Field{
     public void Accept(Virologist v) {
 
     }
-
+    @Override
+    public void Tick(){
+        //üres
+    }
 }
