@@ -8,9 +8,7 @@ public class Paralyze extends Agent{
      */
     public void Effect(Virologist v){
         //System.out.println("Paralyze: Effect(v2)");
-        v.setisParalyzed(true);
-        v.setParalyzedTime(1000);
-        v.ReduceParalyzedTime();
+        v.setParalyzedTime(10);
     }
 
     /**
@@ -21,7 +19,7 @@ public class Paralyze extends Agent{
      */
     public void ReverseEffect(Virologist v){
         //System.out.println("ReverseParalyze: ReverseEffect(v)");
-        if(v.getParalyzedTime()==0)
-            v.setisParalyzed(false);
+        //if(v.getParalyzedTime()==0)
+            //v.setisParalyzed(false);
     }
 }
