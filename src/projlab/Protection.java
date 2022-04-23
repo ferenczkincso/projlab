@@ -5,18 +5,14 @@ abstract class Protection {
      * virológuson
      * @param v - A virológus, akire kifejti a hatást
      */
-    public void Effect(Virologist v) {
-        System.out.println("p.Effect(v)");
-    }
+    public abstract void Effect(Virologist v);
 
     /**
      * Az adott védeőfelszerelés hatása lekerül a virológusról,
      * mikor az már nincsen a birtokában
      * @param v - A virológus, akire kifejti a hatást
      */
-    public void ReverseEffect(Virologist v) {
-        System.out.println("ReverseEffect(v)");
-    }
+    public abstract void ReverseEffect(Virologist v);
 
     public abstract String GetType();
 }
