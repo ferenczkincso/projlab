@@ -1,9 +1,14 @@
 package projlab;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Lab extends Field{
     private GeneticCode genetec_code;
+
+    public Lab(){
+        Random rand = new Random();
+    }
 
     /**
      * Felelőssége, hogy az adott virológus megtanulja
