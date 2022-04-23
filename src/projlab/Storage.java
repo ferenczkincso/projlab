@@ -1,10 +1,18 @@
 package projlab;
 public class Storage extends Field{
-    /**
-     * A raktárban tartózkodó virológus begyűjti az anyagot
-     * @param v - A virológus, akire kifejti a hatást
-     */
+
+    //itt nincsenek megvalósítva
+
     public void Collect(Virologist v) {
-        System.out.println("Collect(v)");
+
     }
+
+    public void DestroyMaterial() {
+
+    }
+
+    public void Accept(Virologist v) {
+
+    }
+
 }

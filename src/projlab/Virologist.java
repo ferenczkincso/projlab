@@ -223,6 +223,10 @@ public class Virologist implements Ticker {
 
     }
 
+    public void setCurrent_field(Field f){
+        current_field = f;
+    }
+
 
 
 
@@ -230,8 +234,22 @@ public class Virologist implements Ticker {
     public ArrayList<Nukleotid> GetNukleotid(){return nukleotid;}
     public ArrayList<Aminoacid> GetAminoacid(){return aminoacid;}
     public ArrayList<Protection> GetProtections(){return protections;}
+    public void SetProtections(ArrayList<Protection> p){}
 
     public void HasGloveSet(boolean value) {}
+
+    public ArrayList<GeneticCode> GetGenetic_codes(){
+        return genetic_codes;
+    }
+
+    public void setGenetic_codes(ArrayList<GeneticCode> g){
+        genetic_codes = g;
+    }
+
+
+
+
+
 }
 
 

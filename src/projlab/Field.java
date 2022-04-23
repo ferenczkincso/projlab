@@ -8,16 +8,41 @@ public class Field {
     private ArrayList<Virologist> virologist;
 
     /**
+     * Visszatér a mezőn lévő virológusokkal.
+     * @return a mezőn lévő virológusokat adja vissza
+     */
+
+    public ArrayList<Virologist> GetVirologist() {
+        return virologist;
+    }
+
+    /**
      * A GetNeighbours visszatér a szomszéd mezők listájával.
      * @return a szomszéd mezők gyűjteményét adja vissza
      */
 
-    public List<Field> GetNeighbours(){
-        System.out.println("f.GetNeighbours()");
+    public ArrayList<Field> GetNeighbours(){
         return neighbours;
     }
 
-    public ArrayList<Virologist> GetVirologistNearBy(){}
+    /**
+     * Visszaadja a szomszédos mezőkön levő virológusokat
+     * @return a szomszéd mezőkön levő virológusok listájával tér vissza
+     */
+
+    public ArrayList<Virologist> GetVirologistNearBy() {
+        ArrayList<Field> n = new ArrayList<Field>();
+        n = GetNeighbours();
+        ArrayList<Virologist> v = new ArrayList<Virologist>();
+        for(Field f : n){
+            ArrayList<Virologist> x = new ArrayList<Virologist>();
+            x = f.GetVirologist();
+            for(Virologist vi : x){
+                v.add(vi);
+            }
+        }
+        return v;
+    }
 
 
     /**
@@ -28,7 +53,10 @@ public class Field {
      * @param v - A virológus, akire kifejti a hatást
      */
     public void Accept(Virologist v){
-        System.out.println("Accept(v)");
+        if(virologist.size() < 2){
+            virologist.add(v);
+            v.setCurrent_field(this);
+        }
     }
 
     /**
@@ -39,19 +67,18 @@ public class Field {
      */
 
     public void Remove(Virologist v){
-        System.out.println("Remove(v)");
+        virologist.remove(v);
+        v.setCurrent_field(null);
     }
 
     /**
      * A Collect függvény segítségével tud a virológus a
      * mezőről anyagot begyűjteni.
      * @param v - A virológus, akire kifejti a hatást
+     * Itt nincs implementálva
      */
 
     public void Collect(Virologist v){
-        System.out.println("Collect(v)");
     }
-
-    public ArrayList<Virologist> GetVirologist() {return virologist;}
 
 }
