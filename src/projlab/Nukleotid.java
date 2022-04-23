@@ -1,5 +1,3 @@
 package projlab;
 
-public class Nukleotid {
-
-}
+public class Nukleotid { }

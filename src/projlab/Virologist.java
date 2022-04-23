@@ -233,12 +233,19 @@ public class Virologist implements Ticker {
         current_field = f;
     }
 
-
-
-
     public int GetParalyzedTime() {return paralyzedTime;}
     public ArrayList<Nukleotid> GetNukleotid(){return nukleotid;}
+    public void RemoveNukleotid(int nr){
+        for (int i = nukleotid.size()-1; i>=nukleotid.size()-nr; i--){
+            nukleotid.remove(i);
+        }
+    }
     public ArrayList<Aminoacid> GetAminoacid(){return aminoacid;}
+    public void RemoveAminoacid(int nr){
+        for (int i = aminoacid.size()-1; i>=aminoacid.size()-nr; i--){
+            aminoacid.remove(i);
+        }
+    }
     public ArrayList<Protection> GetProtections(){return protections;}
     public void SetProtections(ArrayList<Protection> p){}
 

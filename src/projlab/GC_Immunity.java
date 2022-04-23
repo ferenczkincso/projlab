@@ -1,5 +1,8 @@
 package projlab;
 public class GC_Immunity extends GeneticCode{
+    public GC_Immunity(){
+        super(4,4);
+    }
     /**
      * Feladata a Immunity ágens létrehozása, illetve
      * a megfelelő mennyiségű anyag levonása az adott
@@ -7,10 +10,9 @@ public class GC_Immunity extends GeneticCode{
      * @param v - A virológus, akire kifejti a hatást
      */
 
-    public void CreateAgent(Virologist v){
-        System.out.println("Create Immunity: CreateAgent(Virologist v)");
-        Immunity i = new Immunity();
+    public void AgentType(Virologist v) {
         System.out.println("Add Immunity: ");
+        Immunity i = new Immunity();
         v.AddAgent(i);
     }
 }

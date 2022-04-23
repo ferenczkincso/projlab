@@ -1,4 +1,3 @@
 package projlab;
 
-public class Aminoacid {
-}
+public class Aminoacid { }
