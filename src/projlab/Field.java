@@ -2,7 +2,7 @@ package projlab;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Field {
+public class Field implements Ticker{
     protected int fieldID;
     private ArrayList<Field> neighbours;
     private ArrayList<Virologist> virologist;
@@ -81,4 +81,8 @@ public class Field {
     public void Collect(Virologist v){
     }
 
+    @Override
+    public void Tick() {
+        //üres
+    }
 }

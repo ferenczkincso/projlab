@@ -25,4 +25,7 @@ public class Aminoacid_storage extends Storage{
     public void Accept(Virologist v){
         //itt azt hogy tudom ellenőrizni, hogy meg van e fertőződve medvevírussal?
     }
+
+    @Override
+    public void Tick(){};
 }

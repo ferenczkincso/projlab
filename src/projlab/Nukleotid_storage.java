@@ -32,5 +32,8 @@ public class Nukleotid_storage extends Storage{
     public void Accept(Virologist v){
         // itt hogy ellenőrzöm hogy meg van e fertőzve?
     }
+    ///termelés miatt kell
+    @Override
+    public void Tick(){}
 
 }
