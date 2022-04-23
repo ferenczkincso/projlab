@@ -10,10 +10,10 @@ public class Shelter extends Field{
         Random rand = new Random();
         int id = rand.nextInt(4);
         switch (id){
-            case 0: protection = new Bag();
-            case 1: protection = new Cloak();
-            case 2: protection = new Glove();
-            case 3: protection  = new Ax();
+            case 0: protection = new Bag(); break;
+            case 1: protection = new Cloak(); break;
+            case 2: protection = new Glove(); break;
+            case 3: protection  = new Ax(); break;
         }
     }
     /**
@@ -26,8 +26,9 @@ public class Shelter extends Field{
         p = v.GetProtections();
         boolean alreadyHas = false;
         for(Protection pr : p){
-            if(pr == protection){
+            if(pr.getClass() == protection.getClass()){
                 alreadyHas= true;
+                break;
             }
         }
         if(!alreadyHas){
