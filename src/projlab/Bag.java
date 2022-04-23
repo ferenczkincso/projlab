@@ -13,7 +13,9 @@ public class Bag extends Protection{
      * lekerüljön a virológusról.
      * @param v - A virológus, akire kifejti a hatást
      */
-    public void ReverseEffect(Virologist v) {
+    public void ReverseEffect(Virologist v)
+    {
+
         v.SetCapacity(v.GetCapacity()/2);
     }
 

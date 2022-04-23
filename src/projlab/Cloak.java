@@ -13,9 +13,9 @@ public class Cloak extends Protection{
     {
         Random randomGenerator = new Random(System.currentTimeMillis());
         int randomInt = randomGenerator.nextInt() % 1000 + 1;
-        if (randomInt <= 823) //823 ezrelék = 82.3 százalék. Ha ezt az értéket nem lépi túl, akkor az adont ágens felkenési próbájánál immunitás lesz.
+        if (randomInt <= 823 && v.GetImmuneTime()==0) //823 ezrelék = 82.3 százalék. Ha ezt az értéket nem lépi túl, akkor az adont ágens felkenési próbájánál immunitás lesz.
         {
-            v.SetImmuneTime(v.GetImmuneTime()+5); //lehet, hogy ide csak ennyi kell
+            v.SetImmuneTime(5); //lehet, hogy ide csak ennyi kell
         }
         return;
 
