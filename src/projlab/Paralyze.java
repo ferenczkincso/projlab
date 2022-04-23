@@ -21,7 +21,8 @@ public class Paralyze extends Agent{
      * @param v - A virológus, akire kifejti a hatást
      */
     public void ReverseEffect(Virologist v){
-        System.out.println("ReverseParalyze: ReverseEffect(v)");
-        v.setisParalyzed(false);
+        //System.out.println("ReverseParalyze: ReverseEffect(v)");
+        if(v.getParalyzedTime()==0)
+            v.setisParalyzed(false);
     }
 }
