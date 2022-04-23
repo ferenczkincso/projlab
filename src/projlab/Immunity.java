@@ -6,8 +6,16 @@ public class Immunity extends Agent{
      * immunis legyen minden ágensre.
      * @param v - A virológus, akire kifejti a hatást
      */
+
     public void Effect(Virologist v){
-        System.out.println("Immunity: Effect(v)");
+        //System.out.println("Immunity: Effect(v)");
+        v.SetImmuneTime(30);
+        while(v.GetImmuneTime()!=0)
+        {
+            //...
+            v.ReduceImmuneTime();
+        }
+
     }
 
     /**
@@ -17,6 +25,7 @@ public class Immunity extends Agent{
      * @param v - A virológus, akire kifejti a hatást
      */
     public void ReverseEffect(Virologist v){
-        System.out.println("ReverseImmunity: ReverseEffect(v)");
+        //System.out.println("ReverseImmunity: ReverseEffect(v)");
+
     }
 }

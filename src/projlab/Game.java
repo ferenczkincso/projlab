@@ -8,10 +8,28 @@ public class Game {
     private ArrayList<Virologist> virologists;
     private ArrayList<Field> fields;
 
+
+    public List<Field> getFields() {
+        return fields;
+    }
+
+    public void setFields(ArrayList<Field> fields) {
+        this.fields = fields;
+    }
+
+    public List<Virologist> getVirologists() {
+        return virologists;
+    }
+
+    public void setVirologists(ArrayList<Virologist> virologists) {
+        this.virologists = virologists;
+    }
+
     /**
      * Az EndGame feladata a játék befejezése
      */
     public void EndGame() {
+
         System.out.println("EndGame()");
     }
 
@@ -39,7 +57,4 @@ public class Game {
         AddVirologist();
         CreateCity();
     }
-
-    public ArrayList<Virologist> GetVirologists(){return virologists;}
-    public ArrayList <Field> GetFields(){return fields;}
 }

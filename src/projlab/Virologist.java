@@ -26,6 +26,23 @@ public class Virologist implements Ticker {
     }
 
 
+
+    public void setParalyzedTime(int paralyzedTime) {
+        this.paralyzedTime = paralyzedTime;
+    }
+
+    public int getParalyzedTime() {
+        return paralyzedTime;
+    }
+
+    public void setUncontrollabeTime(int uncontrollabeTime) {
+        this.uncontrollabeTime = uncontrollabeTime;
+    }
+
+    public int getUncontrollabeTime() {
+        return uncontrollabeTime;
+    }
+
     /**
      * Az idő számlálásáért felelős
      */
@@ -233,9 +250,6 @@ public class Virologist implements Ticker {
         current_field = f;
     }
 
-
-
-
     public int GetParalyzedTime() {return paralyzedTime;}
     public ArrayList<Nukleotid> GetNukleotid(){return nukleotid;}
     public ArrayList<Aminoacid> GetAminoacid(){return aminoacid;}
@@ -255,11 +269,6 @@ public class Virologist implements Ticker {
     public void setGenetic_codes(ArrayList<GeneticCode> g){
         genetic_codes = g;
     }
-
-
-
-
-
 }
 
 

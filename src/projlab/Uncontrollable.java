@@ -7,7 +7,15 @@ public class Uncontrollable extends Agent{
      * @param v - A virológus, akire kifejti a hatást
      */
     public void Effect(Virologist v){
-        System.out.println("Uncontrollable: Effect(v2)");
+        //System.out.println("Uncontrollable: Effect(v2)");
+
+        v.setUncontrollabeTime(20);
+        while (v.getUncontrollabeTime()!=0)
+        {
+            //...
+            v.ReduceUncontrollableTime();
+        }
+
     }
 
     /**
