@@ -7,7 +7,7 @@ public class GC_Uncontrollable extends GeneticCode{
      * virológustól
      //* @param v - A virológus, akire kifejti a hatást
      */
-    public final void CreateAgent(Virologist v){
+    public void CreateAgent(Virologist v){
         if (v.GetNukleotid().size()>= 2 && v.GetAminoacid().size()>=2){
             v.RemoveNukleotid(2);
             v.RemoveAminoacid(2);

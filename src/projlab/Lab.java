@@ -8,6 +8,16 @@ public class Lab extends Field{
 
     public Lab(){
         Random rand = new Random();
+        int id = rand.nextInt(4);
+        int temp = rand.nextInt(100)+1;
+        if (temp%5==0) id = 4;
+        switch (id){
+            case 0: genetic_code = new GC_Uncontrollable();
+            case 1: genetic_code = new GC_Paralyze();
+            case 2: genetic_code = new GC_Immunity();
+            case 3: genetic_code = new GC_Forgetting();
+            case 4: genetic_code = new GC_Bear();
+        }
     }
 
     /**
