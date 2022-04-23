@@ -11,15 +11,15 @@ public class Nukleotid_storage extends Storage{
      * @param v - A virológus, akire kifejti a hatást
      */
     public void Collect(Virologist v){
-        if(nukleotid != null){
+        if(!nukleotid.isEmpty()){
             for(Nukleotid n : nukleotid){
                 v.AddNukleotid(n);
             }
         }
     }
 
-    public void DestroyMaterial(Virologist v) {
-        nukleotid = null;
+    public void DestroyMaterial() {
+        nukleotid.clear();
     }
 
     /**

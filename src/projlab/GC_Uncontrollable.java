@@ -1,15 +1,17 @@
 package projlab;
 public class GC_Uncontrollable extends GeneticCode{
+    public GC_Uncontrollable(){
+        super(3,3);
+    }
     /**
      * Feladata a Uncontrollable ágens létrehozása, illetve
      * a megfelelő mennyiségű anyag levonása az adott
      * virológustól
-     * @param v - A virológus, akire kifejti a hatást
+     //* @param v - A virológus, akire kifejti a hatást
      */
-    public void CreateAgent(Virologist v){
-        System.out.println("Create Uncontrollable: CreateAgent(Virologist v)");
+    public void AgentType(Virologist v) {
+        System.out.println("Add Uncontrollable: ");
         Uncontrollable u = new Uncontrollable();
-        System.out.println("Add Uncotrollable: ");
         v.AddAgent(u);
     }
 }
