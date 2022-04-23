@@ -7,7 +7,7 @@ public class GC_Forgetting extends GeneticCode{
      * virológustól
      * @param v - A virológus, akire kifejti a hatást
      */
-    public final void CreateAgent(Virologist v) {
+    public void CreateAgent(Virologist v) {
         if (v.GetNukleotid().size() >= 5 && v.GetAminoacid().size() >= 5) {
             v.RemoveNukleotid(5);
             v.RemoveAminoacid(5);

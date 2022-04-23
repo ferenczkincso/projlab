@@ -8,7 +8,7 @@ public class GC_Immunity extends GeneticCode {
      *
      * @param v - A virológus, akire kifejti a hatást
      */
-    public final void CreateAgent(Virologist v) {
+    public void CreateAgent(Virologist v) {
         if (v.GetNukleotid().size() >= 4 && v.GetAminoacid().size() >= 4) {
             v.RemoveNukleotid(4);
             v.RemoveAminoacid(4);

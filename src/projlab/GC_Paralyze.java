@@ -9,7 +9,7 @@ public class GC_Paralyze extends GeneticCode {
      * @param v - A virológus, akire kifejti a hatást
      */
 
-    public final void CreateAgent(Virologist v) {
+    public void CreateAgent(Virologist v) {
         if (v.GetNukleotid().size() >= 3 && v.GetAminoacid().size() >= 3) {
             v.RemoveNukleotid(3);
             v.RemoveAminoacid(3);
