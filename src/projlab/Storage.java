@@ -7,7 +7,6 @@ abstract public class Storage extends Field{
 
     public abstract void DestroyMaterial();
 
-    public abstract void Accept(Virologist v);
     @Override
     public void Tick(){
         //üres

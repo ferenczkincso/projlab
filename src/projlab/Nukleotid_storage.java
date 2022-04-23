@@ -30,7 +30,10 @@ public class Nukleotid_storage extends Storage{
      */
 
     public void Accept(Virologist v){
-        // itt hogy ellenőrzöm hogy meg van e fertőzve?
+        if (v.isBear()){
+            DestroyMaterial();
+        }
+        super.Accept(v);
     }
     ///termelés miatt kell
     @Override

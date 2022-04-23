@@ -24,7 +24,15 @@ public class Shelter extends Field{
     public void Collect(Virologist v) {
         ArrayList<Protection> p = new ArrayList<Protection>();
         p = v.GetProtections();
-        p.add(protection);
-        v.SetProtections(p);
+        boolean alreadyHas = false;
+        for(Protection pr : p){
+            if(pr == protection){
+                alreadyHas= true;
+            }
+        }
+        if(!alreadyHas){
+            p.add(protection);
+            v.SetProtections(p);
+        }
     }
 }
