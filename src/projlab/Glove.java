@@ -1,5 +1,7 @@
 package projlab;
 public class Glove extends Protection{
+
+    int timesUsed = 0;
     /**
      *Az Effect feladata, hogy az adott virológusra
      * kifejtse a Glove hatást, azaz, ha a virológust
@@ -8,7 +10,12 @@ public class Glove extends Protection{
      */
     public void Effect(Virologist v)
     {
-        v.SetGlove(true) ;
+        if (timesUsed > 3) v.LoseItem(this);
+        else
+        {
+            v.SetGlove(true);
+            timesUsed++;
+        }
     }
 
     /**
