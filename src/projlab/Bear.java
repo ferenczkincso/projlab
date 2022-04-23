@@ -7,9 +7,7 @@ public class Bear extends Agent{
         v.RemoveNukleotid(v.GetNukleotid().size());
         v.RemoveAminoacid(v.GetAminoacid().size());
         v.setBear(true);
-        v.SetImmuneTime(100);//nem jo igy konretan vegtelen kell legyen
+        v.SetImmuneTime(100);
         v.GetProtections().clear();
-        //picit at kell gondolni
     }
-
 }
