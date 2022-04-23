@@ -9,12 +9,7 @@ public class Uncontrollable extends Agent{
     public void Effect(Virologist v){
         //System.out.println("Uncontrollable: Effect(v2)");
 
-        v.setUncontrollabeTime(2000);
-        while (v.getUncontrollabeTime()!=0)
-        {
-
-            v.ReduceUncontrollableTime();
-        }
+        v.setUncontrollabeTime(20);
 
     }
 

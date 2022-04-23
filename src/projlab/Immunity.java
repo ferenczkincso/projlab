@@ -9,12 +9,7 @@ public class Immunity extends Agent{
 
     public void Effect(Virologist v){
         //System.out.println("Immunity: Effect(v)");
-        v.SetImmuneTime(3000);
-        while(v.GetImmuneTime()!=0)
-        {
-            //...
-            v.ReduceImmuneTime();
-        }
+        v.SetImmuneTime(30);
 
     }
 
