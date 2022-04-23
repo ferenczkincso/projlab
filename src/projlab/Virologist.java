@@ -1,5 +1,7 @@
 package projlab;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 
 public class Virologist implements Ticker {
@@ -15,8 +17,18 @@ public class Virologist implements Ticker {
     private Field current_field;
     private int gloveusage;
     private boolean hasGlove;
-    private boolean isparalyzed = false;
     private boolean dodged;
+    private Random randomGenerator = new Random(System.currentTimeMillis());
+
+    public boolean isBear() {
+        return isBear;
+    }
+
+    public void setBear(boolean bear) {
+        isBear = bear;
+    }
+
+    private boolean isBear;
 
     Virologist(Field f){
         current_field = f;
@@ -25,14 +37,6 @@ public class Virologist implements Ticker {
         protections = new ArrayList<Protection>();
         genetic_codes = new ArrayList<GeneticCode>();
         agent = new ArrayList<Agent>();
-    }
-
-    public void setisParalyzed(boolean paralyzed) {
-        this.isparalyzed = paralyzed;
-    }
-
-    public boolean getisIsparalyzed() {
-        return isparalyzed;
     }
 
     public void setParalyzedTime(int paralyzedTime) {
@@ -56,9 +60,14 @@ public class Virologist implements Ticker {
      */
 
     public void Tick() {
-        ReduceImmuneTime();
         ReduceParalyzedTime();
         ReduceUncontrollableTime();
+        if (!isBear) ReduceImmuneTime();
+
+        if (isBear || (uncontrollabeTime > 0 && paralyzedTime == 0))
+        {
+            if (randomGenerator.nextInt()%15==0) MoveToRandomNeighbour();
+        }
     }
 
     /**
@@ -66,7 +75,7 @@ public class Virologist implements Ticker {
       * @param f - a mező, amelyre a virológus lépni szeretne
      */
     public void Move (Field f){
-        if(!isparalyzed) {
+        if(paralyzedTime == 0) {
             if (current_field.GetNeighbours().contains(f)) {
                 current_field.Remove(this);
                 f.Accept(this);
@@ -74,6 +83,14 @@ public class Virologist implements Ticker {
         }
         else
             return;
+    }
+
+    public void MoveToRandomNeighbour()
+    {
+        List<Field> neighbours = current_field.GetNeighbours();
+
+        Field nextField = neighbours.get(randomGenerator.nextInt(neighbours.size()));
+        Move(nextField);
     }
 
     /**

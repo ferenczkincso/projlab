@@ -12,4 +12,9 @@ public class Bear extends Agent{
         v.GetProtections().clear();
         //picit at kell gondolni
     }
+
+    @Override
+    public void Tick() {
+
+    }
 }
