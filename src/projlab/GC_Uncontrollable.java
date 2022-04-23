@@ -1,17 +1,22 @@
 package projlab;
 public class GC_Uncontrollable extends GeneticCode{
-    public GC_Uncontrollable(){
-        super(3,3);
-    }
+
     /**
      * Feladata a Uncontrollable ágens létrehozása, illetve
      * a megfelelő mennyiségű anyag levonása az adott
      * virológustól
      //* @param v - A virológus, akire kifejti a hatást
      */
-    public void AgentType(Virologist v) {
-        System.out.println("Add Uncontrollable: ");
-        Uncontrollable u = new Uncontrollable();
-        v.AddAgent(u);
+    public final void CreateAgent(Virologist v){
+        if (v.GetNukleotid().size()>= 2 && v.GetAminoacid().size()>=2){
+            v.RemoveNukleotid(2);
+            v.RemoveAminoacid(2);
+            System.out.println("Agens letrehozasa utan nukleotid szam: "
+                    + v.GetNukleotid().size() + " es aminoacid szam: " + v.GetAminoacid().size());
+            Uncontrollable u = new Uncontrollable();
+            v.AddAgent(u);
+        }else {
+            System.out.println("Nincs eleg anyag.");
+        }
     }
 }
