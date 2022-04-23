@@ -65,7 +65,7 @@ public class Virologist implements Ticker {
       * @param f - a mező, amelyre a virológus lépni szeretne
      */
     public void Move (Field f){
-        if(isparalyzed) {
+        if(!isparalyzed) {
             if (current_field.GetNeighbours().contains(f)) {
                 current_field.Remove(this);
                 f.Accept(this);
