@@ -4,6 +4,12 @@ import java.util.List;
 public class Aminoacid_storage extends Storage{
     private List<Aminoacid> aminoacid;
 
+    public Aminoacid_storage(){
+        for (int i = 0; i<5; i++){
+            Aminoacid a = new Aminoacid();
+            aminoacid.add(a);
+        }
+    }
     /**
      * A Collect függvény feladata, hogy összegyűjtse
      * a raktárból az aminosavat, és a Virológus
@@ -13,7 +19,10 @@ public class Aminoacid_storage extends Storage{
     public void Collect(Virologist v){
         if(!aminoacid.isEmpty()){
             for(Aminoacid a : aminoacid){
-                v.AddAminoacid(a);
+                if (v.GetAminoacid().size() < v.GetCapacity()){
+                    v.AddAminoacid(a);
+                    aminoacid.remove(a);
+                }
             }
         }
     }
@@ -30,5 +39,15 @@ public class Aminoacid_storage extends Storage{
     }
 
     @Override
-    public void Tick(){};
+    public void Tick(){
+        tickCount++;
+        if (tickCount==100){
+            aminoacid.clear();
+            for (int i = 0; i<5; i++){
+                Aminoacid a = new Aminoacid();
+                aminoacid.add(a);
+            }
+            tickCount = 0;
+        }
+    };
 }

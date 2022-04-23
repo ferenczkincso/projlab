@@ -4,7 +4,12 @@ import java.util.List;
 
 public class Nukleotid_storage extends Storage{
     private List<Nukleotid> nukleotid;
-
+    public Nukleotid_storage(){
+        for (int i = 0; i<5; i++){
+            Nukleotid n = new Nukleotid();
+            nukleotid.add(n);
+        }
+    }
     /**
      * A paraméterben kapott virológusnak nukleotidokat tölt fel
      * kapacitásig vagy amennyi található a raktárban.
@@ -13,7 +18,10 @@ public class Nukleotid_storage extends Storage{
     public void Collect(Virologist v){
         if(!nukleotid.isEmpty()){
             for(Nukleotid n : nukleotid){
-                v.AddNukleotid(n);
+                if (v.GetNukleotid().size() < v.GetCapacity()){
+                    v.AddNukleotid(n);
+                    nukleotid.remove(n);
+                }
             }
         }
     }
@@ -37,6 +45,16 @@ public class Nukleotid_storage extends Storage{
     }
     ///termelés miatt kell
     @Override
-    public void Tick(){}
+    public void Tick(){
+        tickCount++;
+        if (tickCount==100){
+            nukleotid.clear();
+            for (int i = 0; i<5; i++){
+                Nukleotid n = new Nukleotid();
+                nukleotid.add(n);
+            }
+            tickCount = 0;
+        }
+    }
 
 }
