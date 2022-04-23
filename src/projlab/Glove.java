@@ -6,8 +6,9 @@ public class Glove extends Protection{
      * egy másik megtámadja, akkor visszadobja az ágenst
      * @param v - A virológus, akire kifejti a hatást
      */
-    public void Effect(Virologist v) {
-        System.out.println("Glove: Effect(v)");
+    public void Effect(Virologist v)
+    {
+        v.SetGlove(true) ;
     }
 
     /**
@@ -16,7 +17,8 @@ public class Glove extends Protection{
      * @param v - A virológus, akire kifejti a hatást
      */
 
-    public void ReverseEffect(Virologist v) {
-        System.out.println("ReverseEffect(v)");
+    public void ReverseEffect(Virologist v)
+    {
+        v.SetGlove(false);
     }
 }

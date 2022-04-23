@@ -14,6 +14,7 @@ public class Virologist implements Ticker {
     private ArrayList<Agent> agent;
     private Field current_field;
     private int gloveusage;
+    private boolean hasGlove;
 
     Virologist(Field f){
         current_field = f;
@@ -75,8 +76,13 @@ public class Virologist implements Ticker {
      * elveszít, ami eddig a birtokában volt.
      * @param p - a védőfelszerelés, amelyet elveszít
      */
-    public void LoseItem (Protection p){
-        if(protections.contains(p)) protections.remove(p);
+    public void LoseItem (Protection p)
+    {
+        if(protections.contains(p))
+        {
+            p.ReverseEffect(this);
+            protections.remove(p);
+        }
     }
 
     /**
@@ -212,12 +218,19 @@ public class Virologist implements Ticker {
         if(nukleotid.size() < capacity) nukleotid.add(n);
     }
 
+    public int GetCapacity() { return capacity; }
+    public void SetCapacity(int n) { capacity = n; }
+
     public void UseAx(){
 
     }
 
     public void GameOver(){
 
+    }
+
+    public void setCurrent_field(Field f){
+        current_field = f;
     }
 
 
@@ -227,6 +240,26 @@ public class Virologist implements Ticker {
     public ArrayList<Nukleotid> GetNukleotid(){return nukleotid;}
     public ArrayList<Aminoacid> GetAminoacid(){return aminoacid;}
     public ArrayList<Protection> GetProtections(){return protections;}
+    public void SetProtections(ArrayList<Protection> p){}
+
+    public void SetImmuneTime(int n) { immuneTime = n; }
+    public int GetImmuneTime() { return immuneTime; }
+
+    public boolean HasGlove() { return hasGlove; }
+    public void SetGlove(boolean value) { hasGlove = value; }
+
+    public ArrayList<GeneticCode> GetGenetic_codes(){
+        return genetic_codes;
+    }
+
+    public void setGenetic_codes(ArrayList<GeneticCode> g){
+        genetic_codes = g;
+    }
+
+
+
+
+
 }
 
 

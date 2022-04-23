@@ -11,6 +11,18 @@ public class Aminoacid_storage extends Storage{
      * @param v - A virológus, akire kifejti a hatást
      */
     public void Collect(Virologist v){
-        System.out.println("aminoacid_storage.Collect(v)");
+        if(aminoacid != null){
+            for(Aminoacid a : aminoacid){
+                v.AddAminoacid(a);
+            }
+        }
+    }
+
+    public void DestroyMaterial(Virologist v) {
+        aminoacid = null;
+    }
+
+    public void Accept(Virologist v){
+        //itt azt hogy tudom ellenőrizni, hogy meg van e fertőződve medvevírussal?
     }
 }
