@@ -15,6 +15,7 @@ public class Virologist implements Ticker {
     private Field current_field;
     private int gloveusage;
     private boolean hasGlove;
+    private boolean isparalyzed = false;
 
     Virologist(Field f){
         current_field = f;
@@ -25,7 +26,13 @@ public class Virologist implements Ticker {
         agent = new ArrayList<Agent>();
     }
 
+    public void setisParalyzed(boolean paralyzed) {
+        this.isparalyzed = paralyzed;
+    }
 
+    public boolean getisIsparalyzed() {
+        return isparalyzed;
+    }
 
     public void setParalyzedTime(int paralyzedTime) {
         this.paralyzedTime = paralyzedTime;
@@ -58,10 +65,14 @@ public class Virologist implements Ticker {
       * @param f - a mező, amelyre a virológus lépni szeretne
      */
     public void Move (Field f){
-        if(current_field.GetNeighbours().contains(f)) {
-            current_field.Remove(this);
-            f.Accept(this);
+        if(isparalyzed) {
+            if (current_field.GetNeighbours().contains(f)) {
+                current_field.Remove(this);
+                f.Accept(this);
+            }
         }
+        else
+            return;
     }
 
     /**
@@ -248,6 +259,10 @@ public class Virologist implements Ticker {
 
     public void setCurrent_field(Field f){
         current_field = f;
+    }
+
+    public Field getCurrent_field() {
+        return current_field;
     }
 
     public int GetParalyzedTime() {return paralyzedTime;}

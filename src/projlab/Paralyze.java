@@ -2,18 +2,15 @@ package projlab;
 public class Paralyze extends Agent{
     /**
      *Az Effect feladata, hogy az adott virológusra
-     * kifejtse az Immunity hatást, azaz, a virológus
-     * immunis legyen minden ágensre.
+     * kifejtse a Paralyze hatást, azaz, a virológus
+     * ne tudjon átlépni egy másik mezőre.
      * @param v - A virológus, akire kifejti a hatást
      */
     public void Effect(Virologist v){
         //System.out.println("Paralyze: Effect(v2)");
+        v.setisParalyzed(true);
         v.setParalyzedTime(10);
-        while (v.getParalyzedTime()!=0)
-        {
-            //...
-            v.ReduceParalyzedTime();
-        }
+        v.ReduceParalyzedTime();
 
     }
 
@@ -25,5 +22,6 @@ public class Paralyze extends Agent{
      */
     public void ReverseEffect(Virologist v){
         System.out.println("ReverseParalyze: ReverseEffect(v)");
+        v.setisParalyzed(false);
     }
 }
