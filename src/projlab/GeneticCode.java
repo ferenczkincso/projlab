@@ -1,5 +1,5 @@
 package projlab;
-abstract class GeneticCode {
+abstract public class GeneticCode {
     /**
      * Létrehozza a genetikai kódhoz tartozó ágenst,
      * levonva a megfelelő mennyiségű anyagot
