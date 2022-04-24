@@ -68,7 +68,14 @@ public class Virologist implements Ticker {
 
         if (isBear || (uncontrollableTime > 0 && paralyzedTime == 0))
         {
-            if (randomGenerator.nextInt()%15==0) MoveToRandomNeighbour();
+            if (randomGenerator.nextInt()%15==0)
+            {
+                MoveToRandomNeighbour();
+                if (Virologist v: this.LookAround())
+                {
+
+                }
+            }
         }
     }
 
@@ -277,6 +284,12 @@ public class Virologist implements Ticker {
                 p.Effect(otherVirologist);
                 LoseItem(p);
             }
+    }
+
+    public void UseAgent(Agent agent, Virologist otherVirologist)
+    {
+        if (paralyzedTime > 0 || uncontrollableTime > 0 || isBear) return;
+        if ()
     }
 
 
