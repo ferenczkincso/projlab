@@ -34,7 +34,7 @@ public class PickUpMaterialTests {
         tg.moveVirologist(tg.v2, 12);
         tg.pickUpMaterial(tg.v2);
         Assert.assertTrue(tg.v2.getCurrent_field().GetFieldId() == 12);
-        Assert.assertEquals(tg.v1.getCurrent_field().getClass(), Aminoacid_storage.class);
+        Assert.assertEquals(tg.v2.getCurrent_field().getClass(), Aminoacid_storage.class);
         Assert.assertFalse(tg.v2.GetAminoacid().isEmpty()); // sikerül e felvenni valamit
     }
 }
