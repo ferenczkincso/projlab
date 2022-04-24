@@ -13,8 +13,8 @@ public class TestGame {
 
     public TestGame(){
         createCity();
-        //timer = new Timer(tickables);
-        //timer.start();
+        timer = new Timer(tickables);
+        timer.start();
     }
 
     /*

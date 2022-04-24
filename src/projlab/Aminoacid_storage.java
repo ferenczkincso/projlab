@@ -20,13 +20,9 @@ public class Aminoacid_storage extends Storage{
      * @param v - A virológus, akire kifejti a hatást
      */
     public void Collect(Virologist v){
-        if(!aminoacid.isEmpty()){
-            for(Aminoacid a : aminoacid){
-                if (v.GetAminoacid().size() < v.GetCapacity()){
-                    v.AddAminoacid(a);
-                    aminoacid.remove(a);
-                }
-            }
+        while(v.GetAminoacid().size() < v.GetCapacity() && !aminoacid.isEmpty()){
+            v.AddAminoacid(aminoacid.get(0));
+            aminoacid.remove(0);
         }
     }
 
