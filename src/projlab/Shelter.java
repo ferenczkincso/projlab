@@ -22,20 +22,14 @@ public class Shelter extends Field{
      * védőfelszerelést
      * @param v - A virológus, akire kifejti a hatást
      */
+    @Override
     public void Collect(Virologist v) {
-        ArrayList<Protection> p = new ArrayList<Protection>();
-        p = v.GetProtections();
-        boolean alreadyHas = false;
-        for(Protection pr : p){
-            if(pr.getClass() == protection.getClass()){
-                alreadyHas= true;
-                break;
-            }
+        for (Protection p: v.GetProtections())
+        {
+            if (p.getClass().equals(protection.getClass())) return;
         }
-        if(!alreadyHas){
-            p.add(protection);
-            v.SetProtections(p);
-        }
+        v.GetProtections().add(protection);
+        protection.Effect(v);
     }
 
     public void SetProtection(Protection p){protection = p;}

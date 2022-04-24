@@ -16,10 +16,10 @@ public class ProtectionTests {
     @Test
     public void VirologistPutsOnGlove(){
         Assert.assertNotNull(tg);
-        tg.moveVirologist(tg.v1, 42);
-        tg.moveVirologist(tg.v1, 21);
+        tg.moveVirologist(tg.v1, 31);
+        tg.moveVirologist(tg.v1, 41);
         tg.pickUpProtection(tg.v1);
-        Assert.assertTrue(tg.v1.getCurrent_field().GetFieldId() == 21);
+        Assert.assertTrue(tg.v1.getCurrent_field().GetFieldId() == 41);
         Assert.assertEquals(tg.v1.getCurrent_field().getClass(), Shelter.class);
         Assert.assertTrue(tg.v1.HasGlove());
         Assert.assertEquals(tg.v1.GetProtections().get(0).getClass(), Glove.class);
@@ -33,7 +33,7 @@ public class ProtectionTests {
         tg.pickUpProtection(tg.v1);
         Assert.assertTrue(tg.v1.getCurrent_field().GetFieldId() == 21);
         Assert.assertEquals(tg.v1.getCurrent_field().getClass(), Shelter.class);
-        Assert.assertTrue(tg.v1.HasCloak());
+        Assert.assertTrue(tg.v1.HasDodged());
         Assert.assertEquals(tg.v1.GetProtections().get(0).getClass(), Cloak.class);
     }
 

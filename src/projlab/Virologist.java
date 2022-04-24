@@ -19,11 +19,6 @@ public class Virologist implements Ticker {
     private boolean hasGlove;
     private boolean dodged;
 
-    public boolean HasCloak() {
-        return hasCloak;
-    }
-
-    private boolean hasCloak;
     private Random randomGenerator = new Random(System.currentTimeMillis());
 
     public boolean isBear() {
@@ -299,7 +294,7 @@ public class Virologist implements Ticker {
             for (int i=0; i<nr; i++) aminoacid.remove(0);
     }
     public ArrayList<Protection> GetProtections(){return protections;}
-    public void SetProtections(ArrayList<Protection> p){}
+    //public void SetProtections(ArrayList<Protection> p){}
 
     public void SetImmuneTime(int n) { immuneTime = n; }
     public int GetImmuneTime() { return immuneTime; }
