@@ -24,6 +24,10 @@ public class Nukleotid_storage extends Storage{
         }
     }
 
+    /**
+     * A DestroyMaterial feladata az, hogy elpusztítsa
+     * a nukleotidot, amely a raktárban található
+     */
     public void DestroyMaterial() {
         nukleotid.clear();
     }

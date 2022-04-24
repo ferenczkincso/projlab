@@ -7,6 +7,7 @@ public class Timer extends Thread{
 
     public Timer(ArrayList<Ticker> t){tickables = t;}
 
+
     @Override
     public void run(){
         while(true){

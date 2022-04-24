@@ -26,16 +26,31 @@ public class Aminoacid_storage extends Storage{
         }
     }
 
+    /**
+     * A DestroyMaterial feladata az, hogy elpusztítsa
+     * az aminosavat, amely a raktárban található
+     */
     public void DestroyMaterial() {
         aminoacid.clear();
     }
 
+    /**
+     * Az Accept-tel engedjük fel a virológust a mezőre,
+     * itt leellenőrizzük, hogy a virológus medve-e, ha
+     * igen, akkor elpusztítja az anyagot, ha nem az, akkor
+     * rálép a mezőre
+     * @param v - A virológus, aki erre a mezőre szeretne lépni
+     */
     public void Accept(Virologist v){
         if (v.isBear()){
             DestroyMaterial();
         }
         super.Accept(v);
     }
+
+    /**
+     * A Tick függvénnyel az aminosav újratermelődését biztosítjuk
+     */
 
     @Override
     public void Tick(){

@@ -102,6 +102,8 @@ public class Virologist implements Ticker {
         Move(nextField);
     }
 
+
+
     /**
      * A virológus elfelejti az eddig megtanult genetikai
      * kódokat. Akkor hívódik meg, ha egy másik virológus
@@ -335,8 +337,6 @@ public class Virologist implements Ticker {
     public ArrayList<Agent> GetAgent() {
         return agent;
     }
-
-
 
 }
 
