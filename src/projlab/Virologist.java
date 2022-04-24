@@ -71,9 +71,10 @@ public class Virologist implements Ticker {
             if (randomGenerator.nextInt()%15==0)
             {
                 MoveToRandomNeighbour();
-                if (Virologist v: this.LookAround())
-                {
-
+                if (isBear) {
+                    for (Virologist v : this.LookAround()) {
+                        UseAgent(new Bear(), v);
+                    }
                 }
             }
         }
@@ -290,8 +291,25 @@ public class Virologist implements Ticker {
 
     public void UseAgent(Agent agent, Virologist otherVirologist)
     {
+        if (agent.getClass().equals(Bear.class)) { agent.Effect(otherVirologist); return; }
+
+        if (otherVirologist.GetImmuneTime() > 0) return;
         if (paralyzedTime > 0 || uncontrollableTime > 0 || isBear) return;
-        if ()
+
+        if (otherVirologist.HasGlove()) UseAgent(agent, this);
+
+        for (Protection p: otherVirologist.GetProtections())
+        {
+            if (p.getClass().equals(Cloak.class)) p.Effect(otherVirologist);
+        }
+        if (otherVirologist.HasDodged())
+        {
+            otherVirologist.SetDodged(false);
+            return;
+        }
+        else agent.Effect(otherVirologist);
+
+
     }
 
 
