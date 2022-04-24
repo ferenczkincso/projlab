@@ -125,7 +125,8 @@ public class Virologist implements Ticker {
      * elveszít, ami eddig a birtokában volt.
      * @param p - a védőfelszerelés, amelyet elveszít
      */
-    public void LoseItem (Protection p)
+    public void
+    LoseItem (Protection p)
     {
         if(protections.contains(p))
         {
@@ -268,8 +269,14 @@ public class Virologist implements Ticker {
     public int GetCapacity() { return capacity; }
     public void SetCapacity(int n) { capacity = n; }
 
-    public void UseAx(){
-
+    public void UseAx(Virologist otherVirologist){
+        if (!otherVirologist.isBear()) return;
+        for (Protection p: protections)
+            if (p.getClass().equals(Ax.class))
+            {
+                p.Effect(otherVirologist);
+                LoseItem(p);
+            }
     }
 
 

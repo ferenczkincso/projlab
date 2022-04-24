@@ -3,7 +3,7 @@ package projlab;
 public class Ax extends Protection {
     @Override
     public void Effect(Virologist v) {
-
+        v.getCurrent_field().Remove(v);
     }
 
     @Override
