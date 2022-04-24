@@ -42,6 +42,10 @@ public class Lab extends Field{
         }
     }
 
+    public void Collect(Virologist v){
+        Learn_code(v);
+    }
+
     public void SetGenetic_code(GeneticCode g){genetic_code = g;}
 
 }

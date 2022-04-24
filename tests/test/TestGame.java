@@ -50,6 +50,14 @@ public class TestGame {
         v2 = new Virologist();
         f10.Accept(v1);
         f15.Accept(v2);
+        for (int i = 0; i<15; i++) {
+            Nukleotid n = new Nukleotid();
+            v1.AddNukleotid(n);
+        }
+        for (int i = 0; i<15; i++) {
+            Aminoacid n = new Aminoacid();
+            v1.AddAminoacid(n);
+        }
 
         tickables = new ArrayList<Ticker>();
         tickables.addAll(fields);
@@ -73,20 +81,29 @@ public class TestGame {
             }
         }
     }
+    public void learnGeneticCode(Virologist v){
+        v.getCurrent_field().Collect(v);
+    }
+
 
     public void createAgent(Virologist v, GeneticCode gc){
         v.UseGeneticCode(gc);
     }
 
-    public void useAgent(Virologist v, Agent a, Virologist w){
-        if(v.GetAgent().contains(a)) a.Effect(w);
+    public void useAgent(Virologist v, Object AgentClass, Virologist w){
+        for(Agent a : v.GetAgent()){
+            if(a.getClass() == AgentClass.getClass()){
+                a.Effect(w);
+                return;
+            }
+        }
     }
 
     public void pickUpProtection(Virologist v){
         v.GetItem();
     }
 
-    public void pickUpMaterial(Virologist v, String type, int num){
+    public void pickUpMaterial(Virologist v){
         v.CollectMaterial();
     }
 
@@ -94,6 +111,7 @@ public class TestGame {
         v.LoseItem(p);
     }
 
+    //for debugging
     public void showStatistics(Virologist v, String testName){
         System.out.println(testName);
         String s;

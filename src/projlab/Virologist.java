@@ -18,6 +18,12 @@ public class Virologist implements Ticker {
     //private int gloveusage;
     private boolean hasGlove;
     private boolean dodged;
+
+    public boolean HasCloak() {
+        return hasCloak;
+    }
+
+    private boolean hasCloak;
     private Random randomGenerator = new Random(System.currentTimeMillis());
 
     public boolean isBear() {
