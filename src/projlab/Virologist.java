@@ -20,17 +20,27 @@ public class Virologist implements Ticker {
     private boolean dodged;
 
     private Random randomGenerator = new Random(System.currentTimeMillis());
+    private boolean isBear;
 
+    /**
+     * Az isBear változó getter függvénye
+     * @return isBear - visszaadja, hogy medve-e vagy sem
+     */
     public boolean isBear() {
         return isBear;
     }
 
+    /**
+     * Az isBear változó setter függvénye
+     * @param bear - paramétere a bear
+     */
     public void setBear(boolean bear) {
         isBear = bear;
     }
 
-    private boolean isBear;
-
+    /**
+     * A Virologist konstruktor függvénye
+     */
     public Virologist(){
         nukleotid = new ArrayList<Nukleotid>();
         aminoacid = new ArrayList<Aminoacid>();
@@ -41,20 +51,22 @@ public class Virologist implements Ticker {
         dodged = false;
     }
 
+    /**
+     * A paralyzedTime setter függvénye, amellyel beállíthatjuk,
+     * hogy mennyi időre legyen beállítva a bénulás
+     * @param paralyzedTime - paramétre a paralyzedTime
+     */
     public void setParalyzedTime(int paralyzedTime) {
         this.paralyzedTime = paralyzedTime;
     }
 
-    public int getParalyzedTime() {
-        return paralyzedTime;
-    }
-
+    /**
+     * Az uncontrollableTime setter függvénye, amellyel beállíthatjuk,
+     * hogy mennyi időre legyen beállítva az irányíthatatlanság
+     * @param uncontrollabeTime - paramétere az uncontrollableTime
+     */
     public void setUncontrollabeTime(int uncontrollabeTime) {
         this.uncontrollableTime = uncontrollabeTime;
-    }
-
-    public int getUncontrollabeTime() {
-        return uncontrollableTime;
     }
 
     /**
@@ -91,12 +103,20 @@ public class Virologist implements Ticker {
                     current_field.Remove(this);
                     f.Accept(this);
                 }
-            }catch(NullPointerException e){}
+            }
+            catch(NullPointerException e){}
         }
         else
             return;
     }
 
+    /**
+     * A virológus véletlenszerű mozgását kiváltó függvény
+     * Lekérdezi a virológus jelenlegi szomszédjait, majd azok közül
+     * random 1-et választva átlép egy másik mezőre.
+     * Ezt a függvényt a medvevírussal való megfertőződéskor, illetve
+     * az irányíthatatlansági ágens befolyása alatt hívjuk meg
+     */
     public void MoveToRandomNeighbour()
     {
         List<Field> neighbours = current_field.GetNeighbours();
@@ -104,7 +124,6 @@ public class Virologist implements Ticker {
         Field nextField = neighbours.get(randomGenerator.nextInt(neighbours.size()));
         Move(nextField);
     }
-
 
 
     /**
@@ -278,9 +297,26 @@ public class Virologist implements Ticker {
         if(nukleotid.size() < capacity) nukleotid.add(n);
     }
 
+    /**
+     * A capacity gettter függvénye
+     * @return capacity
+     */
     public int GetCapacity() { return capacity; }
+
+    /**
+     * A capacity setter függvénye
+     * @param n - a kapacitás mértéke
+     */
     public void SetCapacity(int n) { capacity = n; }
 
+    /**
+     * A balta használatához szükséges függvény, amely bekér egy másik
+     * virológust paraméterként, és először ellenőrzi, hogy ő fertőzött-e,
+     * ha igen, akkor végigmegy a védőfelszerelésein a virológusnak, és
+     * ha talál baltát, akkor azt felhasználja a másik virológuson, majd
+     * eldobja a védőfelszerelések raktárjából
+     * @param otherVirologist - a másik virológus, akit meg akarunk támadni
+     */
     public void UseAx(Virologist otherVirologist){
         if (!otherVirologist.isBear()) return;
         for (Protection p: protections)
@@ -291,6 +327,21 @@ public class Virologist implements Ticker {
             }
     }
 
+    /**
+     * Az ágens felhasználásához tartozó függvény
+     * Ellenőrzi, hogy medve-e az illető, ha igen, akkor megfertőzi
+     * a virológust, akivel találkozik
+     * Ha a megfertőződő virológusnak nagyobb, mint 0 az immunitás ideje,
+     * akkor visszatér a függvény, hiszen nem lehet őt megfertőzni
+     * Ha a fertőzni kívánt virológus medve, akkor is visszatér, hiszen
+     * őt se lehet megfertőzni
+     * Ha a másik virológus rendelkezik kesztyű védőfelszereléssel, akkor
+     * a hatás a virológusra kerül
+     * Ha a másik virológus rendelkezik köpennyel, akkor megfertőzi
+     *
+     * @param agent
+     * @param otherVirologist
+     */
     public void UseAgent(Agent agent, Virologist otherVirologist)
     {
         if (agent.getClass().equals(Bear.class)) { agent.Effect(otherVirologist); return; }
@@ -316,45 +367,131 @@ public class Virologist implements Ticker {
     }
 
 
+    /**
+     * A current_field setter függvénye
+     * @param f - a mező, amelyre be szeretnénk állítani
+     */
     public void setCurrent_field(Field f){
         current_field = f;
     }
 
+    /**
+     * A current_field getter függvénye
+     * @return - a mező, amelyen rajta van a virológus
+     */
     public Field getCurrent_field() {
         return current_field;
     }
 
+    /**
+     * A paralyzedTime getter függvénye
+     * @return - paralyzedTime értéke
+     */
     public int GetParalyzedTime() {return paralyzedTime;}
+
+    /**
+     * Az uncontrollableTime getter függvénye
+     * @return - uncontrollableTime értéke
+     */
     public int GetUncontrollableTime(){return uncontrollableTime;}
-    public ArrayList<Nukleotid> GetNukleotid(){return nukleotid;}
+
+    /**
+     * A nukleotid getter függvénye
+     * @return - nukleotid listával tér vissza
+     */
+    public ArrayList<Nukleotid> GetNukleotid()
+    {
+        return nukleotid;
+    }
+
+    /**
+     * A nukleotid törléséért felelős függvény
+     * @param nr - azt a mennyiséget jelenti, amennyit törölni szeretnénk
+     */
     public void RemoveNukleotid(int nr){
         if (nukleotid.size() >= nr)
             for (int i=0; i<nr; i++) nukleotid.remove(0);
     }
-    public ArrayList<Aminoacid> GetAminoacid(){return aminoacid;}
+
+    /**
+     * Az aminosav getter függvénye
+     * @return - aminoacid listával tér vissza
+     */
+    public ArrayList<Aminoacid> GetAminoacid()
+    {
+        return aminoacid;
+    }
+
+    /**
+     * Az aminosav törléséért felelős függvény
+     * @param nr - azt a mennyiséget jelenti, amennyit törölni szeretnénk
+     */
     public void RemoveAminoacid(int nr){
         if (aminoacid.size() >= nr)
             for (int i=0; i<nr; i++) aminoacid.remove(0);
     }
-    public ArrayList<Protection> GetProtections(){return protections;}
+
+    /**
+     * A védőfelszerelések getter függvénye
+     * @return - a védőfelszerelések listáját
+     */
+    public ArrayList<Protection> GetProtections()
+    {
+        return protections;
+    }
     //public void SetProtections(ArrayList<Protection> p){}
 
+    /**
+     * Az immunitáshoz tartozó idő setter függvénye
+     * @param n - az ImmuneTime értéke, amennyire be szeretnénk azt állítani
+     */
     public void SetImmuneTime(int n) { immuneTime = n; }
+
+    /**
+     * Az immuneTime getter függvénye
+     * @return - az ImmuneTime értéke
+     */
     public int GetImmuneTime() { return immuneTime; }
 
+    /**
+     * A hasGlove getter függvénye
+     * @return hasGlove értékét, amely vagy igaz, vagy hamis
+     */
     public boolean HasGlove() { return hasGlove; }
+
+    /**
+     * A hasGlove setter függvénye
+     * @param value - igaz vagy hamis, amelyre a hasGlove-ot szeretnénk
+     * beállítani
+     */
     public void SetGlove(boolean value) { hasGlove = value; }
 
+    /**
+     * A genetikus kódokhoz tartozó getter függvény
+     * @return - visszaadja a genetikus kódok listáját, amellyel a virológus
+     * rendelkezik
+     */
     public ArrayList<GeneticCode> GetGenetic_codes(){
         return genetic_codes;
     }
 
+    /**
+     * A genetikus kódokhoz tartozó setter függvény
+     * @param g - a lista, amelyet szeretnénk beállítani a genetikus
+     * kódok tárolására
+     */
     public void setGenetic_codes(ArrayList<GeneticCode> g){
         genetic_codes = g;
     }
 
+
     public boolean HasDodged() {return dodged;}
     public void  SetDodged(boolean value) {dodged = value;}
+
+    /**
+     * Az ágensek listájának getter függvénye
+     * @return - az ágensek listájával tér vissza
+     */
     public ArrayList<Agent> GetAgent() {
         return agent;
     }
