@@ -29,7 +29,9 @@ public class Shelter extends Field{
             if (p.getClass().equals(protection.getClass())) return;
         }
         v.GetProtections().add(protection);
-        protection.Effect(v);
+        if(!this.getClass().equals(Ax.class)) {
+            protection.Effect(v);
+        }
     }
 
     public void SetProtection(Protection p){protection = p;}

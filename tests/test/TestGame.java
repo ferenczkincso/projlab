@@ -75,7 +75,7 @@ public class TestGame {
 
     public void moveVirologist(Virologist v, int id){
         for(Field f1 : fields){
-            if(f1.GetFieldId() == id){
+            if(f1.GetFieldId() == (id)){
                 v.Move(f1);
                 return;
             }
@@ -109,6 +109,10 @@ public class TestGame {
 
     public void throwOutProtection(Virologist v, Protection p){
         v.LoseItem(p);
+    }
+
+    public  void useAx(Virologist v,Virologist w){
+        v.UseAx(w);
     }
 
     //for debugging

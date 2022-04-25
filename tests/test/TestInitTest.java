@@ -22,6 +22,8 @@ public class TestInitTest {
         Assert.assertTrue(tg.v2.getCurrent_field().GetFieldId() == 43);
         Assert.assertTrue(tg.v1.GetAminoacid().size() == 15);
         Assert.assertTrue(tg.v1.GetNukleotid().size() == 15);
+        Assert.assertTrue(tg.fields.get(0).GetNeighbours().get(0).GetFieldId() == tg.fields.get(1).GetFieldId());
+        Assert.assertTrue(tg.fields.get(0).GetNeighbours().get(1).GetFieldId() == tg.fields.get(4).GetFieldId());
 
     }
 }

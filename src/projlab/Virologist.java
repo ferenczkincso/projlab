@@ -86,10 +86,12 @@ public class Virologist implements Ticker {
      */
     public void Move (Field f){
         if(paralyzedTime == 0) {
-            if (current_field.GetNeighbours().contains(f)) {
-                current_field.Remove(this);
-                f.Accept(this);
-            }
+            try {
+                if (current_field.GetNeighbours().contains(f)) {
+                    current_field.Remove(this);
+                    f.Accept(this);
+                }
+            }catch(NullPointerException e){}
         }
         else
             return;
@@ -285,7 +287,7 @@ public class Virologist implements Ticker {
             if (p.getClass().equals(Ax.class))
             {
                 p.Effect(otherVirologist);
-                LoseItem(p);
+                this.GetProtections().remove(p);
             }
     }
 
@@ -294,6 +296,7 @@ public class Virologist implements Ticker {
         if (agent.getClass().equals(Bear.class)) { agent.Effect(otherVirologist); return; }
 
         if (otherVirologist.GetImmuneTime() > 0) return;
+
         if (paralyzedTime > 0 || uncontrollableTime > 0 || isBear) return;
 
         if (otherVirologist.HasGlove()) UseAgent(agent, this);
