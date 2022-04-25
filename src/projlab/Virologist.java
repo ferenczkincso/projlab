@@ -484,8 +484,16 @@ public class Virologist implements Ticker {
         genetic_codes = g;
     }
 
-
+    /**
+     * A dodged változó getter függvénye
+     * @return - a dodge igaz vagy hamis értékével tér vissza
+     */
     public boolean HasDodged() {return dodged;}
+
+    /**
+     * A dodged változó setter függvénye
+     * @param value - az igaz / hamis érték, amelyre be szeretnénk állítani a dodged-et
+     */
     public void  SetDodged(boolean value) {dodged = value;}
 
     /**
