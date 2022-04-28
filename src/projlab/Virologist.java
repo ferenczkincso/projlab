@@ -6,6 +6,7 @@ import java.util.Random;
 
 
 public class Virologist extends Observable implements Ticker {
+    private String name;
     private int capacity = 15;
     private ArrayList<Nukleotid> nukleotid;
     private ArrayList<Aminoacid> aminoacid;
@@ -45,6 +46,16 @@ public class Virologist extends Observable implements Ticker {
      * A Virologist konstruktor függvénye
      */
     public Virologist(){
+        nukleotid = new ArrayList<Nukleotid>();
+        aminoacid = new ArrayList<Aminoacid>();
+        protections = new ArrayList<Protection>();
+        genetic_codes = new ArrayList<GeneticCode>();
+        agent = new ArrayList<Agent>();
+        hasGlove = false;
+        dodged = false;
+    }
+    public Virologist(String name){
+        this.name = name;
         nukleotid = new ArrayList<Nukleotid>();
         aminoacid = new ArrayList<Aminoacid>();
         protections = new ArrayList<Protection>();
