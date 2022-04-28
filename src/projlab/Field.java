@@ -63,6 +63,8 @@ public class Field extends Observable implements Ticker{
         if(virologist.size() < 2){
             virologist.add(v);
             v.setCurrent_field(this);
+            setChanged();
+            notifyObservers(v.getCurrent_field());
         }
     }
 
@@ -75,7 +77,10 @@ public class Field extends Observable implements Ticker{
 
     public void Remove(Virologist v){
         virologist.remove(v);
+        int fID = v.getCurrent_field().GetFieldId();
         v.setCurrent_field(null);
+        setChanged();
+        notifyObservers(fID);
     }
 
     /**

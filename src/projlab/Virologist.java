@@ -37,6 +37,8 @@ public class Virologist extends Observable implements Ticker {
      */
     public void setBear(boolean bear) {
         isBear = bear;
+        setChanged();
+        notifyObservers();
     }
 
     /**
@@ -59,6 +61,8 @@ public class Virologist extends Observable implements Ticker {
      */
     public void setParalyzedTime(int paralyzedTime) {
         this.paralyzedTime = paralyzedTime;
+        setChanged();
+        notifyObservers(paralyzedTime);
     }
 
     /**
@@ -68,6 +72,8 @@ public class Virologist extends Observable implements Ticker {
      */
     public void setUncontrollabeTime(int uncontrollabeTime) {
         this.uncontrollableTime = uncontrollabeTime;
+        setChanged();
+        notifyObservers(uncontrollabeTime);
     }
 
     /**
@@ -134,6 +140,8 @@ public class Virologist extends Observable implements Ticker {
      */
     public void Forgetting_codes () {
         genetic_codes.clear();
+        setChanged();
+        notifyObservers();
     }
 
     /**
@@ -157,13 +165,14 @@ public class Virologist extends Observable implements Ticker {
      * elveszít, ami eddig a birtokában volt.
      * @param p - a védőfelszerelés, amelyet elveszít
      */
-    public void
-    LoseItem (Protection p)
+    public void LoseItem (Protection p)
     {
         if(protections.contains(p))
         {
             p.ReverseEffect(this);
             protections.remove(p);
+            setChanged();
+            notifyObservers(protections);
         }
     }
 
@@ -181,6 +190,8 @@ public class Virologist extends Observable implements Ticker {
                 }
             }
             protections.add(p);
+            setChanged();
+            notifyObservers(protections);
         }
     }
 
@@ -190,13 +201,13 @@ public class Virologist extends Observable implements Ticker {
      */
     public void StealItem(Virologist v) {
         if(v.GetParalyzedTime() > 0 && LookAround().contains(v)){
-            boolean vanmar;
+            boolean hasProtection;
             for(Protection p : v.GetProtections()){
-                vanmar = false;
+                hasProtection = false;
                 for(Protection g : protections){
-                    if(p.GetType().equals(g.GetType())) vanmar = true;
+                    if(p.GetType().equals(g.GetType())) hasProtection = true;
                 }
-                if(!vanmar){
+                if(!hasProtection){
                     ApplyItem(p);
                     v.LoseItem(p);
                 }
@@ -219,6 +230,8 @@ public class Virologist extends Observable implements Ticker {
      */
     public void ReduceImmuneTime () {
         if (immuneTime > 0) immuneTime--;
+        setChanged();
+        notifyObservers(immuneTime);
     }
     /**
      * Ha a virológust egy másik virológus lebénította, akkor
@@ -227,6 +240,8 @@ public class Virologist extends Observable implements Ticker {
      */
     public void ReduceParalyzedTime () {
         if (paralyzedTime > 0) paralyzedTime--;
+        setChanged();
+        notifyObservers(paralyzedTime);
     }
     /**
      * Ha a virológust egy másik virológus kontrollálhatatlanná
@@ -235,6 +250,8 @@ public class Virologist extends Observable implements Ticker {
      */
     public void ReduceUncontrollableTime () {
         if (uncontrollableTime > 0) uncontrollableTime--;
+        setChanged();
+        notifyObservers(uncontrollableTime);
     }
 
     /**
@@ -248,6 +265,8 @@ public class Virologist extends Observable implements Ticker {
                 AddNukleotid(v.GetNukleotid().get(0));
                 v.GetNukleotid().remove(0);
             }
+            setChanged();
+            notifyObservers(v.GetNukleotid().size());
         }
     }
 
@@ -262,6 +281,8 @@ public class Virologist extends Observable implements Ticker {
                 AddAminoacid(v.GetAminoacid().get(0));
                 v.GetAminoacid().remove(0);
             }
+            setChanged();
+            notifyObservers(v.GetAminoacid().size());
         }
     }
 
@@ -280,6 +301,8 @@ public class Virologist extends Observable implements Ticker {
      */
     public void AddAgent (Agent a){
         agent.add(a);
+        setChanged();
+        notifyObservers(agent);
     }
 
     /**
@@ -288,6 +311,8 @@ public class Virologist extends Observable implements Ticker {
      */
     public void AddAminoacid (Aminoacid am){
        if(aminoacid.size() < capacity) aminoacid.add(am);
+        setChanged();
+        notifyObservers(aminoacid.size());
     }
 
     /**
@@ -296,6 +321,8 @@ public class Virologist extends Observable implements Ticker {
      */
     public void AddNukleotid (Nukleotid n){
         if(nukleotid.size() < capacity) nukleotid.add(n);
+        setChanged();
+        notifyObservers(nukleotid.size());
     }
 
     /**
@@ -374,6 +401,7 @@ public class Virologist extends Observable implements Ticker {
      */
     public void setCurrent_field(Field f){
         current_field = f;
+        //lehet ide notify
     }
 
     /**
@@ -411,7 +439,11 @@ public class Virologist extends Observable implements Ticker {
      */
     public void RemoveNukleotid(int nr){
         if (nukleotid.size() >= nr)
-            for (int i=0; i<nr; i++) nukleotid.remove(0);
+            for (int i=0; i<nr; i++){
+                nukleotid.remove(0);
+            }
+        setChanged();
+        notifyObservers(nukleotid.size());
     }
 
     /**
@@ -429,7 +461,11 @@ public class Virologist extends Observable implements Ticker {
      */
     public void RemoveAminoacid(int nr){
         if (aminoacid.size() >= nr)
-            for (int i=0; i<nr; i++) aminoacid.remove(0);
+            for (int i=0; i<nr; i++){
+                aminoacid.remove(0);
+            }
+        setChanged();
+        notifyObservers(aminoacid.size());
     }
 
     /**
@@ -446,7 +482,11 @@ public class Virologist extends Observable implements Ticker {
      * Az immunitáshoz tartozó idő setter függvénye
      * @param n - az ImmuneTime értéke, amennyire be szeretnénk azt állítani
      */
-    public void SetImmuneTime(int n) { immuneTime = n; }
+    public void SetImmuneTime(int n) {
+        immuneTime = n;
+        setChanged();
+        notifyObservers(immuneTime);
+    }
 
     /**
      * Az immuneTime getter függvénye
@@ -483,6 +523,8 @@ public class Virologist extends Observable implements Ticker {
      */
     public void setGenetic_codes(ArrayList<GeneticCode> g){
         genetic_codes = g;
+        setChanged();
+        notifyObservers(genetic_codes);
     }
 
     /**
