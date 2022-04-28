@@ -1,8 +1,9 @@
 package projlab;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
-public class Field implements Ticker{
+public class Field extends Observable implements Ticker{
     protected int fieldId;
     private ArrayList<Field> neighbours;
     private ArrayList<Virologist> virologist;

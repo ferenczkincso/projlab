@@ -2,8 +2,9 @@ package projlab;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
-public class Game {
+public class Game extends Observable {
 
     private ArrayList<Virologist> virologists;
     private ArrayList<Field> fields;

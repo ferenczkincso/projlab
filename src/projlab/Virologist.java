@@ -1,10 +1,11 @@
 package projlab;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 import java.util.Random;
 
 
-public class Virologist implements Ticker {
+public class Virologist extends Observable implements Ticker {
     private int capacity = 15;
     private ArrayList<Nukleotid> nukleotid;
     private ArrayList<Aminoacid> aminoacid;
