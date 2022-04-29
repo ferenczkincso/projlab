@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Shelter extends Field{
-    Protection protection;
+    private Protection protection;
 
     public Shelter(int i){
         super(i);
@@ -24,9 +24,12 @@ public class Shelter extends Field{
      */
     @Override
     public void Collect(Virologist v) {
+        int counter = 0;
         for (Protection p: v.GetProtections())
         {
+            counter++;
             if (p.getClass().equals(protection.getClass())) return;
+            if (counter==3) return;
         }
         v.GetProtections().add(protection);
         setChanged();
@@ -38,4 +41,6 @@ public class Shelter extends Field{
     }
 
     public void SetProtection(Protection p){protection = p;}
+    public Protection getProtection() {return protection;}
+
 }

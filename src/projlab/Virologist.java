@@ -86,6 +86,15 @@ public class Virologist extends Observable implements Ticker {
         setChanged();
         notifyObservers(uncontrollabeTime);
     }
+    /**
+     * Az immunitáshoz tartozó idő setter függvénye
+     * @param immuneTime - az ImmuneTime értéke, amennyire be szeretnénk azt állítani
+     */
+    public void SetImmuneTime(int immuneTime) {
+        this.immuneTime = immuneTime;
+        setChanged();
+        notifyObservers(immuneTime);
+    }
 
     /**
      * Az idő számlálásáért felelős
@@ -489,15 +498,6 @@ public class Virologist extends Observable implements Ticker {
     }
     //public void SetProtections(ArrayList<Protection> p){}
 
-    /**
-     * Az immunitáshoz tartozó idő setter függvénye
-     * @param n - az ImmuneTime értéke, amennyire be szeretnénk azt állítani
-     */
-    public void SetImmuneTime(int n) {
-        immuneTime = n;
-        setChanged();
-        notifyObservers(immuneTime);
-    }
 
     /**
      * Az immuneTime getter függvénye
