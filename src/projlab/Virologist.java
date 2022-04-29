@@ -462,6 +462,7 @@ public class Virologist extends Observable implements Ticker {
             for (int i=0; i<nr; i++){
                 nukleotid.remove(0);
             }
+        else return;
         setChanged();
         notifyObservers(nukleotid.size());
     }
