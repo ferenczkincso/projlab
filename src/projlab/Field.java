@@ -1,4 +1,6 @@
 package projlab;
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -99,4 +101,7 @@ public class Field extends Observable implements Ticker{
     }
 
     public int GetFieldId(){return fieldId;}
+
+
+
 }
