@@ -1,7 +1,6 @@
 package projlab;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 import java.util.Random;
 
 
@@ -38,14 +37,14 @@ public class Virologist extends Observable implements Ticker {
      */
     public void setBear(boolean bear) {
         isBear = bear;
-        setChanged();
-        notifyObservers();
+        observer.update();
     }
 
     /**
      * A Virologist konstruktor függvénye
      */
-    public Virologist(){
+    public Virologist(Observer o){
+        super(o);
         nukleotid = new ArrayList<Nukleotid>();
         aminoacid = new ArrayList<Aminoacid>();
         protections = new ArrayList<Protection>();
@@ -54,7 +53,8 @@ public class Virologist extends Observable implements Ticker {
         hasGlove = false;
         dodged = false;
     }
-    public Virologist(String name){
+    public Virologist(Observer o,String name){
+        super(o);
         this.name = name;
         nukleotid = new ArrayList<Nukleotid>();
         aminoacid = new ArrayList<Aminoacid>();
@@ -72,8 +72,7 @@ public class Virologist extends Observable implements Ticker {
      */
     public void setParalyzedTime(int paralyzedTime) {
         this.paralyzedTime = paralyzedTime;
-        setChanged();
-        notifyObservers(paralyzedTime);
+        observer.update();
     }
 
     /**
@@ -83,8 +82,7 @@ public class Virologist extends Observable implements Ticker {
      */
     public void setUncontrollabeTime(int uncontrollabeTime) {
         this.uncontrollableTime = uncontrollabeTime;
-        setChanged();
-        notifyObservers(uncontrollabeTime);
+        observer.update();
     }
     /**
      * Az immunitáshoz tartozó idő setter függvénye
@@ -92,8 +90,7 @@ public class Virologist extends Observable implements Ticker {
      */
     public void SetImmuneTime(int immuneTime) {
         this.immuneTime = immuneTime;
-        setChanged();
-        notifyObservers(immuneTime);
+        observer.update();
     }
 
     /**
@@ -160,8 +157,7 @@ public class Virologist extends Observable implements Ticker {
      */
     public void Forgetting_codes () {
         genetic_codes.clear();
-        setChanged();
-        notifyObservers();
+        observer.update();
     }
 
     /**
@@ -191,8 +187,7 @@ public class Virologist extends Observable implements Ticker {
         {
             p.ReverseEffect(this);
             protections.remove(p);
-            setChanged();
-            notifyObservers(protections);
+            observer.update();
         }
     }
 
@@ -210,8 +205,7 @@ public class Virologist extends Observable implements Ticker {
                 }
             }
             protections.add(p);
-            setChanged();
-            notifyObservers(protections);
+            observer.update();
         }
     }
 
@@ -250,8 +244,7 @@ public class Virologist extends Observable implements Ticker {
      */
     public void ReduceImmuneTime () {
         if (immuneTime > 0) immuneTime--;
-        setChanged();
-        notifyObservers(immuneTime);
+        observer.update();
     }
     /**
      * Ha a virológust egy másik virológus lebénította, akkor
@@ -260,8 +253,7 @@ public class Virologist extends Observable implements Ticker {
      */
     public void ReduceParalyzedTime () {
         if (paralyzedTime > 0) paralyzedTime--;
-        setChanged();
-        notifyObservers(paralyzedTime);
+        observer.update();
     }
     /**
      * Ha a virológust egy másik virológus kontrollálhatatlanná
@@ -270,8 +262,7 @@ public class Virologist extends Observable implements Ticker {
      */
     public void ReduceUncontrollableTime () {
         if (uncontrollableTime > 0) uncontrollableTime--;
-        setChanged();
-        notifyObservers(uncontrollableTime);
+        observer.update();
     }
 
     /**
@@ -285,8 +276,7 @@ public class Virologist extends Observable implements Ticker {
                 AddNukleotid(v.GetNukleotid().get(0));
                 v.GetNukleotid().remove(0);
             }
-            setChanged();
-            notifyObservers(v.GetNukleotid().size());
+            observer.update();
         }
     }
 
@@ -301,8 +291,7 @@ public class Virologist extends Observable implements Ticker {
                 AddAminoacid(v.GetAminoacid().get(0));
                 v.GetAminoacid().remove(0);
             }
-            setChanged();
-            notifyObservers(v.GetAminoacid().size());
+            observer.update();
         }
     }
 
@@ -321,8 +310,7 @@ public class Virologist extends Observable implements Ticker {
      */
     public void AddAgent (Agent a){
         agent.add(a);
-        setChanged();
-        notifyObservers(agent);
+        observer.update();
     }
 
     /**
@@ -331,8 +319,7 @@ public class Virologist extends Observable implements Ticker {
      */
     public void AddAminoacid (Aminoacid am){
        if(aminoacid.size() < capacity) aminoacid.add(am);
-        setChanged();
-        notifyObservers(aminoacid.size());
+        observer.update();
     }
 
     /**
@@ -341,8 +328,7 @@ public class Virologist extends Observable implements Ticker {
      */
     public void AddNukleotid (Nukleotid n){
         if(nukleotid.size() < capacity) nukleotid.add(n);
-        setChanged();
-        notifyObservers(nukleotid.size());
+        observer.update();
     }
 
     /**
@@ -463,8 +449,7 @@ public class Virologist extends Observable implements Ticker {
                 nukleotid.remove(0);
             }
         else return;
-        setChanged();
-        notifyObservers(nukleotid.size());
+        observer.update();
     }
 
     /**
@@ -485,8 +470,7 @@ public class Virologist extends Observable implements Ticker {
             for (int i=0; i<nr; i++){
                 aminoacid.remove(0);
             }
-        setChanged();
-        notifyObservers(aminoacid.size());
+        observer.update();
     }
 
     /**
@@ -535,8 +519,7 @@ public class Virologist extends Observable implements Ticker {
      */
     public void setGenetic_codes(ArrayList<GeneticCode> g){
         genetic_codes = g;
-        setChanged();
-        notifyObservers(genetic_codes);
+        observer.update();
     }
 
     /**

@@ -25,7 +25,7 @@ public class TestGame {
     */
     public void createCity(){
         fields = new ArrayList<Field>();
-
+        /*
         Lab f1 = new Lab(11); f1.SetGenetic_code(new GC_Immunity()); fields.add(f1);
         Aminoacid_storage f2 = new Aminoacid_storage(12); fields.add(f2);
         Shelter f3 = new Shelter(13); f3.SetProtection(new Bag()); fields.add(f3);
@@ -71,6 +71,7 @@ public class TestGame {
                 }
             }
         }
+       */
     }
 
     public void moveVirologist(Virologist v, int id){

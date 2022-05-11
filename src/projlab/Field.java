@@ -3,14 +3,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
+
 
 public class Field extends Observable implements Ticker{
     protected int fieldId;
     private ArrayList<Field> neighbours;
     private ArrayList<Virologist> virologist;
+    private FieldDisplay fieldDisplay;
 
-    public Field(int id){
+    public Field(Observer o,int id){
+        super(o);
         fieldId = id;
         neighbours = new ArrayList<Field>();
         virologist = new ArrayList<Virologist>();
@@ -65,8 +67,7 @@ public class Field extends Observable implements Ticker{
         if(virologist.size() < 2){
             virologist.add(v);
             v.setCurrent_field(this);
-            setChanged();
-            notifyObservers(v.getCurrent_field());
+            observer.update();
         }
     }
 
@@ -81,8 +82,7 @@ public class Field extends Observable implements Ticker{
         virologist.remove(v);
         int fID = v.getCurrent_field().GetFieldId();
         v.setCurrent_field(null);
-        setChanged();
-        notifyObservers(fID);
+        observer.update();
     }
 
     /**

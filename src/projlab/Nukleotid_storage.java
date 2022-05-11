@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Nukleotid_storage extends Storage{
     private ArrayList<Nukleotid> nukleotid;
-    public Nukleotid_storage(int id){
-        super(id);
+    public Nukleotid_storage(Observer o,int id){
+        super(o,id);
         nukleotid = new ArrayList<Nukleotid>();
         for (int i = 0; i<5; i++){
             Nukleotid n = new Nukleotid();

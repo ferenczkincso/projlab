@@ -1,11 +1,16 @@
 package projlab;
 
-import java.util.Observable;
-import java.util.Observer;
+import javax.swing.*;
 
 public class InventoryDisplay implements Observer {
-    @Override
-    public void update(Observable o, Object arg) {
 
+    JPanel panel;
+
+    InventoryDisplay(JPanel p){ panel = p;}
+
+    @Override
+    public void update() {
+        panel.revalidate();
+        panel.repaint();
     }
 }

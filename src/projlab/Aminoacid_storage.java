@@ -5,8 +5,8 @@ import java.util.List;
 public class Aminoacid_storage extends Storage{
     private ArrayList<Aminoacid> aminoacid;
 
-    public Aminoacid_storage(int id){
-        super(id);
+    public Aminoacid_storage(Observer o,int id){
+        super(o,id);
         aminoacid = new ArrayList<Aminoacid>();
         for (int i = 0; i<5; i++){
             Aminoacid a = new Aminoacid();

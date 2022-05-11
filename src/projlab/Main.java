@@ -15,14 +15,11 @@ public class Main {
         //végén
         timer.join();
         */
-        ArrayList<Field> fields = new ArrayList<Field>();
-        for(int i = 1; i < 4; i++){
-            for(int j = 1; j < 4; j++){
-                fields.add(new Field(10 * i + j));
-            }
-        }
 
-        Display display = new Display(fields);
+        Game game = new Game();
+        game.startGame();
+
+
 
     }
 
