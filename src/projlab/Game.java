@@ -10,10 +10,12 @@ public class Game {
     private ArrayList<Virologist> virologists;
     private ArrayList<Field> fields;
     private Display display;
-
+    private Controller controller;
+    private Virologist currentVirologist;
 
 
     public void startGame(){
+        controller = new Controller(this);
         fields = new ArrayList<Field>();
         display = new Display(fields);
         CreateCity();
@@ -22,7 +24,8 @@ public class Game {
         AddVirologist();
         AddVirologist();
 
-        display.setCurrentVirologist(virologists.get(0));
+
+        currentVirologist = virologists.get(0);
 
         while(true){
             boolean endgame = false;
@@ -77,11 +80,11 @@ public class Game {
 
     }
 
-    // következő virológus jön, a controller fogja hivni ha megnyomnak egy gombot
+    // következő virológus jön, a controller  hívja ha megnyomnak egy gombot
     public void nextVirologist(){
-        int index = virologists.indexOf(display.getCurrentVirologist());
-        if(index == virologists.size() - 1) display.setCurrentVirologist(virologists.get(0));
-        else display.setCurrentVirologist(virologists.get(index + 1));
+        int index = virologists.indexOf(currentVirologist);
+        if(index == virologists.size() - 1) currentVirologist = virologists.get(0);
+        else currentVirologist = virologists.get(index + 1);
     }
 
     public List<Field> getFields() {
@@ -99,6 +102,9 @@ public class Game {
     public void setVirologists(ArrayList<Virologist> virologists) {
         this.virologists = virologists;
     }
+
+    //ublic void setCurrentVirologist(Virologist v){ currentVirologist = v;}
+    public Virologist getCurrentVirologist(){ return currentVirologist;}
 
 
 

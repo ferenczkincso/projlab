@@ -3,6 +3,8 @@ package projlab;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -18,16 +20,17 @@ public class Display {
     private JPanel inventoryPanel;
     private InventoryDisplay inventoryDisplay;
 
-    private Virologist currentVirologist;
+
 
     Display(ArrayList<Field>fields) {
         window = new JFrame();
         fieldPanel = new JPanel(){
+            BufferedImage p = null;
             @Override
-            public void paintComponent(Graphics g){
+            public void paintComponent(Graphics g){  // ez a rajzolja ki a filedeket, a protectionokat meg a virológusokat
                 super.paintComponent(g);
                 for(Field f : fields){
-                    BufferedImage p = null;
+
                     switch (f.getType()){
                         case "Aminoacid_storage":
                             g.setColor(Color.red);
@@ -44,36 +47,50 @@ public class Display {
                         case "Shelter" :
                             g.setColor(Color.green);
                             Shelter s = (Shelter)f;
-                            try {
                                 switch(s.getProtection().GetType()) {
                                     case "Bag" :
-                                        p = ImageIO.read(new File("src/images/bag.jpg"));
+                                        try {
+                                            p = ImageIO.read(new File("src/images/bag.jpg"));
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
                                         break;
 
                                     case "Cloak" :
-                                        p = ImageIO.read(new File("src/images/cloak.jpg"));
+                                        try {
+                                            p = ImageIO.read(new File("src/images/cloak.jpg"));
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
                                         break;
 
                                     case "Glove" :
-                                        p = ImageIO.read(new File("src/images/glove.jpg"));
+                                        try {
+                                            p = ImageIO.read(new File("src/images/glove.jpg"));
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
                                         break;
 
                                     case "Ax" :
-                                        p = ImageIO.read(new File("src/images/ax.jpg"));
+                                        try {
+                                            p = ImageIO.read(new File("src/images/ax.jpg"));
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
                                         break;
-
                                 }
-                            } catch (IOException e) {}
                             break;
 
                         default :
                             g.setColor(Color.gray);
                             break;
-
                     }
                     int x = f.GetFieldId() % 10 * 100;
                     int y = (int) (f.GetFieldId() / 10) * 100 ;
                     g.fillRect(x, y,98,98);
+                    int fixX = x;
+                    int fixY = y;
                     for(Virologist v : f.GetVirologist()) {
                         if(v.isBear()) g.setColor(new Color(153,102,0));
                         else if(v.GetUncontrollableTime() > 0) g.setColor(Color.orange);
@@ -82,11 +99,13 @@ public class Display {
                         g.fillOval(x +10, y + 10, 20, 20);
                         g.setColor(Color.black);
                         g.drawOval(x +10 ,y + 10,20,20);
-                            g.drawImage(p,x + 64,y + 64,this);
-
+                        if(f.getType().equals("Shelter")) {
+                            g.drawImage(p, fixX + 64, fixY + 64, this);
+                        }
                         x += 30;
 
                     }
+
                 }
             }
         };
@@ -111,8 +130,9 @@ public class Display {
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
-    public void setCurrentVirologist(Virologist v){ currentVirologist = v;}
-    public Virologist getCurrentVirologist(){ return currentVirologist;}
+
+
+
     public FieldDisplay getFieldDisplay(){return fieldDisplay;}
     public InventoryDisplay getInventoryDisplay(){return inventoryDisplay;}
 
