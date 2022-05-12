@@ -58,5 +58,6 @@ public class Nukleotid_storage extends Storage{
             tickCount = 0;
         }
     }
+    public String getType(){return "Nukleotid_storage";}
 
 }

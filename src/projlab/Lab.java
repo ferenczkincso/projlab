@@ -47,5 +47,6 @@ public class Lab extends Field{
     }
 
     public void SetGenetic_code(GeneticCode g){genetic_code = g;}
+    public String getType(){return "Lab";}
 
 }

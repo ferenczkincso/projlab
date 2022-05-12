@@ -63,5 +63,6 @@ public class Aminoacid_storage extends Storage{
             }
             tickCount = 0;
         }
-    };
+    }
+    public String getType(){return "Aminoacid_storage";}
 }

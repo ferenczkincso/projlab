@@ -41,5 +41,7 @@ public class Shelter extends Field{
 
     public void SetProtection(Protection p){protection = p;}
     public Protection getProtection() {return protection;}
+    public String getType(){return "Shelter";}
+
 
 }

@@ -101,6 +101,7 @@ public class Field extends Observable implements Ticker{
     }
 
     public int GetFieldId(){return fieldId;}
+    public String getType(){return "Field";}
 
 
 
