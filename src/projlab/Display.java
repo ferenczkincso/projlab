@@ -19,7 +19,6 @@ public class Display {
 
     private JPanel inventoryPanel;
     private InventoryDisplay inventoryDisplay;
-    private Controller controller;
 
 
     Display(ArrayList<Field>fields) {

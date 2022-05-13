@@ -4,7 +4,7 @@ import javax.swing.*;
 
 
 
-public class FieldDisplay extends JPanel implements Observer {
+public class FieldDisplay implements Observer {
 
     JPanel panel;
 
