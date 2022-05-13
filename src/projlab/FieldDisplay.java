@@ -1,14 +1,20 @@
 package projlab;
 
-import java.util.Observable;
-import java.util.Observer;
+import javax.swing.*;
 
-public class FieldDisplay implements Observer{
-    Field f;
+
+
+public class FieldDisplay extends JPanel implements Observer {
+
+    JPanel panel;
+
+    FieldDisplay(JPanel p) {panel = p;}
+
     @Override
-    public void update(Observable o, Object arg) {
-        if (o.getClass() == f.getClass()){
-
-        }
+    public void update() {
+        panel.revalidate();
+        panel.repaint();
     }
+
+
 }
