@@ -19,7 +19,7 @@ public class Display {
 
     private JPanel inventoryPanel;
     private InventoryDisplay inventoryDisplay;
-
+    private Controller controller;
 
 
     Display(ArrayList<Field>fields) {
@@ -136,5 +136,7 @@ public class Display {
     public FieldDisplay getFieldDisplay(){return fieldDisplay;}
     public InventoryDisplay getInventoryDisplay(){return inventoryDisplay;}
 
-
+    public JPanel getFieldPanel() {
+        return fieldPanel;
+    }
 }

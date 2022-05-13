@@ -5,21 +5,16 @@ import java.awt.event.KeyListener;
 
 public class Controller implements KeyListener {
     private Game game;
-
     Controller(Game g){
         game = g;
+        game.getDisplay().getFieldPanel().addKeyListener(this);
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
         switch(e.getKeyChar()){
             case KeyEvent.VK_UP :
-                if(game.getCurrentVirologist().getCurrent_field().GetFieldId() / 10 == 1) break;
+                if((int)game.getCurrentVirologist().getCurrent_field().GetFieldId() / 10 == 1) break;
                 else {
                     for(Field f : game.getFields()) {
                         if(f.GetFieldId() == game.getCurrentVirologist().getCurrent_field().GetFieldId() - 10) {
@@ -63,6 +58,11 @@ public class Controller implements KeyListener {
                 }
                 break;
         }
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
     }
 
     @Override

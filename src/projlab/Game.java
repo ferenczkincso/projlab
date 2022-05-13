@@ -13,10 +13,9 @@ public class Game {
     private Controller controller;
     private Virologist currentVirologist;
 
-
-    public void startGame(){
-        controller = new Controller(this);
+    Game(){
         fields = new ArrayList<Field>();
+        virologists = new ArrayList<Virologist>();
         display = new Display(fields);
         CreateCity();
         AddVirologist();
@@ -24,7 +23,10 @@ public class Game {
         AddVirologist();
         AddVirologist();
 
+        controller = new Controller(this);
+    }
 
+    public void startGame(){
         currentVirologist = virologists.get(0);
 
         while(true){
@@ -32,6 +34,7 @@ public class Game {
             for(Virologist v : virologists) {
                 if (v.GetGenetic_codes().size() == 4) endgame = true;
             }
+            System.out.println(currentVirologist.getCurrent_field().GetFieldId());
             if(endgame) break;
 
 
@@ -72,11 +75,10 @@ public class Game {
     }
 
     public void AddVirologist(){
-        if(virologists == null) virologists = new ArrayList<Virologist>();
         Virologist v = new Virologist(display.getInventoryDisplay());
         virologists.add(v);
         Random r = new Random();
-        fields.get(r.nextInt(fields.size() - 1)).GetVirologist().add(v);  //hozzáadjuk egy random mezőhöz
+        fields.get(r.nextInt(fields.size() - 1)).Accept(v);  //hozzáadjuk egy random mezőhöz
 
     }
 
@@ -105,7 +107,7 @@ public class Game {
 
     //ublic void setCurrentVirologist(Virologist v){ currentVirologist = v;}
     public Virologist getCurrentVirologist(){ return currentVirologist;}
-
+    public Display getDisplay(){return display;}
 
 
 
