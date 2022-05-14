@@ -1,11 +1,12 @@
 package projlab;
 
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Random;
 
-public class Game {
+public class Game implements Ticker {
 
     private ArrayList<Virologist> virologists;
     private ArrayList<Field> fields;
@@ -16,31 +17,36 @@ public class Game {
     Game(){
         fields = new ArrayList<Field>();
         virologists = new ArrayList<Virologist>();
-        display = new Display(fields);
+
+        display = new Display(this);
         CreateCity();
         AddVirologist();
         AddVirologist();
         AddVirologist();
         AddVirologist();
-
         controller = new Controller(this);
+        addKeyListener(controller);
+
+    }
+
+    public void Tick(){
+        for(Virologist v : virologists) {
+            if (v.GetGenetic_codes().size() == 4) endGame();
+        }
+    }
+
+    public void addKeyListener(KeyListener listener){
+        display.getWindow().addKeyListener(listener);
     }
 
     public void startGame(){
+
         currentVirologist = virologists.get(0);
 
-        while(true){
-            boolean endgame = false;
-            for(Virologist v : virologists) {
-                if (v.GetGenetic_codes().size() == 4) endgame = true;
-            }
-            System.out.println(currentVirologist.getCurrent_field().GetFieldId());
-            if(endgame) break;
+    }
 
-
-            //...
-
-        }
+    public void endGame(){
+        display.getWindow().removeKeyListener(controller);
     }
 
     public void CreateCity(){

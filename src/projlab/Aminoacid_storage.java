@@ -23,6 +23,7 @@ public class Aminoacid_storage extends Storage{
         while(v.GetAminoacid().size() < v.GetCapacity() && !aminoacid.isEmpty()){
             v.AddAminoacid(aminoacid.get(0));
             aminoacid.remove(0);
+            observer.update();
         }
     }
 
@@ -32,6 +33,7 @@ public class Aminoacid_storage extends Storage{
      */
     public void DestroyMaterial() {
         aminoacid.clear();
+        observer.update();
     }
 
     /**
@@ -65,4 +67,5 @@ public class Aminoacid_storage extends Storage{
         }
     }
     public String getType(){return "Aminoacid_storage";}
+    public String getCount(){return String.valueOf(aminoacid.size());}
 }

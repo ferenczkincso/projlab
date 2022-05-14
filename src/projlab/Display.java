@@ -21,14 +21,15 @@ public class Display {
     private InventoryDisplay inventoryDisplay;
 
 
-    Display(ArrayList<Field>fields) {
+
+    Display(Game game) {
         window = new JFrame();
         fieldPanel = new JPanel(){
             BufferedImage p = null;
             @Override
             public void paintComponent(Graphics g){  // ez a rajzolja ki a filedeket, a protectionokat meg a virológusokat
                 super.paintComponent(g);
-                for(Field f : fields){
+                for(Field f : game.getFields()){
 
                     switch (f.getType()){
                         case "Aminoacid_storage":
@@ -46,6 +47,7 @@ public class Display {
                         case "Shelter" :
                             g.setColor(Color.green);
                             Shelter s = (Shelter)f;
+                            if(s.getProtection() == null) break;
                                 switch(s.getProtection().GetType()) {
                                     case "Bag" :
                                         try {
@@ -96,18 +98,27 @@ public class Display {
                         else if(v.GetParalyzedTime() > 0) g.setColor(Color.pink);
                         else g.setColor(Color.black);
                         g.fillOval(x +10, y + 10, 20, 20);
-                        g.setColor(Color.black);
+                        if(v.equals(game.getCurrentVirologist())) g.setColor(Color.white);
+                        else g.setColor(Color.black);
                         g.drawOval(x +10 ,y + 10,20,20);
-                        if(f.getType().equals("Shelter")) {
-                            g.drawImage(p, fixX + 64, fixY + 64, this);
-                        }
                         x += 30;
-
                     }
-
+                    if(f.getType().equals("Shelter")) {
+                        g.drawImage(p, fixX + 64, fixY + 64, this);
+                    }else if(f.getType().equals("Aminoacid_storage")){
+                        g.setColor(Color.black);
+                        Aminoacid_storage as = (Aminoacid_storage)f;
+                        g.drawString(as.getCount(),fixX + 64, fixY + 64);
+                    }else if(f.getType().equals("Nukleotid_storage")){
+                        g.setColor(Color.black);
+                        Nukleotid_storage ns = (Nukleotid_storage) f;
+                        g.drawString(ns.getCount(),fixX + 64, fixY + 64);
+                    }
+                    p = null;
                 }
             }
         };
+
         fieldDisplay = new FieldDisplay(fieldPanel);
 
         inventoryPanel = new JPanel(){
@@ -138,4 +149,5 @@ public class Display {
     public JPanel getFieldPanel() {
         return fieldPanel;
     }
+    public JFrame getWindow(){return window;}
 }

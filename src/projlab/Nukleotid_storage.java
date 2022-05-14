@@ -21,6 +21,7 @@ public class Nukleotid_storage extends Storage{
         while(v.GetNukleotid().size() < v.GetCapacity() && !nukleotid.isEmpty()){
             v.AddNukleotid(nukleotid.get(0));
             nukleotid.remove(0);
+            observer.update();
         }
     }
 
@@ -30,6 +31,7 @@ public class Nukleotid_storage extends Storage{
      */
     public void DestroyMaterial() {
         nukleotid.clear();
+        observer.update();
     }
 
     /**
@@ -59,5 +61,6 @@ public class Nukleotid_storage extends Storage{
         }
     }
     public String getType(){return "Nukleotid_storage";}
+    public String getCount(){return String.valueOf(nukleotid.size());}
 
 }
