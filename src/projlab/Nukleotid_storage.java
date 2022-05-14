@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Nukleotid_storage extends Storage{
     private ArrayList<Nukleotid> nukleotid;
-    public Nukleotid_storage(Observer o,int id){
-        super(o,id);
+    public Nukleotid_storage(Observer o,Observer io,int id){
+        super(o,io,id);
         nukleotid = new ArrayList<Nukleotid>();
         for (int i = 0; i<5; i++){
             Nukleotid n = new Nukleotid();
@@ -21,7 +21,8 @@ public class Nukleotid_storage extends Storage{
         while(v.GetNukleotid().size() < v.GetCapacity() && !nukleotid.isEmpty()){
             v.AddNukleotid(nukleotid.get(0));
             nukleotid.remove(0);
-            observer.update();
+            fieldObserver.update();
+            inventoryObserver.update();
         }
     }
 
@@ -31,7 +32,8 @@ public class Nukleotid_storage extends Storage{
      */
     public void DestroyMaterial() {
         nukleotid.clear();
-        observer.update();
+        fieldObserver.update();
+        inventoryObserver.update();
     }
 
     /**

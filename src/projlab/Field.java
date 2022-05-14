@@ -11,8 +11,8 @@ public class Field extends Observable implements Ticker{
     private ArrayList<Virologist> virologist;
     private FieldDisplay fieldDisplay;
 
-    public Field(Observer o,int id){
-        super(o);
+    public Field(Observer o,Observer i,int id){
+        super(o,i);
         fieldId = id;
         neighbours = new ArrayList<Field>();
         virologist = new ArrayList<Virologist>();
@@ -67,7 +67,7 @@ public class Field extends Observable implements Ticker{
         if(virologist.size() < 2){
             virologist.add(v);
             v.setCurrent_field(this);
-            observer.update();
+            fieldObserver.update();
         }
     }
 
@@ -82,7 +82,7 @@ public class Field extends Observable implements Ticker{
         virologist.remove(v);
         int fID = v.getCurrent_field().GetFieldId();
         v.setCurrent_field(null);
-        observer.update();
+        fieldObserver.update();
     }
 
     /**

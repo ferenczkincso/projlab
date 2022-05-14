@@ -6,8 +6,8 @@ import java.util.Random;
 public class Shelter extends Field{
     private Protection protection;
 
-    public Shelter(Observer o,int i){
-        super(o,i);
+    public Shelter(Observer o,Observer io,int i){
+        super(o,io,i);
         Random rand = new Random();
         int id = rand.nextInt(4);
         switch (id){
@@ -32,7 +32,8 @@ public class Shelter extends Field{
             if (counter==3) return;
         }
         v.GetProtections().add(protection);
-        observer.update();
+        fieldObserver.update();
+        inventoryObserver.update();
         if(!protection.getClass().equals(Ax.class)) {
             protection.Effect(v);
         }

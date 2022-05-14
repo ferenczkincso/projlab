@@ -37,14 +37,14 @@ public class Virologist extends Observable implements Ticker {
      */
     public void setBear(boolean bear) {
         isBear = bear;
-        observer.update();
+        fieldObserver.update();
     }
 
     /**
      * A Virologist konstruktor függvénye
      */
-    public Virologist(Observer o){
-        super(o);
+    public Virologist(Observer o,Observer io){
+        super(o,io);
         nukleotid = new ArrayList<Nukleotid>();
         aminoacid = new ArrayList<Aminoacid>();
         protections = new ArrayList<Protection>();
@@ -53,8 +53,8 @@ public class Virologist extends Observable implements Ticker {
         hasGlove = false;
         dodged = false;
     }
-    public Virologist(Observer o,String name){
-        super(o);
+    public Virologist(Observer o,Observer io,String name){
+        super(o,io);
         this.name = name;
         nukleotid = new ArrayList<Nukleotid>();
         aminoacid = new ArrayList<Aminoacid>();
@@ -72,7 +72,8 @@ public class Virologist extends Observable implements Ticker {
      */
     public void setParalyzedTime(int paralyzedTime) {
         this.paralyzedTime = paralyzedTime;
-        observer.update();
+        fieldObserver.update();
+        inventoryObserver.update();
     }
 
     /**
@@ -82,7 +83,8 @@ public class Virologist extends Observable implements Ticker {
      */
     public void setUncontrollabeTime(int uncontrollabeTime) {
         this.uncontrollableTime = uncontrollabeTime;
-        observer.update();
+        fieldObserver.update();
+        inventoryObserver.update();
     }
     /**
      * Az immunitáshoz tartozó idő setter függvénye
@@ -90,7 +92,8 @@ public class Virologist extends Observable implements Ticker {
      */
     public void SetImmuneTime(int immuneTime) {
         this.immuneTime = immuneTime;
-        observer.update();
+        fieldObserver.update();
+        inventoryObserver.update();;
     }
 
     /**
@@ -157,7 +160,7 @@ public class Virologist extends Observable implements Ticker {
      */
     public void Forgetting_codes () {
         genetic_codes.clear();
-        observer.update();
+        inventoryObserver.update();
     }
 
     /**
@@ -187,7 +190,8 @@ public class Virologist extends Observable implements Ticker {
         {
             p.ReverseEffect(this);
             protections.remove(p);
-            observer.update();
+            fieldObserver.update();
+            inventoryObserver.update();
         }
     }
 
@@ -205,7 +209,8 @@ public class Virologist extends Observable implements Ticker {
                 }
             }
             protections.add(p);
-            observer.update();
+            fieldObserver.update();
+            inventoryObserver.update();;
         }
     }
 
@@ -244,7 +249,8 @@ public class Virologist extends Observable implements Ticker {
      */
     public void ReduceImmuneTime () {
         if (immuneTime > 0) immuneTime--;
-        observer.update();
+        fieldObserver.update();
+        inventoryObserver.update();
     }
     /**
      * Ha a virológust egy másik virológus lebénította, akkor
@@ -253,7 +259,8 @@ public class Virologist extends Observable implements Ticker {
      */
     public void ReduceParalyzedTime () {
         if (paralyzedTime > 0) paralyzedTime--;
-        observer.update();
+        fieldObserver.update();
+        inventoryObserver.update();
     }
     /**
      * Ha a virológust egy másik virológus kontrollálhatatlanná
@@ -262,7 +269,8 @@ public class Virologist extends Observable implements Ticker {
      */
     public void ReduceUncontrollableTime () {
         if (uncontrollableTime > 0) uncontrollableTime--;
-        observer.update();
+        fieldObserver.update();
+        inventoryObserver.update();
     }
 
     /**
@@ -276,7 +284,7 @@ public class Virologist extends Observable implements Ticker {
                 AddNukleotid(v.GetNukleotid().get(0));
                 v.GetNukleotid().remove(0);
             }
-            observer.update();
+            inventoryObserver.update();;
         }
     }
 
@@ -291,7 +299,7 @@ public class Virologist extends Observable implements Ticker {
                 AddAminoacid(v.GetAminoacid().get(0));
                 v.GetAminoacid().remove(0);
             }
-            observer.update();
+            inventoryObserver.update();
         }
     }
 
@@ -310,7 +318,7 @@ public class Virologist extends Observable implements Ticker {
      */
     public void AddAgent (Agent a){
         agent.add(a);
-        observer.update();
+        inventoryObserver.update();
     }
 
     /**
@@ -319,7 +327,8 @@ public class Virologist extends Observable implements Ticker {
      */
     public void AddAminoacid (Aminoacid am){
        if(aminoacid.size() < capacity) aminoacid.add(am);
-        observer.update();
+        fieldObserver.update();
+        inventoryObserver.update();
     }
 
     /**
@@ -328,7 +337,8 @@ public class Virologist extends Observable implements Ticker {
      */
     public void AddNukleotid (Nukleotid n){
         if(nukleotid.size() < capacity) nukleotid.add(n);
-        observer.update();
+        fieldObserver.update();
+        inventoryObserver.update();
     }
 
     /**
@@ -449,7 +459,7 @@ public class Virologist extends Observable implements Ticker {
                 nukleotid.remove(0);
             }
         else return;
-        observer.update();
+        inventoryObserver.update();
     }
 
     /**
@@ -470,7 +480,7 @@ public class Virologist extends Observable implements Ticker {
             for (int i=0; i<nr; i++){
                 aminoacid.remove(0);
             }
-        observer.update();
+        inventoryObserver.update();
     }
 
     /**
@@ -519,7 +529,7 @@ public class Virologist extends Observable implements Ticker {
      */
     public void setGenetic_codes(ArrayList<GeneticCode> g){
         genetic_codes = g;
-        observer.update();
+        inventoryObserver.update();
     }
 
     /**

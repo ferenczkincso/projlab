@@ -2,8 +2,8 @@ package projlab;
 abstract public class Storage extends Field{
     protected int tickCount = 0;
 
-    public Storage(Observer o,int id) {
-        super(o,id);
+    public Storage(Observer o,Observer io,int id) {
+        super(o,io,id);
     }
     //itt nincsenek megvalósítva
 

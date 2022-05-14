@@ -6,8 +6,8 @@ import java.util.Random;
 public class Lab extends Field{
     private GeneticCode genetic_code;
 
-    public Lab(Observer o,int i){
-        super(o,i);
+    public Lab(Observer o,Observer io,int i){
+        super(o,io,i);
         Random rand = new Random();
         int id = rand.nextInt(4);
         int temp = rand.nextInt(100)+1;

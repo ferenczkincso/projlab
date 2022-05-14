@@ -116,24 +116,88 @@ public class Display {
                     }
                     p = null;
                 }
+                g.setColor(Color.black);
+                g.drawRect(10,10,getWidth()-20,getHeight()-20);
             }
         };
 
+        fieldPanel.setPreferredSize(new Dimension(600,600));
         fieldDisplay = new FieldDisplay(fieldPanel);
+
+
 
         inventoryPanel = new JPanel(){
             @Override
             public void paintComponent(Graphics g){
                 super.paintComponent(g);
-                //...
+                g.setColor(Color.black);
+                g.drawRect(10,10,this.getWidth()-20,this.getHeight()-20);
             }
         };
 
+
+        JPanel protections = new JPanel(){  // protctionon panele
+            @Override
+            public void paintComponent(Graphics g){
+                BufferedImage p = null;
+                super.paintComponent(g);
+
+                int x = 20;
+                int y = 20;
+                for(Protection pr : game.getCurrentVirologist().GetProtections()){
+                    switch(pr.GetType()) {
+                        case "Bag" :
+                            try {
+                                p = ImageIO.read(new File("src/images/bag.jpg"));
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            break;
+
+                        case "Cloak" :
+                            try {
+                                p = ImageIO.read(new File("src/images/cloak.jpg"));
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            break;
+
+                        case "Glove" :
+                            try {
+                                p = ImageIO.read(new File("src/images/glove.jpg"));
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            break;
+
+                        case "Ax" :
+                            try {
+                                p = ImageIO.read(new File("src/images/ax.jpg"));
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            break;
+                    }
+                    g.drawImage(p,x,y,this);
+                    x += 40;
+
+                }
+            }
+        };
+        protections.setPreferredSize(new Dimension(300,60));
+        protections.setLocation(20,40);
+
+
+        inventoryPanel.setLayout(new FlowLayout());
+        inventoryPanel.setPreferredSize(new Dimension(400,500));
+        inventoryPanel.add(protections);
         inventoryDisplay = new InventoryDisplay(inventoryPanel);
 
-        window.add(fieldPanel);
-        //window.add(inventoryPanel);
-        //window.setLayout(new FlowLayout());
+
+
+        window.setLayout(new BorderLayout());
+        window.add(inventoryPanel,BorderLayout.LINE_START);
+        window.add(fieldPanel,BorderLayout.LINE_END);
         window.setBounds(20,20,1500,1000);
         window.setResizable(false);
         window.setVisible(true);

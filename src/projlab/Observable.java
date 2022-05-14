@@ -2,9 +2,12 @@ package projlab;
 
 public class Observable {
 
-    protected Observer observer;
+    protected Observer fieldObserver;
+    protected Observer inventoryObserver;
 
-    Observable(Observer o){
-        observer = o;
+    Observable(Observer f, Observer i){
+        fieldObserver = f;
+        inventoryObserver = i;
     }
+    public Observer getInventoryObserver(){return inventoryObserver;}
 }

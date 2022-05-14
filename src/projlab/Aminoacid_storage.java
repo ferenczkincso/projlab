@@ -5,8 +5,8 @@ import java.util.List;
 public class Aminoacid_storage extends Storage{
     private ArrayList<Aminoacid> aminoacid;
 
-    public Aminoacid_storage(Observer o,int id){
-        super(o,id);
+    public Aminoacid_storage(Observer o,Observer oi,int id){
+        super(o,oi,id);
         aminoacid = new ArrayList<Aminoacid>();
         for (int i = 0; i<5; i++){
             Aminoacid a = new Aminoacid();
@@ -23,7 +23,8 @@ public class Aminoacid_storage extends Storage{
         while(v.GetAminoacid().size() < v.GetCapacity() && !aminoacid.isEmpty()){
             v.AddAminoacid(aminoacid.get(0));
             aminoacid.remove(0);
-            observer.update();
+            inventoryObserver.update();
+            fieldObserver.update();
         }
     }
 
@@ -33,7 +34,8 @@ public class Aminoacid_storage extends Storage{
      */
     public void DestroyMaterial() {
         aminoacid.clear();
-        observer.update();
+        inventoryObserver.update();
+        fieldObserver.update();
     }
 
     /**
