@@ -23,6 +23,7 @@ public class Nukleotid_storage extends Storage{
             nukleotid.remove(0);
             fieldObserver.update();
             inventoryObserver.update();
+
         }
     }
 

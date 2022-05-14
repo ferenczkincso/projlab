@@ -20,10 +20,10 @@ public class Game implements Ticker {
 
         display = new Display(this);
         CreateCity();
-        AddVirologist();
-        AddVirologist();
-        AddVirologist();
-        AddVirologist();
+        AddVirologist("Player1");
+        AddVirologist("Player2");
+        AddVirologist("Player3");
+        AddVirologist("Player4");
         controller = new Controller(this);
         addKeyListener(controller);
 
@@ -80,8 +80,8 @@ public class Game implements Ticker {
         }
     }
 
-    public void AddVirologist(){
-        Virologist v = new Virologist(display.getFieldDisplay(), display.getInventoryDisplay());
+    public void AddVirologist(String name){
+        Virologist v = new Virologist(display.getFieldDisplay(), display.getInventoryDisplay(), name);
         virologists.add(v);
         Random r = new Random();
         fields.get(r.nextInt(fields.size() - 1)).Accept(v);  //hozzáadjuk egy random mezőhöz
@@ -112,7 +112,7 @@ public class Game implements Ticker {
         this.virologists = virologists;
     }
 
-    //ublic void setCurrentVirologist(Virologist v){ currentVirologist = v;}
+    //public void setCurrentVirologist(Virologist v){ currentVirologist = v;}
     public Virologist getCurrentVirologist(){ return currentVirologist;}
     public Display getDisplay(){return display;}
 

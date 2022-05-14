@@ -23,9 +23,11 @@ public class Controller implements KeyListener {
                 else {
                     for(Field f : game.getFields()) {
                         if(f.GetFieldId() == game.getCurrentVirologist().getCurrent_field().GetFieldId() - 10) {
-                            game.getCurrentVirologist().Move(f);
-                            game.nextVirologist();
-                            break;
+                            if (f.GetVirologist().size()<2) {
+                                game.getCurrentVirologist().Move(f);
+                                game.nextVirologist();
+                                break;
+                            }else break;
                         }
                     }
                 }
@@ -36,9 +38,11 @@ public class Controller implements KeyListener {
                 else {
                     for(Field f : game.getFields()) {
                         if(f.GetFieldId() == game.getCurrentVirologist().getCurrent_field().GetFieldId() + 10) {
-                            game.getCurrentVirologist().Move(f);
-                            game.nextVirologist();
-                            break;
+                            if (f.GetVirologist().size()<2) {
+                                game.getCurrentVirologist().Move(f);
+                                game.nextVirologist();
+                                break;
+                            }else break;
                         }
                     }
                 }
@@ -49,9 +53,11 @@ public class Controller implements KeyListener {
                 else {
                     for(Field f : game.getFields()) {
                         if(f.GetFieldId() == game.getCurrentVirologist().getCurrent_field().GetFieldId() + 1) {
-                            game.getCurrentVirologist().Move(f);
-                            game.nextVirologist();
-                            break;
+                            if (f.GetVirologist().size()<2) {
+                                game.getCurrentVirologist().Move(f);
+                                game.nextVirologist();
+                                break;
+                            }else break;
                         }
                     }
                 }
@@ -62,9 +68,11 @@ public class Controller implements KeyListener {
                 else {
                     for(Field f : game.getFields()) {
                         if(f.GetFieldId() == game.getCurrentVirologist().getCurrent_field().GetFieldId() - 1) {
-                            game.getCurrentVirologist().Move(f);
-                            game.nextVirologist();
-                            break;
+                            if (f.GetVirologist().size()<2) {
+                                game.getCurrentVirologist().Move(f);
+                                game.nextVirologist();
+                                break;
+                            }else break;
                         }
                     }
                 }
@@ -89,6 +97,13 @@ public class Controller implements KeyListener {
             case KeyEvent.VK_A :  //ágens kenése
                 System.out.println("A");
 
+            case KeyEvent.VK_G :  //genetic code tapogatas
+                System.out.println("G");
+                if (game.getCurrentVirologist().getCurrent_field().getType().equals("Lab")){
+                    Lab l = (Lab)game.getCurrentVirologist().getCurrent_field();
+                    l.Collect(game.getCurrentVirologist());
+                }
+                break;
         }
     }
 

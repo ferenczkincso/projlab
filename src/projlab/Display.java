@@ -87,9 +87,15 @@ public class Display {
                             g.setColor(Color.gray);
                             break;
                     }
+                    Graphics2D g2 = (Graphics2D) g;
+                    Stroke oldStroke = g2.getStroke();
                     int x = f.GetFieldId() % 10 * 100;
                     int y = (int) (f.GetFieldId() / 10) * 100 ;
-                    g.fillRect(x, y,98,98);
+                    g2.fillRect(x, y, 100, 100);
+                    g2.setColor(Color.BLACK);
+                    g2.setStroke(new BasicStroke(2.0f));
+                    g2.drawRect(x, y, 100, 100);
+                    g2.setStroke(oldStroke);
                     int fixX = x;
                     int fixY = y;
                     for(Virologist v : f.GetVirologist()) {
@@ -104,20 +110,28 @@ public class Display {
                         x += 30;
                     }
                     if(f.getType().equals("Shelter")) {
-                        g.drawImage(p, fixX + 64, fixY + 64, this);
+                        g.drawImage(p, fixX + 63, fixY + 63, this);
                     }else if(f.getType().equals("Aminoacid_storage")){
                         g.setColor(Color.black);
+                        g.setFont(new Font("TimesRoman", Font.BOLD, 20));
                         Aminoacid_storage as = (Aminoacid_storage)f;
-                        g.drawString(as.getCount(),fixX + 64, fixY + 64);
+                        g.drawString(as.getCount(),fixX + 75, fixY + 75);
                     }else if(f.getType().equals("Nukleotid_storage")){
                         g.setColor(Color.black);
+                        g.setFont(new Font("TimesRoman", Font.BOLD, 20));
                         Nukleotid_storage ns = (Nukleotid_storage) f;
-                        g.drawString(ns.getCount(),fixX + 64, fixY + 64);
+                        g.drawString(ns.getCount(),fixX + 75, fixY + 75);
                     }
                     p = null;
                 }
-                g.setColor(Color.black);
-                g.drawRect(10,10,getWidth()-20,getHeight()-20);
+                Graphics2D g2 = (Graphics2D) g;
+                Stroke oldStroke = g2.getStroke();
+                g2.setColor(Color.BLACK);
+                g2.setStroke(new BasicStroke(3.0f));
+                g2.drawRect(10,10,getWidth()-20,getHeight()-20);
+                g2.setStroke(oldStroke);
+                g2.setFont(new Font("TimesRoman", Font.BOLD, 15));
+                g2.drawString(game.getCurrentVirologist().getName(), 20,30);
             }
         };
 
@@ -130,20 +144,24 @@ public class Display {
             @Override
             public void paintComponent(Graphics g){
                 super.paintComponent(g);
-                g.setColor(Color.black);
-                g.drawRect(10,10,this.getWidth()-20,this.getHeight()-20);
+                Graphics2D g2 = (Graphics2D) g;
+                Stroke oldStroke = g2.getStroke();
+                g2.setColor(Color.BLACK);
+                g2.setStroke(new BasicStroke(3.0f));
+                g2.drawRect(10,10,this.getWidth()-20,this.getHeight()-20);
+                g2.setStroke(oldStroke);
             }
         };
 
 
-        JPanel protections = new JPanel(){  // protctionon panele
+        JPanel protections = new JPanel(){  // protectionok panele
             @Override
             public void paintComponent(Graphics g){
                 BufferedImage p = null;
                 super.paintComponent(g);
 
-                int x = 20;
-                int y = 20;
+                int x = 30;
+                int y = 40;
                 for(Protection pr : game.getCurrentVirologist().GetProtections()){
                     switch(pr.GetType()) {
                         case "Bag" :
@@ -179,25 +197,40 @@ public class Display {
                             break;
                     }
                     g.drawImage(p,x,y,this);
-                    x += 40;
+                    x += 50;
 
                 }
             }
         };
         protections.setPreferredSize(new Dimension(300,60));
-        protections.setLocation(20,40);
+        protections.setLocation(30,50);
 
+        JPanel materials = new JPanel(){
+            @Override
+            public void paintComponent(Graphics g){
+                Graphics2D g2 = (Graphics2D)g;
+                super.paintComponent(g2);
+                int aminoNr = game.getCurrentVirologist().GetAminoacid().size();
+                int nukleoNr = game.getCurrentVirologist().GetNukleotid().size();
+                String amino = "Aminoacid: " + aminoNr;
+                String nukleo = "Nukleotid: " + nukleoNr;
+                g2.setFont(new Font("TimesRoman", Font.BOLD, 15));
+                g2.drawString(amino, 30, 100);
+                g2.drawString(nukleo, 100, 100);
+            }
+        };
+        materials.setPreferredSize(new Dimension(300,60));
+        materials.setLocation(30,100);
 
         inventoryPanel.setLayout(new FlowLayout());
         inventoryPanel.setPreferredSize(new Dimension(400,500));
         inventoryPanel.add(protections);
+        inventoryPanel.add(materials);
         inventoryDisplay = new InventoryDisplay(inventoryPanel);
 
-
-
         window.setLayout(new BorderLayout());
-        window.add(inventoryPanel,BorderLayout.LINE_START);
-        window.add(fieldPanel,BorderLayout.LINE_END);
+        window.add(fieldPanel,BorderLayout.LINE_START);
+        window.add(inventoryPanel,BorderLayout.LINE_END);
         window.setBounds(20,20,1500,1000);
         window.setResizable(false);
         window.setVisible(true);

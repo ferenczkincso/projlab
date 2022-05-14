@@ -417,7 +417,6 @@ public class Virologist extends Observable implements Ticker {
      */
     public void setCurrent_field(Field f){
         current_field = f;
-        //lehet ide notify
     }
 
     /**
@@ -551,7 +550,7 @@ public class Virologist extends Observable implements Ticker {
     public ArrayList<Agent> GetAgent() {
         return agent;
     }
-
+    public String getName(){return name;}
 }
 
 
