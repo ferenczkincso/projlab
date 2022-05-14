@@ -38,6 +38,7 @@ public class Virologist extends Observable implements Ticker {
     public void setBear(boolean bear) {
         isBear = bear;
         fieldObserver.update();
+        inventoryObserver.update();
     }
 
     /**
