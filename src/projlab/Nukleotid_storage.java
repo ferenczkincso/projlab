@@ -54,7 +54,7 @@ public class Nukleotid_storage extends Storage{
     @Override
     public void Tick(){
         tickCount++;
-        if (tickCount==100){
+        if (tickCount==10){ //
             nukleotid.clear();
             for (int i = 0; i<5; i++){
                 Nukleotid n = new Nukleotid();

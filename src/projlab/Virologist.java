@@ -108,17 +108,13 @@ public class Virologist extends Observable implements Ticker {
 
         if (isBear || (uncontrollableTime > 0 && paralyzedTime == 0))
         {
-            if (randomGenerator.nextInt()%15==0)
+            if (randomGenerator.nextInt()%5==0)
             {
                 MoveToRandomNeighbour();
-                if (isBear) {
-                    for (Virologist v : this.LookAround()) {
-                        UseAgent(new Bear(), v);
-                    }
-                }
+            }
             }
         }
-    }
+
 
     /**
      * A virológus átmegy egy másik mezőre
@@ -128,8 +124,14 @@ public class Virologist extends Observable implements Ticker {
         if(paralyzedTime == 0) {
             try {
                 if (current_field.GetNeighbours().contains(f)) {
+                    if(f.GetVirologist().size() == 2) return;
                     current_field.Remove(this);
                     f.Accept(this);
+                    if (isBear) {
+                        UseAgent(new Bear(), current_field.GetVirologistNearBy(this));
+                    }else if(current_field.GetVirologistNearBy(this).isBear()){
+                        UseAgent(new Bear(),this);
+                    }
                 }
             }
             catch(NullPointerException e){}
@@ -148,7 +150,6 @@ public class Virologist extends Observable implements Ticker {
     public void MoveToRandomNeighbour()
     {
         List<Field> neighbours = current_field.GetNeighbours();
-
         Field nextField = neighbours.get(randomGenerator.nextInt(neighbours.size()));
         Move(nextField);
     }
@@ -352,7 +353,10 @@ public class Virologist extends Observable implements Ticker {
      * A capacity setter függvénye
      * @param n - a kapacitás mértéke
      */
-    public void SetCapacity(int n) { capacity = n; }
+    public void SetCapacity(int n) {
+        capacity = n;
+        inventoryObserver.update();
+    }
 
     /**
      * A balta használatához szükséges függvény, amely bekér egy másik
@@ -384,18 +388,17 @@ public class Virologist extends Observable implements Ticker {
      * a hatás a virológusra kerül
      * Ha a másik virológus rendelkezik köpennyel, akkor megfertőzi
      *
-     * @param agent
+     * @param a
      * @param otherVirologist
      */
-    public void UseAgent(Agent agent, Virologist otherVirologist)
-    {
-        if (agent.getClass().equals(Bear.class)) { agent.Effect(otherVirologist); return; }
-
+    public void UseAgent(Agent a, Virologist otherVirologist) {
         if (otherVirologist.GetImmuneTime() > 0) return;
+
+        if (agent.getClass().equals(Bear.class)) { a.Effect(otherVirologist); return; }
 
         if (paralyzedTime > 0 || uncontrollableTime > 0 || isBear) return;
 
-        if (otherVirologist.HasGlove()) UseAgent(agent, this);
+        if (otherVirologist.HasGlove()) UseAgent(a, this);
 
         for (Protection p: otherVirologist.GetProtections())
         {
@@ -406,8 +409,8 @@ public class Virologist extends Observable implements Ticker {
             otherVirologist.SetDodged(false);
             return;
         }
-        else agent.Effect(otherVirologist);
-
+        else a.Effect(otherVirologist);
+        if(!a.getType().equals("Bear")) this.agent.remove(a);
 
     }
 

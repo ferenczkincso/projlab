@@ -100,7 +100,7 @@ public class Display {
                     int fixY = y;
                     for(Virologist v : f.GetVirologist()) {
                         if(v.isBear()) g.setColor(new Color(153,102,0));
-                        else if(v.GetUncontrollableTime() > 0) g.setColor(Color.orange);
+                        else if(v.GetUncontrollableTime() > 0) g.setColor(new Color(255,140,0));
                         else if(v.GetParalyzedTime() > 0) g.setColor(Color.pink);
                         else if(v.GetImmuneTime() > 0) g.setColor(Color.cyan);
                         else g.setColor(Color.black);
@@ -219,8 +219,8 @@ public class Display {
                     aminoNr = 0;
                     nukleoNr = 0;
                 }
-                String amino = "Aminoacid: " + aminoNr;
-                String nukleo = "Nukleotid: " + nukleoNr;
+                String amino = "Aminoacid: " + aminoNr + "/" + game.getCurrentVirologist().GetCapacity();
+                String nukleo = "Nukleotid: " + nukleoNr + "/" + game.getCurrentVirologist().GetCapacity();
                 g2.setFont(new Font("TimesRoman", Font.BOLD, 15));
                 g2.drawString(amino, 20, 40);
                 g2.drawString(nukleo, 150, 40);

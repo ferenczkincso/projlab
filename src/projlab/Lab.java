@@ -36,14 +36,16 @@ public class Lab extends Field{
                 break;
             }
         }
-        if(!alreadyKnowsCode){
-            if (genetic_code.getType()=="Bear"){
+        if(!alreadyKnowsCode) {
+            if (genetic_code.getType().equals("Bear")) {
                 genetic_code.CreateAgent(v);
+            } else {
+                g.add(genetic_code);
+                v.setGenetic_codes(g);
             }
-            g.add(genetic_code);
-            v.setGenetic_codes(g);
         }
     }
+
 
     public void Collect(Virologist v){
         Learn_code(v);

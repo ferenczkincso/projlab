@@ -46,7 +46,13 @@ public class Game implements Ticker {
     }
 
     public void endGame(){
+        if(!currentVirologist.isBear()){
+            // current virologist nyert
+            // winner window
+        }
         display.getWindow().removeKeyListener(controller);
+        controller = null;
+        virologists.clear();
     }
 
     public void CreateCity(){
@@ -88,11 +94,22 @@ public class Game implements Ticker {
 
     }
 
+    public boolean isAllBear(){
+        boolean allBear = true;
+        for(Virologist v : virologists){
+            if(!v.isBear())
+                allBear = false;
+        }
+        return allBear;
+    }
+
     // következő virológus jön, a controller  hívja ha megnyomnak egy gombot
     public void nextVirologist(){
+        if(isAllBear()) return;
         int index = virologists.indexOf(currentVirologist);
         if(index == virologists.size() - 1) currentVirologist = virologists.get(0);
         else currentVirologist = virologists.get(index + 1);
+
         if (currentVirologist.GetParalyzedTime()>0 || currentVirologist.GetUncontrollableTime()>0 || currentVirologist.isBear()){
             nextVirologist();
         }
