@@ -491,7 +491,10 @@ public class Virologist extends Observable implements Ticker {
     {
         return protections;
     }
-    //public void SetProtections(ArrayList<Protection> p){}
+    public void SetProtections(ArrayList<Protection> p){
+        protections =p;
+        inventoryObserver.update();
+    }
 
 
     /**

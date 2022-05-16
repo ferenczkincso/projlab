@@ -93,6 +93,9 @@ public class Game implements Ticker {
         int index = virologists.indexOf(currentVirologist);
         if(index == virologists.size() - 1) currentVirologist = virologists.get(0);
         else currentVirologist = virologists.get(index + 1);
+        if (currentVirologist.GetParalyzedTime()>0 || currentVirologist.GetUncontrollableTime()>0 || currentVirologist.isBear()){
+            nextVirologist();
+        }
         currentVirologist.getInventoryObserver().update();
     }
 

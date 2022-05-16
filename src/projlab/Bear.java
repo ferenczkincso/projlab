@@ -1,5 +1,7 @@
 package projlab;
 
+import java.util.ArrayList;
+
 public class Bear extends Agent{
 
     /**
@@ -17,6 +19,12 @@ public class Bear extends Agent{
         v.RemoveAminoacid(v.GetAminoacid().size());
         v.setBear(true);
         v.SetImmuneTime(100);
-        v.GetProtections().clear();
+        ArrayList<Protection> temp = v.GetProtections();
+        temp.clear();
+        v.SetProtections(temp);
+    }
+    @Override
+    public String getType() {
+        return "Bear";
     }
 }

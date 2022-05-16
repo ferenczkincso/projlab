@@ -210,8 +210,15 @@ public class Display {
             public void paintComponent(Graphics g){
                 Graphics2D g2 = (Graphics2D)g;
                 super.paintComponent(g2);
-                int aminoNr = game.getCurrentVirologist().GetAminoacid().size();
-                int nukleoNr = game.getCurrentVirologist().GetNukleotid().size();
+                int aminoNr;
+                int nukleoNr;
+                try {
+                    aminoNr = game.getCurrentVirologist().GetAminoacid().size();
+                    nukleoNr = game.getCurrentVirologist().GetNukleotid().size();
+                }catch(NullPointerException e){
+                    aminoNr = 0;
+                    nukleoNr = 0;
+                }
                 String amino = "Aminoacid: " + aminoNr;
                 String nukleo = "Nukleotid: " + nukleoNr;
                 g2.setFont(new Font("TimesRoman", Font.BOLD, 15));

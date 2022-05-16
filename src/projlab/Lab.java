@@ -37,6 +37,9 @@ public class Lab extends Field{
             }
         }
         if(!alreadyKnowsCode){
+            if (genetic_code.getType()=="Bear"){
+                genetic_code.CreateAgent(v);
+            }
             g.add(genetic_code);
             v.setGenetic_codes(g);
         }
