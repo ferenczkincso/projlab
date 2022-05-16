@@ -41,18 +41,11 @@ public class Field extends Observable implements Ticker{
      * @return a szomszéd mezőkön levő virológusok listájával tér vissza
      */
 
-    public ArrayList<Virologist> GetVirologistNearBy() {
-        ArrayList<Field> n = new ArrayList<Field>();
-        n = GetNeighbours();
-        ArrayList<Virologist> v = new ArrayList<Virologist>();
-        for(Field f : n){
-            ArrayList<Virologist> x = new ArrayList<Virologist>();
-            x = f.GetVirologist();
-            for(Virologist vi : x){
-                v.add(vi);
-            }
+    public Virologist GetVirologistNearBy(Virologist v) {
+        if (v.getName()==virologist.get(0).getName()){
+            return virologist.get(1);
         }
-        return v;
+        return virologist.get(0);
     }
 
 

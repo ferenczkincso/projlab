@@ -102,6 +102,7 @@ public class Display {
                         if(v.isBear()) g.setColor(new Color(153,102,0));
                         else if(v.GetUncontrollableTime() > 0) g.setColor(Color.orange);
                         else if(v.GetParalyzedTime() > 0) g.setColor(Color.pink);
+                        else if(v.GetImmuneTime() > 0) g.setColor(Color.cyan);
                         else g.setColor(Color.black);
                         g.fillOval(x +10, y + 10, 20, 20);
                         if(v.equals(game.getCurrentVirologist())) g.setColor(Color.white);
@@ -215,7 +216,7 @@ public class Display {
                 String nukleo = "Nukleotid: " + nukleoNr;
                 g2.setFont(new Font("TimesRoman", Font.BOLD, 15));
                 g2.drawString(amino, 20, 40);
-                g2.drawString(nukleo, 130, 40);
+                g2.drawString(nukleo, 150, 40);
                 g2.drawString("Genetic Codes:",20,60);
                 int y = 80;
                 for(GeneticCode gc : game.getCurrentVirologist().GetGenetic_codes()){
@@ -224,12 +225,12 @@ public class Display {
                 }
                 g2.drawString("Agents:",20,y);
                 for(Agent a : game.getCurrentVirologist().GetAgent()){
-                    g2.drawString(a.getType(),25,y);
                     y += 20;
+                    g2.drawString(a.getType(),25,y);
                 }
             }
         };
-        materials.setPreferredSize(new Dimension(300,400));
+        materials.setPreferredSize(new Dimension(300,500));
         materials.setLocation(0,0);
 
         inventoryPanel.setLayout(new FlowLayout());

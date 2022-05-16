@@ -9,10 +9,7 @@ public class Uncontrollable extends Agent {
      * @param v - A virológus, akire kifejti a hatást
      */
     public void Effect(Virologist v){
-        //System.out.println("Uncontrollable: Effect(v2)");
-
         v.setUncontrollabeTime(20);
-
     }
 
     /**
@@ -25,7 +22,7 @@ public class Uncontrollable extends Agent {
         System.out.println("ReverseUncontrollable: ReverseEffect(v)");
     }
 
-
+    @Override
     public String getType() {
         return "Uncontrollable";
     }

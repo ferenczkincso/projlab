@@ -9,9 +9,7 @@ public class Paralyze extends Agent{
      * @param v - A virológus, akire kifejti a hatást
      */
     public void Effect(Virologist v){
-        //System.out.println("Paralyze: Effect(v2)");
         v.setParalyzedTime(10);
-        v.ReduceParalyzedTime();
     }
 
     /**

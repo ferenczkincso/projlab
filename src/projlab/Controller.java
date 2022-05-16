@@ -82,7 +82,7 @@ public class Controller implements KeyListener {
                 }
                 break;
             case KeyEvent.VK_V:  //protection felvétele
-                System.out.println("P");
+                System.out.println("V");
                 if (game.getCurrentVirologist().isBear()==true) break;
                 if(game.getCurrentVirologist().getCurrent_field().getType().equals("Shelter")){
                     Shelter s = (Shelter)game.getCurrentVirologist().getCurrent_field();
@@ -141,6 +141,59 @@ public class Controller implements KeyListener {
                     }
                 }
                 break;
+            case KeyEvent.VK_1 :  //Immunity ágens kenése saját önnönmagára
+                System.out.println("1");
+                     for (Agent a : game.getCurrentVirologist().GetAgent()) {
+                        if (a.getType() == "Immunity") {
+                            a.Effect(game.getCurrentVirologist());
+                        }
+                    }
+                break;
+            case KeyEvent.VK_2 :  //Immunity ágens kenése másra
+                System.out.println("2");
+                if (game.getCurrentVirologist().getCurrent_field().GetVirologist().size()>1) {
+                    for (Agent a : game.getCurrentVirologist().GetAgent()) {
+                        if (a.getType() == "Immunity") {
+                            a.Effect(game.getCurrentVirologist().getCurrent_field().GetVirologistNearBy(game.getCurrentVirologist()));
+                        }
+                    }
+                }
+                break;
+            case KeyEvent.VK_3 :  //Paralyze ágens kenése
+                System.out.println("3");
+                if (game.getCurrentVirologist().getCurrent_field().GetVirologist().size()>1) {
+                    for (Agent a : game.getCurrentVirologist().GetAgent()) {
+                        if (a.getType() == "Paralyze") {
+                            a.Effect(game.getCurrentVirologist().getCurrent_field().GetVirologistNearBy(game.getCurrentVirologist()));
+                        }
+                    }
+                }
+                break;
+            case KeyEvent.VK_4 :  //Uncontrollable ágens kenése
+                System.out.println("4");
+                if (game.getCurrentVirologist().getCurrent_field().GetVirologist().size()>1) {
+                    for (Agent a : game.getCurrentVirologist().GetAgent()) {
+                        if (a.getType() == "Uncontrollable") {
+                            a.Effect(game.getCurrentVirologist().getCurrent_field().GetVirologistNearBy(game.getCurrentVirologist()));
+                        }
+                    }
+                }
+                break;
+            case KeyEvent.VK_5 :  //Forgetting ágens kenése
+                System.out.println("5");
+                if (game.getCurrentVirologist().getCurrent_field().GetVirologist().size()>1) {
+                    for (Agent a : game.getCurrentVirologist().GetAgent()) {
+                        if (a.getType() == "Forgetting") {
+                            a.Effect(game.getCurrentVirologist().getCurrent_field().GetVirologistNearBy(game.getCurrentVirologist()));
+                        }
+                    }
+                }
+                break;
+            case KeyEvent.VK_SPACE:  //kovi virologus
+                System.out.println("SPACE");
+                game.nextVirologist();
+                break;
+
         }
     }
 

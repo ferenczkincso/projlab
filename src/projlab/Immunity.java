@@ -10,9 +10,7 @@ public class Immunity extends Agent{
      */
 
     public void Effect(Virologist v){
-        //System.out.println("Immunity: Effect(v)");
         v.SetImmuneTime(30);
-
     }
 
     /**
@@ -26,7 +24,7 @@ public class Immunity extends Agent{
 
     }
 
-
+    @Override
     public String getType() {
         return "Immunity";
     }
