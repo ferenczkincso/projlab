@@ -100,6 +100,9 @@ public class Controller implements KeyListener {
                 if (game.getCurrentVirologist().getCurrent_field().getType().equals("Lab")){
                     Lab l = (Lab)game.getCurrentVirologist().getCurrent_field();
                     l.Collect(game.getCurrentVirologist());
+                    if (game.getCurrentVirologist().isBear()){
+                        game.nextVirologist();
+                    }
                 }
                 break;
             case KeyEvent.VK_P :  //Paralyze ágens létrehozása
@@ -137,7 +140,7 @@ public class Controller implements KeyListener {
             case KeyEvent.VK_1 :  //Immunity ágens kenése saját önnönmagára
                 System.out.println("1");
                      for (Agent a : game.getCurrentVirologist().GetAgent()) {
-                        if (a.getType() == "Immunity") {
+                         if (a.getType().equals("Immunity")) {
                             a.Effect(game.getCurrentVirologist());
                         }
                     }
@@ -146,7 +149,7 @@ public class Controller implements KeyListener {
                 System.out.println("2");
                 if (game.getCurrentVirologist().getCurrent_field().GetVirologist().size()>1) {
                     for (Agent a : game.getCurrentVirologist().GetAgent()) {
-                        if (a.getType() == "Immunity") {
+                        if (a.getType().equals("Immunity")) {
                             game.getCurrentVirologist().UseAgent(a, game.getCurrentVirologist().getCurrent_field().GetVirologistNearBy(game.getCurrentVirologist()));
                         }
                     }
@@ -156,7 +159,7 @@ public class Controller implements KeyListener {
                 System.out.println("3");
                 if (game.getCurrentVirologist().getCurrent_field().GetVirologist().size()>1) {
                     for (Agent a : game.getCurrentVirologist().GetAgent()) {
-                        if (a.getType() == "Paralyze") {
+                        if (a.getType().equals("Paralyze")) {
                             game.getCurrentVirologist().UseAgent(a, game.getCurrentVirologist().getCurrent_field().GetVirologistNearBy(game.getCurrentVirologist()));
                         }
                     }
@@ -166,7 +169,7 @@ public class Controller implements KeyListener {
                 System.out.println("4");
                 if (game.getCurrentVirologist().getCurrent_field().GetVirologist().size()>1) {
                     for (Agent a : game.getCurrentVirologist().GetAgent()) {
-                        if (a.getType() == "Uncontrollable") {
+                        if (a.getType().equals("Uncontrollable")) {
                             game.getCurrentVirologist().UseAgent(a, game.getCurrentVirologist().getCurrent_field().GetVirologistNearBy(game.getCurrentVirologist()));
                         }
                     }
@@ -176,7 +179,7 @@ public class Controller implements KeyListener {
                 System.out.println("5");
                 if (game.getCurrentVirologist().getCurrent_field().GetVirologist().size()>1) {
                     for (Agent a : game.getCurrentVirologist().GetAgent()) {
-                        if (a.getType() == "Forgetting") {
+                        if (a.getType().equals("Forgetting")) {
                             game.getCurrentVirologist().UseAgent(a, game.getCurrentVirologist().getCurrent_field().GetVirologistNearBy(game.getCurrentVirologist()));
                         }
                     }

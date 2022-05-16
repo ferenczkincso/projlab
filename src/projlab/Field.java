@@ -42,7 +42,7 @@ public class Field extends Observable implements Ticker{
      */
 
     public Virologist GetVirologistNearBy(Virologist v) {
-        if(virologist.size() < 2) return v;
+        if (virologist.size()<2) return v;
         if (v.getName()==virologist.get(0).getName()){
             return virologist.get(1);
         }
@@ -58,10 +58,11 @@ public class Field extends Observable implements Ticker{
      * @param v - A virológus, akire kifejti a hatást
      */
     public void Accept(Virologist v){
+       // if(virologist.size() < 2){
             virologist.add(v);
             v.setCurrent_field(this);
             fieldObserver.update();
-
+       // }
     }
 
     /**
@@ -96,7 +97,6 @@ public class Field extends Observable implements Ticker{
     public int GetFieldId(){return fieldId;}
     public String getType(){return "Field";}
 
-    }
 
 
-
+}

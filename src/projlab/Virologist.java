@@ -394,7 +394,7 @@ public class Virologist extends Observable implements Ticker {
     public void UseAgent(Agent a, Virologist otherVirologist) {
         if (otherVirologist.GetImmuneTime() > 0) return;
 
-        if (agent.getClass().equals(Bear.class)) { a.Effect(otherVirologist); return; }
+        if (a.getClass().equals(Bear.class)) { a.Effect(otherVirologist); return; }
 
         if (paralyzedTime > 0 || uncontrollableTime > 0 || isBear) return;
 
