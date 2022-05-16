@@ -429,18 +429,30 @@ public class Virologist extends Observable implements Ticker {
 
         if (paralyzedTime > 0 || uncontrollableTime > 0 || isBear) return;
 
-        if (otherVirologist.HasGlove()) UseAgent(a, this);
-
         for (Protection p: otherVirologist.GetProtections())
         {
-            if (p.getClass().equals(Cloak.class)) p.Effect(otherVirologist);
+            if (p.getClass().equals(Cloak.class)){
+                p.Effect(otherVirologist);
+                break;
+            }
         }
         if (otherVirologist.HasDodged())
         {
             otherVirologist.SetDodged(false);
             return;
         }
-        else a.Effect(otherVirologist);
+        if (otherVirologist.HasGlove()) {
+            for(Protection p : otherVirologist.GetProtections()){
+                if(p.GetType().equals("Glove")){
+                    p.Effect(otherVirologist);
+                    break;
+                }
+            }
+            UseAgent(a, this);
+            return;
+        }
+
+        a.Effect(otherVirologist);
         if(!a.getType().equals("Bear")) this.agent.remove(a);
 
     }

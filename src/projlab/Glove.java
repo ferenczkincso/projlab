@@ -8,11 +8,17 @@ public class Glove extends Protection{
      * egy másik megtámadja, akkor visszadobja az ágenst
      * @param v - A virológus, akire kifejti a hatást
      */
-    public void Effect(Virologist v)
-    {
-        if (timesUsed > 3) v.LoseItem(this);
-        else
-        {
+    public void Effect(Virologist v) {
+        if(timesUsed < 3) {
+            v.SetGlove(true);
+            timesUsed++;
+            if (timesUsed == 3)
+                v.LoseItem(this);
+        }
+
+
+        if (timesUsed == 3) v.LoseItem(this);
+        else {
             v.SetGlove(true);
             timesUsed++;
         }
