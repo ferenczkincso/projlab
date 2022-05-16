@@ -189,7 +189,22 @@ public class Controller implements KeyListener {
                 System.out.println("SPACE");
                 game.nextVirologist();
                 break;
-
+            case KeyEvent.VK_S:     // steal protection ( ha le van bánulva a másik)
+                System.out.println("S");
+                if(game.getCurrentVirologist().getCurrent_field().GetVirologistNearBy(game.getCurrentVirologist()) != game.getCurrentVirologist()){
+                    game.getCurrentVirologist().StealItem(game.getCurrentVirologist().getCurrent_field().GetVirologistNearBy(game.getCurrentVirologist()));
+                }
+                break;
+            case KeyEvent.VK_W:    // steal material (ha le van bénulva)
+                System.out.println("W");
+                if(game.getCurrentVirologist().getCurrent_field().GetVirologistNearBy(game.getCurrentVirologist()) != game.getCurrentVirologist()) {
+                    game.getCurrentVirologist().StealAminoacid(game.getCurrentVirologist().getCurrent_field().GetVirologistNearBy(game.getCurrentVirologist()));
+                }
+            case KeyEvent.VK_Q:    // steal material (ha le van bénulva)
+                System.out.println("Q");
+                if(game.getCurrentVirologist().getCurrent_field().GetVirologistNearBy(game.getCurrentVirologist()) != game.getCurrentVirologist()) {
+                    game.getCurrentVirologist().StealNukleotid(game.getCurrentVirologist().getCurrent_field().GetVirologistNearBy(game.getCurrentVirologist()));
+                }
         }
     }
 
