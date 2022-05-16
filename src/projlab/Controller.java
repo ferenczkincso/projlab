@@ -2,6 +2,7 @@ package projlab;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 public class Controller implements KeyListener {
     private Game game;
@@ -110,6 +111,7 @@ public class Controller implements KeyListener {
                 for(GeneticCode gc : game.getCurrentVirologist().GetGenetic_codes()){
                     if(gc.getType().equals("Paralyze")){
                         gc.CreateAgent(game.getCurrentVirologist());
+                        break;
                     }
                 }
                 break;
@@ -118,6 +120,7 @@ public class Controller implements KeyListener {
                 for(GeneticCode gc : game.getCurrentVirologist().GetGenetic_codes()) {
                     if (gc.getType().equals("Immunity")) {
                         gc.CreateAgent(game.getCurrentVirologist());
+                        break;
                     }
                 }
                 break;
@@ -126,6 +129,7 @@ public class Controller implements KeyListener {
                 for(GeneticCode gc : game.getCurrentVirologist().GetGenetic_codes()) {
                     if (gc.getType().equals("Uncontrollable")) {
                         gc.CreateAgent(game.getCurrentVirologist());
+                        break;
                     }
                 }
                 break;
@@ -134,6 +138,7 @@ public class Controller implements KeyListener {
                 for(GeneticCode gc : game.getCurrentVirologist().GetGenetic_codes()) {
                     if (gc.getType().equals("Forgetting")) {
                         gc.CreateAgent(game.getCurrentVirologist());
+                        break;
                     }
                 }
                 break;
@@ -142,6 +147,7 @@ public class Controller implements KeyListener {
                      for (Agent a : game.getCurrentVirologist().GetAgent()) {
                          if (a.getType().equals("Immunity")) {
                             a.Effect(game.getCurrentVirologist());
+                             break;
                         }
                     }
                 break;
@@ -151,6 +157,7 @@ public class Controller implements KeyListener {
                     for (Agent a : game.getCurrentVirologist().GetAgent()) {
                         if (a.getType().equals("Immunity")) {
                             game.getCurrentVirologist().UseAgent(a, game.getCurrentVirologist().getCurrent_field().GetVirologistNearBy(game.getCurrentVirologist()));
+                            break;
                         }
                     }
                 }
@@ -161,6 +168,7 @@ public class Controller implements KeyListener {
                     for (Agent a : game.getCurrentVirologist().GetAgent()) {
                         if (a.getType().equals("Paralyze")) {
                             game.getCurrentVirologist().UseAgent(a, game.getCurrentVirologist().getCurrent_field().GetVirologistNearBy(game.getCurrentVirologist()));
+                            break;
                         }
                     }
                 }
@@ -171,6 +179,7 @@ public class Controller implements KeyListener {
                     for (Agent a : game.getCurrentVirologist().GetAgent()) {
                         if (a.getType().equals("Uncontrollable")) {
                             game.getCurrentVirologist().UseAgent(a, game.getCurrentVirologist().getCurrent_field().GetVirologistNearBy(game.getCurrentVirologist()));
+                            break;
                         }
                     }
                 }
@@ -181,6 +190,7 @@ public class Controller implements KeyListener {
                     for (Agent a : game.getCurrentVirologist().GetAgent()) {
                         if (a.getType().equals("Forgetting")) {
                             game.getCurrentVirologist().UseAgent(a, game.getCurrentVirologist().getCurrent_field().GetVirologistNearBy(game.getCurrentVirologist()));
+                            break;
                         }
                     }
                 }

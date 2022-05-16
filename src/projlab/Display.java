@@ -212,15 +212,18 @@ public class Display {
                 super.paintComponent(g2);
                 int aminoNr;
                 int nukleoNr;
+                int capacity;
                 try {
                     aminoNr = game.getCurrentVirologist().GetAminoacid().size();
                     nukleoNr = game.getCurrentVirologist().GetNukleotid().size();
+                    capacity = game.getCurrentVirologist().GetCapacity();
                 }catch(NullPointerException e){
                     aminoNr = 0;
                     nukleoNr = 0;
+                    capacity = 15;
                 }
-                String amino = "Aminoacid: " + aminoNr + "/" + game.getCurrentVirologist().GetCapacity();
-                String nukleo = "Nukleotid: " + nukleoNr + "/" + game.getCurrentVirologist().GetCapacity();
+                String amino = "Aminoacid: " + aminoNr + "/" + capacity;
+                String nukleo = "Nukleotid: " + nukleoNr + "/" + capacity;
                 g2.setFont(new Font("TimesRoman", Font.BOLD, 15));
                 g2.drawString(amino, 20, 40);
                 g2.drawString(nukleo, 150, 40);
