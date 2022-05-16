@@ -1,5 +1,7 @@
 package projlab;
 public class Immunity extends Agent{
+
+
     /**
      *Az Effect feladata, hogy az adott virológusra
      * kifejtse az Immunity hatást, azaz, a virológus
@@ -22,5 +24,10 @@ public class Immunity extends Agent{
     public void ReverseEffect(Virologist v){
         //System.out.println("ReverseImmunity: ReverseEffect(v)");
 
+    }
+
+
+    public String getType() {
+        return "Immunity";
     }
 }

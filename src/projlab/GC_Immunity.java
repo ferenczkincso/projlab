@@ -20,4 +20,9 @@ public class GC_Immunity extends GeneticCode {
             System.out.println("Nincs eleg anyag.");
         }
     }
+
+    @Override
+    public String getType() {
+        return "Immunity";
+    }
 }

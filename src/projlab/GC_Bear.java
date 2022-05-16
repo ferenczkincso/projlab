@@ -6,4 +6,9 @@ public class GC_Bear extends GeneticCode{
             Bear b = new Bear();
             v.AddAgent(b);
     }
+
+    @Override
+    public String getType() {
+        return "Bear";
+    }
 }

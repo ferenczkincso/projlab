@@ -1,5 +1,7 @@
 package projlab;
 public class Paralyze extends Agent{
+
+
     /**
      *Az Effect feladata, hogy az adott virológusra
      * kifejtse a Paralyze hatást, azaz, a virológus
@@ -20,5 +22,10 @@ public class Paralyze extends Agent{
      */
     public void ReverseEffect(Virologist v){
         
+    }
+
+    @Override
+    public String getType() {
+        return "Paralyze";
     }
 }

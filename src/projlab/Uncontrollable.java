@@ -1,5 +1,7 @@
 package projlab;
-public class Uncontrollable extends Agent{
+public class Uncontrollable extends Agent {
+
+
     /**
      *Az Effect feladata, hogy az adott virológusra
      * kifejtse az Uncontrollable hatást, azaz, a virológus
@@ -21,5 +23,10 @@ public class Uncontrollable extends Agent{
      */
     public void ReverseEffect(Virologist v){
         System.out.println("ReverseUncontrollable: ReverseEffect(v)");
+    }
+
+
+    public String getType() {
+        return "Uncontrollable";
     }
 }

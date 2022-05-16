@@ -6,4 +6,7 @@ abstract public class GeneticCode {
      * @param v - A virológus, akire kifejti a hatást
      */
     public abstract void CreateAgent(Virologist v);
+    public String getType(){
+        return null;
+    }
 }

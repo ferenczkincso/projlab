@@ -1,5 +1,6 @@
 package projlab;
 public abstract class Agent {
+
     /**
      * Az Effect függvény feladata, hogy az adott virológuson,
      * az adott ágens kifejtse hatását.
@@ -19,4 +20,6 @@ public abstract class Agent {
     public void ReverseEffect(Virologist v) {
         System.out.println("ReverseEffect(src.Virologist v)");
     }
+
+    public String getType(){return null;}
 }

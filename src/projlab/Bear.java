@@ -1,6 +1,7 @@
 package projlab;
 
 public class Bear extends Agent{
+
     /**
      * Az Effect a medvevírus hatását valósítja meg, ezáltal
      * minden eddigi megtanult genetikus kódot elfelejt, az anyagai

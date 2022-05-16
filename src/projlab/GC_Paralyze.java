@@ -21,4 +21,9 @@ public class GC_Paralyze extends GeneticCode {
             System.out.println("Nincs eleg anyag.");
         }
     }
+
+    @Override
+    public String getType() {
+        return "Paralyze";
+    }
 }
