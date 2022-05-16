@@ -15,13 +15,6 @@ public class Glove extends Protection{
             if (timesUsed == 3)
                 v.LoseItem(this);
         }
-
-
-        if (timesUsed == 3) v.LoseItem(this);
-        else {
-            v.SetGlove(true);
-            timesUsed++;
-        }
     }
 
     /**
