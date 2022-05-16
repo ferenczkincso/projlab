@@ -160,8 +160,8 @@ public class Display {
                 BufferedImage p = null;
                 super.paintComponent(g);
 
-                int x = 30;
-                int y = 40;
+                int x = 20;
+                int y = 20;
                 for(Protection pr : game.getCurrentVirologist().GetProtections()){
                     switch(pr.GetType()) {
                         case "Bag" :
@@ -198,12 +198,11 @@ public class Display {
                     }
                     g.drawImage(p,x,y,this);
                     x += 50;
-
                 }
             }
         };
         protections.setPreferredSize(new Dimension(300,60));
-        protections.setLocation(30,50);
+        protections.setLocation(20,40);
 
         JPanel materials = new JPanel(){
             @Override
@@ -215,12 +214,12 @@ public class Display {
                 String amino = "Aminoacid: " + aminoNr;
                 String nukleo = "Nukleotid: " + nukleoNr;
                 g2.setFont(new Font("TimesRoman", Font.BOLD, 15));
-                g2.drawString(amino, 30, 100);
-                g2.drawString(nukleo, 100, 100);
+                g2.drawString(amino, 20, 40);
+                g2.drawString(nukleo, 130, 40);
             }
         };
-        materials.setPreferredSize(new Dimension(300,60));
-        materials.setLocation(30,100);
+        materials.setPreferredSize(new Dimension(300,100));
+        materials.setLocation(0,0);
 
         inventoryPanel.setLayout(new FlowLayout());
         inventoryPanel.setPreferredSize(new Dimension(400,500));
