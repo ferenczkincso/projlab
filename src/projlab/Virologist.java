@@ -227,10 +227,12 @@ public class Virologist extends Observable implements Ticker {
                 hasProtection = false;
                 for(Protection g : protections){
                     if(p.GetType().equals(g.GetType())) hasProtection = true;
+                    break;
                 }
                 if(!hasProtection){
                     ApplyItem(p);
                     v.LoseItem(p);
+                    break;
                 }
             }
         }

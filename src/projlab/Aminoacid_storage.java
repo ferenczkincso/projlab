@@ -59,7 +59,7 @@ public class Aminoacid_storage extends Storage{
     @Override
     public void Tick(){
         tickCount++;
-        if (tickCount==100){
+        if (tickCount==10){
             aminoacid.clear();
             for (int i = 0; i<5; i++){
                 Aminoacid a = new Aminoacid();

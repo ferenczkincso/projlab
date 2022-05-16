@@ -205,16 +205,13 @@ public class Controller implements KeyListener {
                     game.getCurrentVirologist().StealItem(game.getCurrentVirologist().getCurrent_field().GetVirologistNearBy(game.getCurrentVirologist()));
                 }
                 break;
-            case KeyEvent.VK_W:    // steal material (ha le van bénulva)
-                System.out.println("W");
+            case KeyEvent.VK_M:    // steal material (ha le van bénulva)
+                System.out.println("M");
                 if(game.getCurrentVirologist().getCurrent_field().GetVirologistNearBy(game.getCurrentVirologist()) != game.getCurrentVirologist()) {
                     game.getCurrentVirologist().StealAminoacid(game.getCurrentVirologist().getCurrent_field().GetVirologistNearBy(game.getCurrentVirologist()));
-                }
-            case KeyEvent.VK_Q:    // steal material (ha le van bénulva)
-                System.out.println("Q");
-                if(game.getCurrentVirologist().getCurrent_field().GetVirologistNearBy(game.getCurrentVirologist()) != game.getCurrentVirologist()) {
                     game.getCurrentVirologist().StealNukleotid(game.getCurrentVirologist().getCurrent_field().GetVirologistNearBy(game.getCurrentVirologist()));
                 }
+
         }
     }
 
