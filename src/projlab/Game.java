@@ -1,5 +1,6 @@
 package projlab;
 
+import javax.swing.*;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,8 +48,12 @@ public class Game implements Ticker {
 
     public void endGame(){
         if(!currentVirologist.isBear()){
+            JOptionPane.showMessageDialog(null, currentVirologist.getName() + " Nyert!", "Játék vége", JOptionPane.INFORMATION_MESSAGE);
             // current virologist nyert
             // winner window
+        }else {
+            JOptionPane.showMessageDialog(null, "Mindenki vesztett!", "Játék vége", JOptionPane.INFORMATION_MESSAGE);
+
         }
         display.getWindow().removeKeyListener(controller);
         controller = null;
