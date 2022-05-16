@@ -30,6 +30,13 @@ public class Game implements Ticker {
 
     }
 
+    public void removeVirologist(Virologist v){
+        virologists.remove(v);
+        v.getCurrent_field().Remove(v);
+        v.getInventoryObserver().update();
+        v.getFieldObserver().update();
+    }
+
     public void Tick(){
         for(Virologist v : virologists) {
             if (v.GetGenetic_codes().size() == 4) endGame();
@@ -41,16 +48,25 @@ public class Game implements Ticker {
     }
 
     public void startGame(){
-
         currentVirologist = virologists.get(0);
-
+        boolean isGame = true;
+        boolean allBear = false;
+        Virologist d = null;
+        while (isGame && !allBear){
+            allBear = true;
+            for(Virologist v : virologists){
+                if(v.GetGenetic_codes().size() == 4) isGame = false;
+                if(!v.isBear()) allBear = false;
+                if(v.isDied()){ d = v;}
+            }
+            if(d != null) removeVirologist(d);
+            d = null;
+        }
     }
 
     public void endGame(){
         if(!currentVirologist.isBear()){
             JOptionPane.showMessageDialog(null, currentVirologist.getName() + " Nyert!", "Játék vége", JOptionPane.INFORMATION_MESSAGE);
-            // current virologist nyert
-            // winner window
         }else {
             JOptionPane.showMessageDialog(null, "Mindenki vesztett!", "Játék vége", JOptionPane.INFORMATION_MESSAGE);
 

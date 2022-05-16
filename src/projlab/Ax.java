@@ -10,12 +10,12 @@ public class Ax extends Protection {
      */
     @Override
     public void Effect(Virologist v) {
-        v.getCurrent_field().Remove(v);
+        v.setHasAx(true);
     }
 
     @Override
     public void ReverseEffect(Virologist v) {
-
+        v.setHasAx(false);
     }
 
     @Override

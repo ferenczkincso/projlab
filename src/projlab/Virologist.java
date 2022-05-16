@@ -19,6 +19,8 @@ public class Virologist extends Observable implements Ticker {
     //private int gloveusage;
     private boolean hasGlove;
     private boolean dodged;
+    private boolean hasAx;
+    private boolean died;
 
     private Random randomGenerator = new Random(System.currentTimeMillis());
     private boolean isBear;
@@ -53,6 +55,8 @@ public class Virologist extends Observable implements Ticker {
         agent = new ArrayList<Agent>();
         hasGlove = false;
         dodged = false;
+        hasAx = false;
+        died = false;
     }
     public Virologist(Observer o,Observer io,String name){
         super(o,io);
@@ -64,6 +68,8 @@ public class Virologist extends Observable implements Ticker {
         agent = new ArrayList<Agent>();
         hasGlove = false;
         dodged = false;
+        hasAx = false;
+        died = false;
     }
 
     /**
@@ -127,11 +133,29 @@ public class Virologist extends Observable implements Ticker {
                     if(f.GetVirologist().size() == 2) return;
                     current_field.Remove(this);
                     f.Accept(this);
-                    if (isBear) {
+                    if (isBear && !current_field.GetVirologistNearBy(this).hasAx) {
                         UseAgent(new Bear(), current_field.GetVirologistNearBy(this));
-                    }else if(current_field.GetVirologistNearBy(this).isBear()){
+                    }else if(current_field.GetVirologistNearBy(this).isBear() && !hasAx){
                         UseAgent(new Bear(),this);
+                    }else if(isBear && current_field.GetVirologistNearBy(this).hasAx){
+                        died = true;
+                        for(Protection p : current_field.GetVirologistNearBy(this).GetProtections()){
+                            if(p.GetType().equals("Ax")) {
+                                LoseItem(p);
+                                break;
+                            }
+                        }
+                    }else if(current_field.GetVirologistNearBy(this).isBear() && hasAx) {
+                        current_field.GetVirologistNearBy(this).died = true;
+                        for (Protection p : protections) {
+                            if (p.GetType().equals("Ax")) {
+                                LoseItem(p);
+                                break;
+                            }
+                        }
                     }
+                    inventoryObserver.update();
+                    fieldObserver.update();
                 }
             }
             catch(NullPointerException e){}
@@ -139,6 +163,10 @@ public class Virologist extends Observable implements Ticker {
         else
             return;
     }
+
+    public void setHasAx(boolean b){hasAx = b;}
+    public boolean isDied(){return died;}
+
 
     /**
      * A virológus véletlenszerű mozgását kiváltó függvény
@@ -149,6 +177,7 @@ public class Virologist extends Observable implements Ticker {
      */
     public void MoveToRandomNeighbour()
     {
+        if(died) return;
         List<Field> neighbours = current_field.GetNeighbours();
         Field nextField = neighbours.get(randomGenerator.nextInt(neighbours.size()));
         Move(nextField);
@@ -560,6 +589,7 @@ public class Virologist extends Observable implements Ticker {
         return agent;
     }
     public String getName(){return name;}
+    public Observer getFieldObserver(){return fieldObserver;}
 }
 
 

@@ -34,9 +34,7 @@ public class Shelter extends Field{
         v.GetProtections().add(protection);
         fieldObserver.update();
         inventoryObserver.update();
-        if(!protection.getClass().equals(Ax.class)) {
-            protection.Effect(v);
-        }
+        protection.Effect(v);
         protection = null;
     }
 
