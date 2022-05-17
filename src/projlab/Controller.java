@@ -15,6 +15,12 @@ public class Controller implements KeyListener {
 
     }
 
+    /**
+     * A keyPressed metódussal figyeljük meg, hogy a játékos melyik
+     * gombot nyomta meg, és itt kezeljük, hogy lenyomás esetén mi
+     * fog történni
+     * @param e - a gombnyomás
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         switch(e.getKeyCode()){

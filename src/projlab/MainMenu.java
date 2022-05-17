@@ -6,6 +6,11 @@ import java.awt.*;
 public class MainMenu extends JFrame {
     private JComboBox jcb;
     private JButton button;
+
+    /**
+     * A MainMenu megjelenítéséért felelős metódus
+     * @throws HeadlessException - kivételkezelés
+     */
     public MainMenu() throws HeadlessException {
         setTitle("A világtalan virológusok világa");
         setSize(400,250);

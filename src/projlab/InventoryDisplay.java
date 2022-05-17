@@ -8,6 +8,9 @@ public class InventoryDisplay implements Observer {
 
     InventoryDisplay(JPanel p){ panel = p;}
 
+    /**
+     * A mező frissítéséért felelős metódus
+     */
     @Override
     public void update() {
         panel.revalidate();
