@@ -35,7 +35,7 @@ public class Controller implements KeyListener {
                 break;
             case KeyEvent.VK_DOWN :
                 System.out.println("Down");
-                if((int)(game.getCurrentVirologist().getCurrent_field().GetFieldId() / 10) == 4) break;
+                if((int)(game.getCurrentVirologist().getCurrent_field().GetFieldId() / 10) == 8) break;
                 else {
                     for(Field f : game.getFields()) {
                         if(f.GetFieldId() == game.getCurrentVirologist().getCurrent_field().GetFieldId() + 10) {
@@ -50,7 +50,7 @@ public class Controller implements KeyListener {
                 break;
             case KeyEvent.VK_RIGHT:
                 System.out.println("Right");
-                if(game.getCurrentVirologist().getCurrent_field().GetFieldId() % 10 == 4) break;
+                if(game.getCurrentVirologist().getCurrent_field().GetFieldId() % 10 == 8) break;
                 else {
                     for(Field f : game.getFields()) {
                         if(f.GetFieldId() == game.getCurrentVirologist().getCurrent_field().GetFieldId() + 1) {
