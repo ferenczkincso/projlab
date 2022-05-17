@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
+import java.util.Objects;
 
 
 public class Display {
@@ -49,7 +49,7 @@ public class Display {
                                 switch(s.getProtection().GetType()) {
                                     case "Bag" :
                                         try {
-                                            p = ImageIO.read(new File("src/images/bag.jpg"));
+                                            p = ImageIO.read(Objects.requireNonNull(getClass().getResource("/images/bag.jpg")));
                                         } catch (IOException e) {
                                             e.printStackTrace();
                                         }
@@ -57,7 +57,7 @@ public class Display {
 
                                     case "Cloak" :
                                         try {
-                                            p = ImageIO.read(new File("src/images/cloak.jpg"));
+                                            p = ImageIO.read(Objects.requireNonNull(getClass().getResource("/images/cloak.jpg")));
                                         } catch (IOException e) {
                                             e.printStackTrace();
                                         }
@@ -65,7 +65,7 @@ public class Display {
 
                                     case "Glove" :
                                         try {
-                                            p = ImageIO.read(new File("src/images/glove.jpg"));
+                                            p = ImageIO.read(Objects.requireNonNull(getClass().getResource("/images/glove.jpg")));
                                         } catch (IOException e) {
                                             e.printStackTrace();
                                         }
@@ -73,7 +73,7 @@ public class Display {
 
                                     case "Ax" :
                                         try {
-                                            p = ImageIO.read(new File("src/images/ax.jpg"));
+                                            p = ImageIO.read(Objects.requireNonNull(getClass().getResource("/images/ax.jpg")));
                                         } catch (IOException e) {
                                             e.printStackTrace();
                                         }
@@ -165,7 +165,7 @@ public class Display {
                     switch(pr.GetType()) {
                         case "Bag" :
                             try {
-                                p = ImageIO.read(new File("src/images/bag.jpg"));
+                                p = ImageIO.read(Objects.requireNonNull(getClass().getResource("/images/bag.jpg")));
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -173,7 +173,7 @@ public class Display {
 
                         case "Cloak" :
                             try {
-                                p = ImageIO.read(new File("src/images/cloak.jpg"));
+                                p = ImageIO.read(Objects.requireNonNull(getClass().getResource("/images/cloak.jpg")));
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -181,7 +181,7 @@ public class Display {
 
                         case "Glove" :
                             try {
-                                p = ImageIO.read(new File("src/images/glove.jpg"));
+                                p = ImageIO.read(Objects.requireNonNull(getClass().getResource("/images/glove.jpg")));
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -189,7 +189,7 @@ public class Display {
 
                         case "Ax" :
                             try {
-                                p = ImageIO.read(new File("src/images/ax.jpg"));
+                                p = ImageIO.read(Objects.requireNonNull(getClass().getResource("/images/ax.jpg")));
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }

@@ -16,7 +16,6 @@ public class Virologist extends Observable implements Ticker {
     private ArrayList<GeneticCode> genetic_codes;
     private ArrayList<Agent> agent;
     private Field current_field;
-    //private int gloveusage;
     private boolean hasGlove;
     private boolean dodged;
     private boolean hasAx;

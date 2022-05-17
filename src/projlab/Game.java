@@ -82,9 +82,9 @@ public class Game implements Ticker {
 
     public void endGame(){
         if(!currentVirologist.isBear()){
-            JOptionPane.showMessageDialog(null, currentVirologist.getName() + " Nyert!", "Játék vége", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, currentVirologist.getName() + " is the winner!", "Game ended", JOptionPane.INFORMATION_MESSAGE);
         }else {
-            JOptionPane.showMessageDialog(null, "Mindenki vesztett!", "Játék vége", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Everyone lost!", "Game over", JOptionPane.INFORMATION_MESSAGE);
 
         }
         display.getWindow().removeKeyListener(controller);

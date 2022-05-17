@@ -7,7 +7,7 @@ public class MainMenu extends JFrame {
     private JComboBox jcb;
     private JButton button;
     public MainMenu() throws HeadlessException {
-        setTitle("A világtalan virológusok világa");
+        setTitle("A vilagtalan virologusok vilaga");
         setSize(400,250);
         setLocation(500,400);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -18,13 +18,13 @@ public class MainMenu extends JFrame {
 
         JPanel jp1= new JPanel(new FlowLayout());
         add(jp1);
-        JLabel title = new JLabel("A világtalan virológusok világa");
+        JLabel title = new JLabel("A vilagtalan virologusok vilaga");
         title.setFont(new Font("TimesRoman", Font.BOLD, 25));
         jp1.add(title);
 
         JPanel jp2 = new JPanel(new FlowLayout());
         add(jp2);
-        JLabel lab1= new JLabel("Játékosok száma:");
+        JLabel lab1= new JLabel("Jatekosok szama:");
         lab1.setFont(new Font("TimesRoman",Font.PLAIN ,15));
         String[] tomb = {"2", "3", "4"};
         jcb = new JComboBox(tomb);
