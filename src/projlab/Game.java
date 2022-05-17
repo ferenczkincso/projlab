@@ -1,7 +1,10 @@
 package projlab;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -15,16 +18,29 @@ public class Game implements Ticker {
     private Controller controller;
     private Virologist currentVirologist;
 
-    Game(){
+    Game() throws InterruptedException {
+        MainMenu mn = new MainMenu();
+        final int[] i = {0};
+        mn.getButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                i[0] = Integer.parseInt(mn.getText());
+            }
+        });
+        while(i[0] == 0){
+            Thread.sleep(10);
+        }
+
+
         fields = new ArrayList<Field>();
         virologists = new ArrayList<Virologist>();
 
         display = new Display(this);
         CreateCity();
-        AddVirologist("Player1");
-        AddVirologist("Player2");
-        AddVirologist("Player3");
-        AddVirologist("Player4");
+        for(int j = 1; j <= i[0]; j++) {
+            AddVirologist("Player"+j);
+        }
+
         controller = new Controller(this);
         addKeyListener(controller);
 

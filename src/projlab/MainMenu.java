@@ -5,9 +5,11 @@ import java.awt.*;
 
 public class MainMenu extends JFrame {
     private JComboBox jcb;
+    private JButton button;
     public MainMenu() throws HeadlessException {
         setTitle("A világtalan virológusok világa");
         setSize(400,250);
+        setLocation(500,400);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         GridLayout layo = new GridLayout();
         layo.setRows(3);
@@ -31,10 +33,14 @@ public class MainMenu extends JFrame {
 
         JPanel jp3= new JPanel(new FlowLayout());
         add(jp3);
-        jp3.add(new JButton("START"));
+        button = new JButton("START");
+        jp3.add(button);
 
         setResizable(false);
         setVisible(true);
     }
+
+    public JButton getButton(){return button;}
+    public String getText(){return jcb.getSelectedItem().toString();}
 
 }
