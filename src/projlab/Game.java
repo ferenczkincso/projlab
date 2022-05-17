@@ -97,21 +97,74 @@ public class Game implements Ticker {
         Aminoacid_storage f2 = new Aminoacid_storage(display.getFieldDisplay(),display.getInventoryDisplay(),12); fields.add(f2);
         Shelter f3 = new Shelter(display.getFieldDisplay(),display.getInventoryDisplay(),13); f3.SetProtection(new Bag()); fields.add(f3);
         Lab f4 = new Lab(display.getFieldDisplay(),display.getInventoryDisplay(),14); f4.SetGenetic_code(new GC_Forgetting()); fields.add(f4);
+        Lab f17 = new Lab(display.getFieldDisplay(),display.getInventoryDisplay(),15); f17.SetGenetic_code(new GC_Immunity()); fields.add(f17);
+        Nukleotid_storage f18 = new Nukleotid_storage(display.getFieldDisplay(),display.getInventoryDisplay(),16); fields.add(f18);
+        Shelter f19 = new Shelter(display.getFieldDisplay(),display.getInventoryDisplay(),17); f19.SetProtection(new Bag()); fields.add(f19);
+        Lab f20 = new Lab(display.getFieldDisplay(),display.getInventoryDisplay(),18); f20.SetGenetic_code(new GC_Forgetting()); fields.add(f20);
 
         Shelter f5 = new Shelter(display.getFieldDisplay(),display.getInventoryDisplay(),21); f5.SetProtection(new Cloak()); fields.add(f5);
         Field f6 = new Field(display.getFieldDisplay(),display.getInventoryDisplay(),22); fields.add(f6);
         Shelter f7 = new Shelter(display.getFieldDisplay(),display.getInventoryDisplay(),23); f7.SetProtection(new Ax()); fields.add(f7);
         Lab f8 = new Lab(display.getFieldDisplay(),display.getInventoryDisplay(),24); f8.SetGenetic_code(new GC_Uncontrollable()); fields.add(f8);
+        Shelter f21 = new Shelter(display.getFieldDisplay(),display.getInventoryDisplay(),25); f21.SetProtection(new Cloak()); fields.add(f21);
+        Field f22 = new Field(display.getFieldDisplay(),display.getInventoryDisplay(),26); fields.add(f22);
+        Shelter f23 = new Shelter(display.getFieldDisplay(),display.getInventoryDisplay(),27); f23.SetProtection(new Ax()); fields.add(f23);
+        Lab f24 = new Lab(display.getFieldDisplay(),display.getInventoryDisplay(),28); f24.SetGenetic_code(new GC_Uncontrollable()); fields.add(f24);
 
         Field f9 = new Field(display.getFieldDisplay(),display.getInventoryDisplay(),31); fields.add(f9);
         Field f10 = new Field(display.getFieldDisplay(),display.getInventoryDisplay(),32); fields.add(f10);
         Lab f11 = new Lab(display.getFieldDisplay(),display.getInventoryDisplay(),33); f11.SetGenetic_code(new GC_Paralyze()); fields.add(f11);
         Lab f12 = new Lab(display.getFieldDisplay(),display.getInventoryDisplay(),34); f12.SetGenetic_code(new GC_Bear()); fields.add(f12);
+        Field f25 = new Field(display.getFieldDisplay(),display.getInventoryDisplay(),35); fields.add(f25);
+        Field f26 = new Field(display.getFieldDisplay(),display.getInventoryDisplay(),36); fields.add(f26);
+        Lab f27 = new Lab(display.getFieldDisplay(),display.getInventoryDisplay(),37); f11.SetGenetic_code(new GC_Paralyze()); fields.add(f27);
+        Lab f28 = new Lab(display.getFieldDisplay(),display.getInventoryDisplay(),38); f12.SetGenetic_code(new GC_Bear()); fields.add(f28);
 
         Shelter f13 = new Shelter(display.getFieldDisplay(),display.getInventoryDisplay(),41); f13.SetProtection(new Glove()); fields.add(f13);
         Nukleotid_storage f14 = new Nukleotid_storage(display.getFieldDisplay(),display.getInventoryDisplay(),42); fields.add(f14);
         Field f15 = new Field(display.getFieldDisplay(),display.getInventoryDisplay(),43); fields.add(f15);
         Field f16 = new Field(display.getFieldDisplay(),display.getInventoryDisplay(),44); fields.add(f16);
+        Shelter f29 = new Shelter(display.getFieldDisplay(),display.getInventoryDisplay(),45); f13.SetProtection(new Glove()); fields.add(f29);
+        Aminoacid_storage f30 = new Aminoacid_storage(display.getFieldDisplay(),display.getInventoryDisplay(),46); fields.add(f30);
+        Field f31 = new Field(display.getFieldDisplay(),display.getInventoryDisplay(),47); fields.add(f31);
+        Field f32 = new Field(display.getFieldDisplay(),display.getInventoryDisplay(),48); fields.add(f32);
+
+         f1 = new Lab(display.getFieldDisplay(),display.getInventoryDisplay(),51); f1.SetGenetic_code(new GC_Immunity()); fields.add(f1);
+         f2 = new Aminoacid_storage(display.getFieldDisplay(),display.getInventoryDisplay(),52); fields.add(f2);
+         f3 = new Shelter(display.getFieldDisplay(),display.getInventoryDisplay(),53); f3.SetProtection(new Bag()); fields.add(f3);
+         f4 = new Lab(display.getFieldDisplay(),display.getInventoryDisplay(),54); f4.SetGenetic_code(new GC_Forgetting()); fields.add(f4);
+         f17 = new Lab(display.getFieldDisplay(),display.getInventoryDisplay(),55); f17.SetGenetic_code(new GC_Immunity()); fields.add(f17);
+         f18 = new Nukleotid_storage(display.getFieldDisplay(),display.getInventoryDisplay(),56); fields.add(f18);
+         f19 = new Shelter(display.getFieldDisplay(),display.getInventoryDisplay(),57); f19.SetProtection(new Bag()); fields.add(f19);
+         f20 = new Lab(display.getFieldDisplay(),display.getInventoryDisplay(),58); f20.SetGenetic_code(new GC_Forgetting()); fields.add(f20);
+
+         f5 = new Shelter(display.getFieldDisplay(),display.getInventoryDisplay(),61); f5.SetProtection(new Cloak()); fields.add(f5);
+         f6 = new Field(display.getFieldDisplay(),display.getInventoryDisplay(),62); fields.add(f6);
+         f7 = new Shelter(display.getFieldDisplay(),display.getInventoryDisplay(),63); f7.SetProtection(new Ax()); fields.add(f7);
+         f8 = new Lab(display.getFieldDisplay(),display.getInventoryDisplay(),64); f8.SetGenetic_code(new GC_Uncontrollable()); fields.add(f8);
+         f21 = new Shelter(display.getFieldDisplay(),display.getInventoryDisplay(),65); f21.SetProtection(new Cloak()); fields.add(f21);
+         f22 = new Field(display.getFieldDisplay(),display.getInventoryDisplay(),66); fields.add(f22);
+         f23 = new Shelter(display.getFieldDisplay(),display.getInventoryDisplay(),67); f23.SetProtection(new Ax()); fields.add(f23);
+         f24 = new Lab(display.getFieldDisplay(),display.getInventoryDisplay(),68); f24.SetGenetic_code(new GC_Uncontrollable()); fields.add(f24);
+
+         f9 = new Field(display.getFieldDisplay(),display.getInventoryDisplay(),71); fields.add(f9);
+         f10 = new Field(display.getFieldDisplay(),display.getInventoryDisplay(),72); fields.add(f10);
+         f11 = new Lab(display.getFieldDisplay(),display.getInventoryDisplay(),73); f11.SetGenetic_code(new GC_Paralyze()); fields.add(f11);
+         f12 = new Lab(display.getFieldDisplay(),display.getInventoryDisplay(),74); f12.SetGenetic_code(new GC_Bear()); fields.add(f12);
+         f25 = new Field(display.getFieldDisplay(),display.getInventoryDisplay(),75); fields.add(f25);
+         f26 = new Field(display.getFieldDisplay(),display.getInventoryDisplay(),76); fields.add(f26);
+         f27 = new Lab(display.getFieldDisplay(),display.getInventoryDisplay(),77); f11.SetGenetic_code(new GC_Paralyze()); fields.add(f27);
+         f28 = new Lab(display.getFieldDisplay(),display.getInventoryDisplay(),78); f12.SetGenetic_code(new GC_Bear()); fields.add(f28);
+
+         f13 = new Shelter(display.getFieldDisplay(),display.getInventoryDisplay(),81); f13.SetProtection(new Glove()); fields.add(f13);
+         f14 = new Nukleotid_storage(display.getFieldDisplay(),display.getInventoryDisplay(),82); fields.add(f14);
+         f15 = new Field(display.getFieldDisplay(),display.getInventoryDisplay(),83); fields.add(f15);
+         f16 = new Field(display.getFieldDisplay(),display.getInventoryDisplay(),84); fields.add(f16);
+         f29 = new Shelter(display.getFieldDisplay(),display.getInventoryDisplay(),85); f13.SetProtection(new Glove()); fields.add(f29);
+         f30 = new Aminoacid_storage(display.getFieldDisplay(),display.getInventoryDisplay(),86); fields.add(f30);
+         f31 = new Field(display.getFieldDisplay(),display.getInventoryDisplay(),87); fields.add(f31);
+         f32 = new Field(display.getFieldDisplay(),display.getInventoryDisplay(),88); fields.add(f32);
+
 
 
         for(Field f : fields){
