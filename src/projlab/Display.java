@@ -134,7 +134,7 @@ public class Display {
             }
         };
 
-        fieldPanel.setPreferredSize(new Dimension(600,600));
+        fieldPanel.setPreferredSize(new Dimension(1050,600));
         fieldDisplay = new FieldDisplay(fieldPanel);
 
 
@@ -147,7 +147,7 @@ public class Display {
                 Stroke oldStroke = g2.getStroke();
                 g2.setColor(Color.BLACK);
                 g2.setStroke(new BasicStroke(3.0f));
-                g2.drawRect(10,10,this.getWidth()-20,this.getHeight()-20);
+                g2.drawRect(10,10,400-20,500-20);
                 g2.setStroke(oldStroke);
             }
         };
