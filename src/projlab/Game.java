@@ -46,6 +46,10 @@ public class Game implements Ticker {
 
     }
 
+    /**
+     * A játékos törlése a pályáról
+     * @param v - a virológus, akit törölni kell
+     */
     public void removeVirologist(Virologist v){
         virologists.remove(v);
         v.getCurrent_field().Remove(v);
@@ -53,6 +57,10 @@ public class Game implements Ticker {
         v.getFieldObserver().update();
     }
 
+    /**
+     * A játék végét figyeli, azaz, ha mind a 4 genetikus kódot
+     * megtanulta a virológus
+     */
     public void Tick(){
         for(Virologist v : virologists) {
             if (v.GetGenetic_codes().size() == 4) endGame();
@@ -63,6 +71,9 @@ public class Game implements Ticker {
         display.getWindow().addKeyListener(listener);
     }
 
+    /**
+     * A játék elindításáért felelős függvény
+     */
     public void startGame(){
         currentVirologist = virologists.get(0);
         boolean isGame = true;
@@ -80,6 +91,10 @@ public class Game implements Ticker {
         }
     }
 
+    /**
+     * Ha a játék véget ér, meghívódik ez a függvény, mely kiírja, az üzenetet, hogy ki nyert
+     * illetve ha mindenki medve, akkor azt, hogy mindenki veszített
+     */
     public void endGame(){
         if(!currentVirologist.isBear()){
             JOptionPane.showMessageDialog(null, currentVirologist.getName() + " is the winner!", "Game ended", JOptionPane.INFORMATION_MESSAGE);
@@ -92,6 +107,9 @@ public class Game implements Ticker {
         virologists.clear();
     }
 
+    /**
+     * A pályát megvalósító metódus
+     */
     public void CreateCity(){
         Lab f1 = new Lab(display.getFieldDisplay(),display.getInventoryDisplay(),11); f1.SetGenetic_code(new GC_Immunity()); fields.add(f1);
         Aminoacid_storage f2 = new Aminoacid_storage(display.getFieldDisplay(),display.getInventoryDisplay(),12); fields.add(f2);
@@ -176,6 +194,10 @@ public class Game implements Ticker {
         }
     }
 
+    /**
+     * Virológus hozzáadása a pályára
+     * @param name - a virológus neve
+     */
     public void AddVirologist(String name){
         Virologist v = new Virologist(display.getFieldDisplay(), display.getInventoryDisplay(), name);
         virologists.add(v);
@@ -184,6 +206,10 @@ public class Game implements Ticker {
 
     }
 
+    /**
+     * A virológusok megfigyelése, hogy medvévé változtak-e
+     * @return - visszatér igaz/hamissal, hogy mindegyik medvévé változott-e
+     */
     public boolean isAllBear(){
         boolean allBear = true;
         for(Virologist v : virologists){
@@ -193,7 +219,9 @@ public class Game implements Ticker {
         return allBear;
     }
 
-    // következő virológus jön, a controller  hívja ha megnyomnak egy gombot
+    /**
+     * Következő virológus jön, a controller  hívja ha megnyomnak egy gombot
+     */
     public void nextVirologist(){
         if(isAllBear()) return;
         int index = virologists.indexOf(currentVirologist);
@@ -225,8 +253,5 @@ public class Game implements Ticker {
     //public void setCurrentVirologist(Virologist v){ currentVirologist = v;}
     public Virologist getCurrentVirologist(){ return currentVirologist;}
     public Display getDisplay(){return display;}
-
-
-
 
 }

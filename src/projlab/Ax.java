@@ -13,6 +13,11 @@ public class Ax extends Protection {
         v.setHasAx(true);
     }
 
+    /**
+     * A ReverseEffect beállítja a virológus hasAx értékét false-ra
+     * @param v - A virológus, akire kifejti a hatást
+     */
+
     @Override
     public void ReverseEffect(Virologist v) {
         v.setHasAx(false);

@@ -50,7 +50,10 @@ public class Nukleotid_storage extends Storage{
         }
         super.Accept(v);
     }
-    ///termelés miatt kell
+
+    /**
+     * Az újratermelés miatt szükséges metódus
+     */
     @Override
     public void Tick(){
         tickCount++;

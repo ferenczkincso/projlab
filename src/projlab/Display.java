@@ -24,8 +24,13 @@ public class Display {
         window = new JFrame();
         fieldPanel = new JPanel(){
             BufferedImage p = null;
+
+            /**
+             * A paintComponent rajzolja ki a filedeket, a protectionokat és a virológusokat
+             * @param g - a grafikus megjelenítés végett szükséges
+             */
             @Override
-            public void paintComponent(Graphics g){  // ez a rajzolja ki a filedeket, a protectionokat meg a virológusokat
+            public void paintComponent(Graphics g){
                 super.paintComponent(g);
                 for(Field f : game.getFields()){
 
@@ -255,9 +260,6 @@ public class Display {
         window.setVisible(true);
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
-
-
-
 
     public FieldDisplay getFieldDisplay(){return fieldDisplay;}
     public InventoryDisplay getInventoryDisplay(){return inventoryDisplay;}

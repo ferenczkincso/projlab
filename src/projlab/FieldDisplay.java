@@ -10,6 +10,9 @@ public class FieldDisplay implements Observer {
 
     FieldDisplay(JPanel p) {panel = p;}
 
+    /**
+     * A mezők frissítéséért felelős
+     */
     @Override
     public void update() {
         panel.revalidate();

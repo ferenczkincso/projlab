@@ -20,6 +20,5 @@ public abstract class Agent {
     public void ReverseEffect(Virologist v) {
         System.out.println("ReverseEffect(src.Virologist v)");
     }
-
     public String getType(){return null;}
 }
