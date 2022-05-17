@@ -135,14 +135,14 @@ public class Game implements Ticker {
         Lab f12 = new Lab(display.getFieldDisplay(),display.getInventoryDisplay(),34); f12.SetGenetic_code(new GC_Bear()); fields.add(f12);
         Field f25 = new Field(display.getFieldDisplay(),display.getInventoryDisplay(),35); fields.add(f25);
         Field f26 = new Field(display.getFieldDisplay(),display.getInventoryDisplay(),36); fields.add(f26);
-        Lab f27 = new Lab(display.getFieldDisplay(),display.getInventoryDisplay(),37); f11.SetGenetic_code(new GC_Paralyze()); fields.add(f27);
-        Lab f28 = new Lab(display.getFieldDisplay(),display.getInventoryDisplay(),38); f12.SetGenetic_code(new GC_Bear()); fields.add(f28);
+        Lab f27 = new Lab(display.getFieldDisplay(),display.getInventoryDisplay(),37); f27.SetGenetic_code(new GC_Paralyze()); fields.add(f27);
+        Lab f28 = new Lab(display.getFieldDisplay(),display.getInventoryDisplay(),38); f28.SetGenetic_code(new GC_Bear()); fields.add(f28);
 
         Shelter f13 = new Shelter(display.getFieldDisplay(),display.getInventoryDisplay(),41); f13.SetProtection(new Glove()); fields.add(f13);
         Nukleotid_storage f14 = new Nukleotid_storage(display.getFieldDisplay(),display.getInventoryDisplay(),42); fields.add(f14);
         Field f15 = new Field(display.getFieldDisplay(),display.getInventoryDisplay(),43); fields.add(f15);
         Field f16 = new Field(display.getFieldDisplay(),display.getInventoryDisplay(),44); fields.add(f16);
-        Shelter f29 = new Shelter(display.getFieldDisplay(),display.getInventoryDisplay(),45); f13.SetProtection(new Glove()); fields.add(f29);
+        Shelter f29 = new Shelter(display.getFieldDisplay(),display.getInventoryDisplay(),45); f29.SetProtection(new Glove()); fields.add(f29);
         Aminoacid_storage f30 = new Aminoacid_storage(display.getFieldDisplay(),display.getInventoryDisplay(),46); fields.add(f30);
         Field f31 = new Field(display.getFieldDisplay(),display.getInventoryDisplay(),47); fields.add(f31);
         Field f32 = new Field(display.getFieldDisplay(),display.getInventoryDisplay(),48); fields.add(f32);
@@ -171,14 +171,14 @@ public class Game implements Ticker {
          f12 = new Lab(display.getFieldDisplay(),display.getInventoryDisplay(),74); f12.SetGenetic_code(new GC_Bear()); fields.add(f12);
          f25 = new Field(display.getFieldDisplay(),display.getInventoryDisplay(),75); fields.add(f25);
          f26 = new Field(display.getFieldDisplay(),display.getInventoryDisplay(),76); fields.add(f26);
-         f27 = new Lab(display.getFieldDisplay(),display.getInventoryDisplay(),77); f11.SetGenetic_code(new GC_Paralyze()); fields.add(f27);
-         f28 = new Lab(display.getFieldDisplay(),display.getInventoryDisplay(),78); f12.SetGenetic_code(new GC_Bear()); fields.add(f28);
+         f27 = new Lab(display.getFieldDisplay(),display.getInventoryDisplay(),77); f27.SetGenetic_code(new GC_Paralyze()); fields.add(f27);
+         f28 = new Lab(display.getFieldDisplay(),display.getInventoryDisplay(),78); f28.SetGenetic_code(new GC_Bear()); fields.add(f28);
 
          f13 = new Shelter(display.getFieldDisplay(),display.getInventoryDisplay(),81); f13.SetProtection(new Glove()); fields.add(f13);
          f14 = new Nukleotid_storage(display.getFieldDisplay(),display.getInventoryDisplay(),82); fields.add(f14);
          f15 = new Field(display.getFieldDisplay(),display.getInventoryDisplay(),83); fields.add(f15);
          f16 = new Field(display.getFieldDisplay(),display.getInventoryDisplay(),84); fields.add(f16);
-         f29 = new Shelter(display.getFieldDisplay(),display.getInventoryDisplay(),85); f13.SetProtection(new Glove()); fields.add(f29);
+         f29 = new Shelter(display.getFieldDisplay(),display.getInventoryDisplay(),85); f29.SetProtection(new Glove()); fields.add(f29);
          f30 = new Aminoacid_storage(display.getFieldDisplay(),display.getInventoryDisplay(),86); fields.add(f30);
          f31 = new Field(display.getFieldDisplay(),display.getInventoryDisplay(),87); fields.add(f31);
          f32 = new Field(display.getFieldDisplay(),display.getInventoryDisplay(),88); fields.add(f32);
